@@ -1,0 +1,285 @@
+/* CSS declarations go here */
+body {
+  font-family: source-sans-pro, sans-serif;
+  background-color: #ecf0f1;
+}
+
+body > .container {
+  width: 100%;
+  max-width: 750px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+.container > hr {
+  height: 1px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.container.home {
+  /*min-width: 450px;*/
+  width: 100%;
+}
+
+.container .home {
+  position: absolute;
+  width: 65px;
+  height: 20px;
+}
+
+.container .home:hover {
+  cursor: pointer;
+}
+
+.container .home:before {
+  content: "< home";
+  padding-left: 5px;
+  line-height: 20px;
+}
+
+.header {
+  float: left;
+  width: 100%;
+  margin: 25px 0;
+  text-align: center;
+}
+
+.header > p {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.header > h1 {
+  font-family: changa-one, sans-serif;
+  text-align: center;
+  font-size: 4em;
+  margin: 0em;
+}
+
+.qualifier {
+  font-size: 3px;
+}
+
+.create {
+  padding: 25px 0;
+  float: left;
+  width: 100%;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  background-color: #2c3e50;
+}
+
+.create > .inner {
+  font-size: 1.2em;
+  padding: 10px 20px;
+  border: 1px solid #e74c3c;
+  background-color: #c0392b;
+  color: white;
+  width: 100%;
+  max-width: 120px;
+  height: 100%;
+  line-height: 30px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.create > .inner:hover {
+  background-color: #e74c3c;
+  cursor: pointer;
+}
+
+.features {
+  padding: 25px 0;
+  float: left;
+}
+
+.features > .title {
+  width: 100%;
+  float: left;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.feature {
+  float: left;
+  width: 33%;
+  text-align: center;
+}
+
+@media only screen and (max-device-width: 480px) {
+  .feature {
+    width: 100%;
+  }
+}
+
+.feature i {
+  color: gray;
+}
+
+.feature .inner {
+  padding: 10px 10px;
+  /*border: solid gray 1px;*/
+}
+
+.feature .title,
+.feature .description {
+  width: 100%;
+}
+
+.feature .title {
+  font-size: 1.2em;
+}
+
+.feature .description {
+  margin-top: 30px;
+  font-size: 0.8em
+}
+
+.yarns, .top {
+  float: left;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.yarn-form .field {
+  width: auto;
+  margin-left: 50px;    
+  height: 25px;
+}
+
+.yarn-form {
+  float: left;
+  width: 60%;  
+}
+
+@media only screen and (max-device-width: 480px) {
+  .yarn-form {
+    width: 100%;
+  }
+}
+
+.title {
+  float: left;
+  width: 40%;
+  display: inherit;
+  text-align: center;
+
+}
+
+@media only screen and (max-device-width: 480px) {
+  .title {
+    width: 0%;
+    display: none;
+  }
+}
+
+.title .one {
+  font-size: 1em;
+}
+
+.title .two {
+  font-family: changa-one, sans-serif;
+  font-size: 4em;
+  line-height: 1em;
+}
+
+input, textarea {
+  width: 95%;
+}
+
+textarea {
+  height: 40px;
+}
+
+hr {
+  float: left;
+  clear: both;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid gray;
+  height: 1px;
+}
+
+.remove {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 20px;
+  height: 20px;
+  color: gray;
+  font-family: arial;
+}
+
+.remove:hover {
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.remove:before {
+  content: "X";
+  padding-left: 5px;
+  line-height: 20px;
+  font-size: 0.9em;
+}
+
+.remove.ready {
+  background-color: red;
+  color: white;
+  width: 63px;
+}
+
+.remove.ready:before {
+  content: "Really?";
+}
+
+.yarn-form > div,
+.yarn > div {
+  margin-bottom: 8px;
+}
+
+.yarn {
+  text-align: center;
+  border: 1px solid gray;
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: left;
+}
+
+.yarn .text {
+  vertical-align: middle;
+  line-height: 25px;
+}
+
+.yarn-form .label,
+.yarn .label {
+  width: 50px;
+  float: left;
+  height: 25px;
+  text-align: right;
+}
+
+.who > .label,
+.what > .label,
+.why > .label {
+  vertical-align: middle;
+  line-height: 25px;
+  margin-right: 8px;
+}
+
+.who > div.label:before {
+  content: "As ";
+  color: red;
+}
+
+.what > div.label:before {
+  content: "I/We ";
+  color: green;
+}
+
+.why > div.label:before {
+  content: "So ";
+  color: blue;
+}

@@ -1,0 +1,109 @@
+<head>
+  <title>Yarn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://use.edgefonts.net/source-sans-pro;changa-one.js"></script> 
+</head>
+
+<body>
+  <div class="container {{#unless spinReady}}home{{/unless}}">
+    {{> main}}
+  </div>
+</body>
+
+<template name="main">
+  {{#if spinReady}}
+    {{> yarns}}
+  {{else}}
+    <div class="header">
+      <h1>Yarn</h1>
+      <p>The most advanced user story creator in</p>
+    </div>
+    <div class="create">
+      <div class="inner">
+        Start Yarning
+      </div>
+    </div>
+    <div class="features">
+      <div class="title">Some Features of Yarn</div>
+      <div class="feature">
+        <div class="inner">
+          <div class="title">User-friendly</div>
+          <div class="description">
+            One click, three input fields and enter. Boom! That's how easy it is to use Yarn.
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="inner">
+          <div class="title">Secure</div>
+          <div class="description">
+            Yarn uses a relatively long "secret code" to provide reasonable security for your valuable data!
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="inner">
+          <div class="title">Feature-ful</div>
+          <div class="description">
+            Create and delete your yarns! <i>Editing, sharing, notifications, export and mobile apps are coming soon!</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  {{/if}}
+</template>
+
+<template name="yarns">
+  <div class="home"></div> 
+  <div class="top">
+    <div class="title">
+      {{#if hasTip}}
+        <div class="tip">
+          <div class="name">Yarn expert says:</div> {{tip.text}}
+        </div>
+      {{else}}
+        <div class="one">Spin a</div>
+        <div class="two">Yarn</div>
+      {{/if}}
+    </div>
+    <form class="yarn-form">
+      <div class="who">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+      <div class="what">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+      <div class="why">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+    </form>
+  </div>
+  <hr/>
+  <div class="yarns">
+    {{#each yarns}}
+      {{> yarn}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="yarn">
+  <div class="yarn">
+    <div class="remove"></div>
+    <div class="who">
+      <div class="label"></div>
+      <div class="text">{{who}}</div>
+    </div>
+    <div class="what">
+      <div class="label"></div>
+      <div class="text">{{what}}</div>
+    </div>
+    <div class="why">
+      <div class="label"></div>
+      <div class="text">{{why}}</div>
+    </div>
+  </div>
+</template>
