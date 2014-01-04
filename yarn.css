@@ -1,6 +1,7 @@
 /* CSS declarations go here */
 body {
   font-family: source-sans-pro, sans-serif;
+  font-weight: 300;
   background-color: #ecf0f1;
 }
 
@@ -9,6 +10,18 @@ body > .container {
   max-width: 750px;
   margin: 0 auto;
   font-size: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  body > .container {
+    /*font-size: 16px;*/
+  }
+}
+
+@media print {    
+  .action, .no-print, .no-print * {
+    display: none !important;
+  }
 }
 
 .container > hr {
@@ -65,8 +78,8 @@ body > .container {
   padding: 25px 0;
   float: left;
   width: 100%;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+  border-top: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
   background-color: #2c3e50;
 }
 
@@ -97,8 +110,9 @@ body > .container {
 .features > .title {
   width: 100%;
   float: left;
-  font-size: 1.5em;
+  font-size: 2em;
   margin-bottom: 15px;
+  text-align: center;
 }
 
 .feature {
@@ -107,19 +121,19 @@ body > .container {
   text-align: center;
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 600px) {
   .feature {
     width: 100%;
   }
 }
 
 .feature i {
-  color: gray;
+  color: #CCC;
 }
 
 .feature .inner {
   padding: 10px 10px;
-  /*border: solid gray 1px;*/
+  /*border: solid #CCC 1px;*/
 }
 
 .feature .title,
@@ -132,7 +146,7 @@ body > .container {
 }
 
 .feature .description {
-  margin-top: 30px;
+  margin-top: 8px;
   font-size: 0.8em
 }
 
@@ -140,11 +154,16 @@ body > .container {
   float: left;
   width: 100%;
   margin: 25px 0;
+  padding-left: 0px;
+}
+
+ul.yarns {
+  list-style: none;
 }
 
 .yarn-form .field {
   width: auto;
-  margin-left: 50px;    
+  margin-left: 70px;    
   height: 25px;
 }
 
@@ -153,13 +172,13 @@ body > .container {
   width: 60%;  
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-width: 600px) {
   .yarn-form {
     width: 100%;
   }
 }
 
-.title {
+.top > .title {
   float: left;
   width: 40%;
   display: inherit;
@@ -167,10 +186,9 @@ body > .container {
 
 }
 
-@media only screen and (max-device-width: 480px) {
-  .title {
-    width: 0%;
-    display: none;
+@media only screen and (max-width: 600px) {
+  .top .title {
+    width: 100%;
   }
 }
 
@@ -185,7 +203,14 @@ body > .container {
 }
 
 input, textarea {
-  width: 95%;
+  width: 85%;
+  background: #fff;
+  box-shadow: 0px 0px 3px #ccc;
+  border: 1px solid #aaa;
+  border-radius: 2px;
+  height: 25px;
+  width: 100%;
+  padding: 0 8px;
 }
 
 textarea {
@@ -197,75 +222,166 @@ hr {
   clear: both;
   width: 100%;
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #CCC;
   height: 1px;
 }
 
-.remove {
+.remove,
+.save {
   position: absolute;
   right: 0;
   top: 0;
   width: 20px;
   height: 20px;
-  color: gray;
+  color: #CCC;
   font-family: arial;
+  text-align: right;
+  margin-right: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+/*  transition-property: width;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.1, 0.2, 0.3, 0.8);*/
 }
 
 .remove:hover {
-  background-color: red;
-  color: white;
+  color: red;
+  /*color: white;*/
   cursor: pointer;
 }
 
 .remove:before {
   content: "X";
-  padding-left: 5px;
+  /*padding-left: 5px;*/
+  text-align: right;
   line-height: 20px;
   font-size: 0.9em;
 }
 
 .remove.ready {
-  background-color: red;
-  color: white;
-  width: 63px;
+  color: red;
+  /*color: white;*/
+  width: 80px;
 }
 
 .remove.ready:before {
-  content: "Really?";
+  content: "Really? X";
 }
 
-.yarn-form > div,
+.save {
+  top: 20px;
+  display: none;
+}
+
+.save:hover {
+  color: green;
+  /*color: white;*/
+  cursor: pointer;
+}
+
+.save:before {
+  content: "✓";
+  /*padding-left: 5px;*/
+  text-align: right;
+  line-height: 20px;
+  font-size: 0.9em;
+}
+
+.yarn-form > div {
+  margin-bottom: 20px;
+}
+
 .yarn > div {
   margin-bottom: 8px;
 }
 
+.yarn > div:last-of-type {
+  margin-bottom: 0px;
+}
+
 .yarn {
   text-align: center;
-  border: 1px solid gray;
+  border: 1px solid #CCC;
   padding: 10px;
-  margin-bottom: 10px;
   position: relative;
   text-align: left;
+  box-shadow: 0px 0px 3px #ccc;
+  border: 1px solid #aaa;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+.sortable-placeholder {
+  border: 1px dashed #CCC;
+  background: none;
+  height: 115px;
+}
+
+.yarn,
+.sortable-placeholder {
+  margin-bottom: 10px;
+}
+
+.yarn > span.handle {
+  position: absolute;
+  left: 0em;
+  top: 0em;
+  width: 20px;
+  height: 20px;
+  padding-left: 4px;
+  line-height: 20px;
+  display: block;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #CCC;
+}
+
+.yarn > span.handle:hover {
+  cursor: move;
+  color: #3C3C3C;
 }
 
 .yarn .text {
   vertical-align: middle;
-  line-height: 25px;
+  padding-top: 2px;
+  margin-left: 68px;
+  margin-right: 10px;
 }
 
 .yarn-form .label,
 .yarn .label {
-  width: 50px;
+  width: 60px;
   float: left;
   height: 25px;
   text-align: right;
+}
+
+.yarn-form .field {
+  margin-right: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+  .yarn-form .label {
+    text-align: left;
+  }
+
+  .yarn-form .field {
+    margin-left: 0px;
+    padding-bottom: 8px;
+  }
+
+  .yarn-form .field,
+  .yarn-form .label {
+    width: inherit;
+  }
 }
 
 .who > .label,
 .what > .label,
 .why > .label {
   vertical-align: middle;
-  line-height: 25px;
+  line-height: 30px;
   margin-right: 8px;
 }
 
@@ -275,11 +391,11 @@ hr {
 }
 
 .what > div.label:before {
-  content: "I/We ";
+  content: "I want ";
   color: green;
 }
 
 .why > div.label:before {
-  content: "So ";
+  content: "so that ";
   color: blue;
 }

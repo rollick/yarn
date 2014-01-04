@@ -1,11 +1,22 @@
 {
   "meteor": {
-    "git": "https://github.com/rollick/meteor.git",
-    "branch": "shark-node-fix",
-    "commit": "10a1b13805801ddacf9d6fbd1d1fef163f2e6d61"
+    "git": "https://github.com/meteor/meteor.git",
+    "tag": "release/template-engine-preview-release-10.1",
+    "commit": "30a4b2b7d463ac22980661a23eec0e4743a52d20"
   },
   "dependencies": {
-    "basePackages": {},
-    "packages": {}
+    "basePackages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "shark"
+      }
+    },
+    "packages": {
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
+        "branch": "shark",
+        "commit": "4f55d0acc293abb4a9492229e8d2be0ec0e176c1"
+      }
+    }
   }
 }

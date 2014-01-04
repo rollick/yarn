@@ -7,3 +7,5 @@ standard-app-packages
 insecure
 preserve-inputs
 audit-argument-checks
+iron-router
+tinytest

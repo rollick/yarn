@@ -2,19 +2,15 @@
   <title>Yarn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script src="https://use.edgefonts.net/source-sans-pro;changa-one.js"></script> 
+  <script src="https://use.edgefonts.net/source-sans-pro:n2,n3,n4;changa-one.js"></script> 
 </head>
 
-<body>
-  <div class="container {{#unless spinReady}}home{{/unless}}">
-    {{> main}}
-  </div>
-</body>
+<template name="layout">
+  --{{yield}}++
+</template>
 
-<template name="main">
-  {{#if spinReady}}
-    {{> yarns}}
-  {{else}}
+<template name="home">
+  <div class="container home">
     <div class="header">
       <h1>Yarn</h1>
       <p>The most advanced user story creator in</p>
@@ -51,59 +47,63 @@
         </div>
       </div>
     </div>
-  {{/if}}
+  </div>
 </template>
 
 <template name="yarns">
-  <div class="home"></div> 
-  <div class="top">
-    <div class="title">
-      {{#if hasTip}}
-        <div class="tip">
-          <div class="name">Yarn expert says:</div> {{tip.text}}
+  <div class="container home">
+    <div class="action home"></div> 
+    <div class="top no-print">
+      <div class="title">
+        {{#if hasTip}}
+          <div class="tip">
+            <div class="name">Yarn expert says:</div> {{tip.text}}
+          </div>
+        {{else}}
+          <div class="one">Spin a</div>
+          <div class="two">Yarn</div>
+        {{/if}}
+      </div>
+      <form class="yarn-form">
+        <div class="who">
+          <div class="label"></div>
+          <div class="field"><input type="text" /></div>
         </div>
-      {{else}}
-        <div class="one">Spin a</div>
-        <div class="two">Yarn</div>
-      {{/if}}
+        <div class="what">
+          <div class="label"></div>
+          <div class="field"><input type="text" /></div>
+        </div>
+        <div class="why">
+          <div class="label"></div>
+          <div class="field"><input type="text" /></div>
+        </div>
+      </form>
     </div>
-    <form class="yarn-form">
-      <div class="who">
-        <div class="label"></div>
-        <div class="field"><input type="text" /></div>
-      </div>
-      <div class="what">
-        <div class="label"></div>
-        <div class="field"><input type="text" /></div>
-      </div>
-      <div class="why">
-        <div class="label"></div>
-        <div class="field"><input type="text" /></div>
-      </div>
-    </form>
-  </div>
-  <hr/>
-  <div class="yarns">
-    {{#each yarns}}
-      {{> yarn}}
-    {{/each}}
+    <hr/>
+    <div class="yarns handle">
+      {{#each yarns}}
+        {{> yarn}}
+      {{/each}}
+    </div>
   </div>
 </template>
 
 <template name="yarn">
-  <div class="yarn">
-    <div class="remove"></div>
+  <div class="yarn" data-yarn-id="{{_id}}">
+    <span class="action handle">::</span>
+    <div class="action remove"></div>
+    <div class="action save"></div>
     <div class="who">
       <div class="label"></div>
-      <div class="text">{{who}}</div>
+      <div class="text" contenteditable="true">{{who}}</div>
     </div>
     <div class="what">
       <div class="label"></div>
-      <div class="text">{{what}}</div>
+      <div class="text" contenteditable="true">{{what}}</div>
     </div>
     <div class="why">
       <div class="label"></div>
-      <div class="text">{{why}}</div>
+      <div class="text" contenteditable="true">{{why}}</div>
     </div>
   </div>
 </template>

@@ -1,16 +1,61 @@
+App = {};
+
 Yarns = new Meteor.Collection('yarns');
 
 if (Meteor.isClient) {
-  Meteor.startup(function () {
-    Deps.autorun(function (computation) {
-      Meteor.subscribe("yarns", Session.get("spinId"));
+
+  ///////////////////////////////////////////////////////////////////////////////
+  // Router
+
+  // Router.configure({
+  //   layoutTemplate: 'layout'
+  // });
+
+  Router.map(function () {
+    this.route('home', {
+      path: '/',
+      before: function () {
+        Session.set("spinId", null);
+      }
+    });
+
+    this.route('yarns', {
+      path: '/:spinId',
+      before: function () {
+        Session.set("spinId", this.params.spinId);
+      }
+      // waitOn: function () {
+      //   return Meteor.subscribe('yarns', this.params.spinId);
+      // },
+      // data: function () {
+      //   var yarns = Yarns.find({spinId: this.params.spinId});
+
+      //   return {yarns: yarns};
+      // },
     });
   });
 
+  ///////////////////////////////////////////////////////////////////////////////
+  // Meteor Startup
+
+  Meteor.startup(function () {
+    console.log("++ Starting Yarn");
+
+    Deps.autorun(function (computation) {
+      Session.set("yarnsReady", false);
+      Meteor.subscribe("yarns", Session.get("spinId"), function () {
+        Session.set("yarnsReady", true);
+      });
+    });
+  });
+
+  ///////////////////////////////////////////////////////////////////////////////
+  // Common Functions
+
   showTip = function (type, field) {
     var currentTip = Session.get("tip"),
-        currentType = currentTip.type,
-        currentField = currentTip.field,
+        currentType = currentTip ? currentTip.type : null,
+        currentField = currentTip ? currentTip.field : null,
         tip = "";
 
     if (type === "too long") {
@@ -22,7 +67,10 @@ if (Meteor.isClient) {
       type: type,
       field: field
     });
-  }
+  };
+
+  ///////////////////////////////////////////////////////////////////////////////
+  // Common Helpers
 
   Handlebars.registerHelper("spinReady", function() {
     return !!Session.get("spinId");
@@ -31,7 +79,7 @@ if (Meteor.isClient) {
   ///////////////////////////////////////////////////////////////////////////////
   // Main
 
-  Template.main.events({
+  Template.home.events({
     'click .create .inner': function (event, template) {
       event.stopPropagation();
       event.preventDefault();
@@ -39,24 +87,25 @@ if (Meteor.isClient) {
       var spinId = Meteor.uuid().match(/([a-z|0-9]{8})-/)[1];
       Session.set("spinId", spinId);
 
-      window.location.pathname = "/" + spinId;
+      Router.go("/" + spinId);
     }
   });
-
-  Template.main.created = function () {
-    var spinId = window.location.pathname.match(/\/([a-z|0-9]{8})/);
-    if (spinId) {
-      Session.set("spinId", spinId[1]);
-    } else {
-      Session.set("spinId", null);
-    }
-  };
 
   ///////////////////////////////////////////////////////////////////////////////
   // Yarns
 
   Template.yarns.yarns = function () {
     return Yarns.find({}, {sort: {created: -1}});
+  };
+
+  Template.yarns.rendered = function () {
+    Deps.autorun(function () {
+      if (Session.get("yarnsReady")) {
+        $('.yarns').sortable({
+          handle: '.handle'
+        });
+      }
+    });
   };
 
   Template.yarns.helpers({
@@ -66,18 +115,20 @@ if (Meteor.isClient) {
     hasTip: function () {
       return Session.get("tip") ? true : false;
     }
-  })
+  });
 
   Template.yarns.events({
-    'click .home': function () {
+    'click .action.home': function () {
       event.stopPropagation();
       event.preventDefault();
 
-      window.location.pathname = "/";
+      Router.go('/');
     },
     'keyup .yarn-form': function (event, template) {
       event.stopPropagation();
       event.preventDefault();
+
+      Session.set("tip", null);
 
       var spinId = Session.get("spinId"),
           who = template.find('.who input'),
@@ -101,7 +152,7 @@ if (Meteor.isClient) {
         who.value = what.value = why.value = "";
         who.focus();
       } else if (who.value.length > 20) {
-        Session.set("tip", "Stop! You are doing it wrong! Use a shorter 'As'.")
+        showTip("too long", "As");
       }
     }
   });
@@ -109,7 +160,54 @@ if (Meteor.isClient) {
   ///////////////////////////////////////////////////////////////////////////////
   // Yarn
   
+  Template.yarn.created = function () {
+    var self = this;
+    
+    self._saveYarn = function () {
+      var who = self.find('.who .text'),
+          what = self.find('.what .text'),
+          why = self.find('.why .text');
+
+      Yarns.update({_id: self.data._id}, {
+        $set: {
+          who: who.innerText,
+          what: what.innerText,
+          why: why.innerText
+        }
+      }, {multi: false});
+    };
+  },
+
   Template.yarn.events({
+    'focus .text': function (event, template) {
+      $(template.find('.save')).show();
+    },
+    'focus .text': function (event, template) {
+      $(template.find('.save')).show();
+    },
+    'keydown .text': function (event, template) {
+      if(event.keyCode === 27 || event.keyCode === 13) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        $(event.target).blur();
+
+        if (event.keyCode === 13) {
+          template._saveYarn();
+          $(template.find('.save')).hide();
+        }
+
+      }
+    },
+    'click .save': function (event, template) {
+      event.stopPropagation();
+      event.preventDefault();
+      
+      template._saveYarn();
+
+      $(event.target).blur();
+      $(template.find('.save')).hide();
+    },
     'click .remove': function (event, template) {
       if (event.target.className.match(/ready/))
         Yarns.remove(template.data._id);
