@@ -3,12 +3,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
-  <script src="https://use.edgefonts.net/source-sans-pro:n2,n3,n4;changa-one.js"></script> 
+  <script src="https://use.edgefonts.net/source-sans-pro:n2,n3,n4;maven-pro;stencil-std;changa-one.js"></script> 
 </head>
 
 <template name="layout">
-  {{> yield}}
-  <div class="version">{{appVersion}}</div>
+  <div id="root">
+    {{> yield}}
+    <div id="root_footer"></div>
+  </div>
+  <div id="footer">
+    <div class="version">{{appVersion}}</div>
+  </div>
 </template>
 
 <template name="home">
@@ -49,11 +54,16 @@
         </div>
       </div>
     </div>
+    <div class="extra">
+      <div class="count">
+        <div class="number">{{yarnCount.count}}</div> Yarns
+      </div>
+    </div>
   </div>
 </template>
 
 <template name="yarns">
-  <div class="container home">
+  <div class="container">
     <a href="#" class="action home"></a> 
     <div class="top no-print">
       <div class="title">

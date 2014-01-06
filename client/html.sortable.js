@@ -1,1 +1,0 @@
-../packages/bower/html.sortable/src/html.sortable.js
