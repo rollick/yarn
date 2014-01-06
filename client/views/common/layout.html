@@ -1,0 +1,26 @@
+<template name="layout">
+  <div id="root">
+    <div class="container">
+      {{> yield}}
+    </div>
+    <div id="root_footer"></div>
+  </div>
+  {{> footer}}
+</template>
+
+<template name="yarnsLayout">
+  <div id="root">
+    <div class="container">
+      {{> yield 'header'}}
+      {{> yield 'list'}}
+    </div>
+    <div id="root_footer"></div>
+  </div>
+  {{> footer}}
+</template>
+
+<template name="footer">
+  <div id="footer">
+    <div class="version">{{appVersion}}</div>
+  </div>
+</template>

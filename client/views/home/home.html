@@ -1,0 +1,45 @@
+<template name="home">
+  <div class="header">
+    <h1>Yarn</h1>
+    <p>The most advanced user story creator in</p>
+  </div>
+  <div class="create">
+    <div class="inner">
+      <a href="#">Start Yarning</a>
+    </div>
+  </div>
+  <div class="features">
+    <div class="title">Some Features of Yarn</div>
+    <div class="feature">
+      <div class="inner">
+        <div class="title">User-friendly</div>
+        <div class="description">
+          One click, three input fields and enter. Boom! That's how easy it is to use Yarn.
+        </div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="inner">
+        <div class="title">Secure</div>
+        <div class="description">
+          Yarn uses a relatively long "secret code" to provide reasonable security for your valuable data!
+        </div>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="inner">
+        <div class="title">Feature-ful</div>
+        <div class="description">
+          Create and delete your yarns! <i>Editing, sharing, notifications, export and mobile apps are coming soon!</i>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{#if yarnCount}}
+    <div class="extra">
+      <div class="count">
+        <div class="number">{{yarnCount.count}}</div> Yarns
+      </div>
+    </div>
+  {{/if}}
+</template>

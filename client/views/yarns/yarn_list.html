@@ -1,0 +1,13 @@
+<template name="yarnList">
+  <div class="yarns handle">
+    {{#each yarns}}
+      {{> yarn}}
+    {{/each}}
+  </div>
+</template>
+
+<template name="yarnListLoading">
+  <div class="yarns-loading">
+    <div>Loading...</div>
+  </div>
+</template>

@@ -1,0 +1,31 @@
+<template name="yarnForm">
+  <a href="#" class="action home"></a> 
+  <div class="top no-print">
+    <div class="title">
+      {{#if hasTip}}
+        <div class="tip">
+          <div class="name">Yarn expert says:</div> {{tip.text}}
+        </div>
+      {{else}}
+        <div class="one">Spin a</div>
+        <div class="two">Yarn</div>
+      {{/if}}
+    </div>
+    <form class="yarn-form">
+      <div class="who">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+      <div class="what">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+      <div class="why">
+        <div class="label"></div>
+        <div class="field"><input type="text" /></div>
+      </div>
+    </form>
+  </div>
+  <hr/>
+  {{> yield 'yarnList'}}
+</template>
