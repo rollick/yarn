@@ -11,7 +11,6 @@ Template.yarnList.rendered = function () {
   $('.yarns').sortable({
     handle: '.handle'
   }).bind('sortupdate', function(e, ui) {
-
     // Note: position is zero based according to sortable library but 
     //       one for the yarn position
     var id = ui.item.data("yarnId"),

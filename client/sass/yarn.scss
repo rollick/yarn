@@ -1,18 +1,29 @@
 @import "compass/layout/sticky-footer";
 @import "compass/css3/border-radius";
 
-@mixin standard-box-shadow {
-  box-shadow: 0px 0px 3px lighten($color-light-gray, 10%);
-  border: 1px solid lighten($color-light-gray, 20%);
-}
+/* Some Variables */
 
 $color-bg: #ECF0F1;
 $color-gray: #7F8C8D;
 $color-light-gray: #AAA;
 $color-link: #2C3E50;
 $color-warn: #C0392B;
+$color-who: #c0392b;
+$color-what: #27ae60;
+$color-why: #2980b9;
+
 $standard-spacing: 8px;
 $standard-border-radius: 5px;
+
+/* Some Mixins */
+
+@mixin standard-box-shadow {
+  box-shadow: 0px 0px 3px lighten($color-light-gray, 10%);
+  border: 1px solid lighten($color-light-gray, 20%);
+}
+
+
+/* App Style */
 
 @include sticky-footer(45px);
 
@@ -168,7 +179,7 @@ a {
   width: 33%;
   text-align: center;
   i {
-    color: #CCC;
+    color: $color-light-gray;
   }
   .inner {
     padding: 10px 10px;
@@ -385,19 +396,7 @@ hr {
       margin-bottom: 0px;
     }
   }
-}
 
-.sortable-placeholder {
-  border: 1px dashed $color-gray;
-  background: none;
-  height: 115px;
-}
-
-.yarn, .sortable-placeholder {
-  margin-bottom: 10px;
-}
-
-.yarn {
   > span.handle {
     position: absolute;
     left: 0em;
@@ -423,6 +422,16 @@ hr {
     margin-right: 10px;
     line-height: 25px;
   }
+}
+
+.sortable-placeholder {
+  border: 1px dashed $color-gray;
+  background: none;
+  height: 115px;
+}
+
+.yarn, .sortable-placeholder {
+  margin-bottom: 10px;
 }
 
 .yarn-form .label, .yarn .label {
@@ -460,15 +469,15 @@ hr {
 
 .who > div.label:before {
   content: "As ";
-  color: red;
+  color: $color-who;
 }
 
 .what > div.label:before {
   content: "I want ";
-  color: green;
+  color: $color-what;
 }
 
 .why > div.label:before {
   content: "so that ";
-  color: blue;
+  color: $color-why;
 }

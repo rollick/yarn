@@ -9,6 +9,14 @@ Template.yarn.created = function () {
         what = self.find('.what .text'),
         why = self.find('.why .text');
 
+    // ensure all fields have a value
+    var fail = _.any([who, what, why], function (field) {
+          return _.isEmpty(field.innerText);
+        });
+
+    if (fail)
+      return false;
+
     Yarns.update({_id: self.data._id}, {
       $set: {
         who: who.innerText,
@@ -16,16 +24,12 @@ Template.yarn.created = function () {
         why: why.innerText
       }
     }, {multi: false});
+
+    return true;
   };
 },
 
 Template.yarn.events({
-  'focus .text': function (event, template) {
-    $(template.find('.save')).show();
-  },
-  'focus .text': function (event, template) {
-    $(template.find('.save')).show();
-  },
   'keydown .text': function (event, template) {
     if(event.keyCode === 27 || event.keyCode === 13) {
       event.stopPropagation();
@@ -34,20 +38,42 @@ Template.yarn.events({
       $(event.target).blur();
 
       if (event.keyCode === 13) {
-        template._saveYarn();
-        $(template.find('.save')).hide();
-      }
+        var success = template._saveYarn();
 
+        if (success)
+          $(template.find('.save')).hide();
+      }
     }
+  },
+  'keyup .text': function (event, template) {
+    // Use a timer to ensure keyup code below isn't called excessively
+    if (template._keyupTimer)
+      clearInterval(template._keyupTimer);
+
+    template._keyupTimer = setTimeout(function () {
+      // If nothing has changed then disable save link
+      var id = template.data._id,
+          yarn = Yarns.findOne(id, {who: 1, what: 1, why: 1}),
+          save = $(template.find('.save')),
+          changed = _.any(["who", "what", "why"], function (field) {
+            return template.find("." + field + " .text").innerText != yarn[field];
+          });
+      
+      if (changed)
+        save.show();
+      else
+        save.hide();      
+    }, 500);
   },
   'click .save': function (event, template) {
     event.stopPropagation();
     event.preventDefault();
     
-    template._saveYarn();
-
     $(event.target).blur();
-    $(template.find('.save')).hide();
+
+    var success = template._saveYarn();
+    if (success)
+      $(template.find('.save')).hide();
   },
   'click .remove': function (event, template) {
     if (event.target.className.match(/ready/))
@@ -58,7 +84,7 @@ Template.yarn.events({
 
       setTimeout(function (){
         target.className = "remove";
-      }, 3000)
+      }, 2000)
     }
   }
 });
