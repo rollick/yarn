@@ -113,7 +113,7 @@ if (Meteor.isClient) {
       return Session.get("tip");
     },
     hasTip: function () {
-      return Session.get("tip") ? true : false;
+      return false;  //Session.get("tip") ? true : false;
     }
   });
 
