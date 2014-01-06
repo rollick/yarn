@@ -30,6 +30,9 @@ Router.map(function () {
       
       if (this.ready()) {
         this.render('yarnList', {to: 'list'});
+
+        // FIXME: move this call into a view later!
+        $('.yarns').sortable('reload');
       } else {
         this.render('yarnListLoading', {to: 'list'});
       }

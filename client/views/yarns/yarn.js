@@ -1,10 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn
 
-Template.yarn.rendered = function () {
-  $('.yarns').sortable('reload');
-};
-
 Template.yarn.created = function () {
   var self = this;
   
