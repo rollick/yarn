@@ -1,5 +1,5 @@
 App = {
-  version: "v0.1.1"
+  version: "v0.1.2"
 };
 
 Yarns = new Meteor.Collection('yarns');
