@@ -54,11 +54,13 @@
         </div>
       </div>
     </div>
-    <div class="extra">
-      <div class="count">
-        <div class="number">{{yarnCount.count}}</div> Yarns
+    {{#if yarnCount}}
+      <div class="extra">
+        <div class="count">
+          <div class="number">{{yarnCount.count}}</div> Yarns
+        </div>
       </div>
-    </div>
+    {{/if}}
   </div>
 </template>
 
