@@ -1,4 +1,6 @@
-App = {};
+App = {
+  version: "v0.1.1"
+};
 
 Yarns = new Meteor.Collection('yarns');
 
@@ -7,9 +9,9 @@ if (Meteor.isClient) {
   ///////////////////////////////////////////////////////////////////////////////
   // Router
 
-  // Router.configure({
-  //   layoutTemplate: 'layout'
-  // });
+  Router.configure({
+    layoutTemplate: 'layout'
+  });
 
   Router.map(function () {
     this.route('home', {
@@ -74,6 +76,10 @@ if (Meteor.isClient) {
 
   Handlebars.registerHelper("spinReady", function() {
     return !!Session.get("spinId");
+  });
+
+  Handlebars.registerHelper("appVersion", function() {
+    return App.version;
   });
 
   ///////////////////////////////////////////////////////////////////////////////
