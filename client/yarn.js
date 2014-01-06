@@ -2,7 +2,8 @@
 // Router
 
 Router.configure({
-  layoutTemplate: 'layout'
+  layoutTemplate: 'layout',
+  // loadingTemplate: 'loading'
 });
 
 Router.map(function () {
@@ -15,17 +16,29 @@ Router.map(function () {
 
   this.route('yarns', {
     path: '/:spinId',
-    before: function () {
-      Session.set("spinId", this.params.spinId);
+    layoutTemplate: 'yarnsLayout',
+    // yieldTemplates: {
+    //   'yarnForm': {to: 'header'},
+    //   'yarnList': {to: 'list'}
+    // },
+    waitOn: function () {
+      var spinId = this.params.spinId;
+      return Meteor.subscribe('yarns', spinId);
+    },
+    action: function () {
+      this.render('yarnForm', {to: 'header'}); 
+      
+      if (this.ready()) {
+        this.render('yarnList', {to: 'list'});
+      } else {
+        this.render('yarnListLoading', {to: 'list'});
+      }
+    },
+    data: function () {
+      return {
+        spinId: this.params.spinId
+      }
     }
-    // waitOn: function () {
-    //   return Meteor.subscribe('yarns', this.params.spinId);
-    // },
-    // data: function () {
-    //   var yarns = Yarns.find({spinId: this.params.spinId});
-
-    //   return {yarns: yarns};
-    // },
   });
 });
 
@@ -36,13 +49,6 @@ Meteor.subscribe("yarnCount");
 
 Meteor.startup(function () {
   console.log("++ Starting Yarn");
-
-  Deps.autorun(function (computation) {
-    Session.set("yarnsReady", false);
-    Meteor.subscribe("yarns", Session.get("spinId"), function () {
-      Session.set("yarnsReady", true);
-    });
-  });
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -96,23 +102,9 @@ Template.home.events({
 });
 
 ///////////////////////////////////////////////////////////////////////////////
-// Yarns
+// Yarn Form
 
-Template.yarns.yarns = function () {
-  return Yarns.find({}, {sort: {created: -1}});
-};
-
-Template.yarns.rendered = function () {
-  Deps.autorun(function () {
-    if (Session.get("yarnsReady")) {
-      $('.yarns').sortable({
-        handle: '.handle'
-      });
-    }
-  });
-};
-
-Template.yarns.helpers({
+Template.yarnForm.helpers({
   tip: function () {
     return Session.get("tip");
   },
@@ -121,7 +113,7 @@ Template.yarns.helpers({
   }
 });
 
-Template.yarns.events({
+Template.yarnForm.events({
   'click .action.home': function () {
     event.stopPropagation();
     event.preventDefault();
@@ -160,6 +152,21 @@ Template.yarns.events({
     }
   }
 });
+
+///////////////////////////////////////////////////////////////////////////////
+// Yarn List
+
+Template.yarnList.helpers({
+  yarns: function () {
+    return Yarns.find({spinId: this.spinId});
+  }
+})
+
+Template.yarnList.rendered = function () {
+  $('.yarns').sortable({
+    handle: '.handle'
+  });
+};
 
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn

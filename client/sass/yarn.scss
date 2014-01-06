@@ -1,9 +1,18 @@
 @import "compass/layout/sticky-footer";
+@import "compass/css3/border-radius";
 
-$color-bg: #ecf0f1;
-$color-gray: #7f8c8d;
-$color-link: #2c3e50;
-$color-warn: #c0392b;
+@mixin standard-box-shadow {
+  box-shadow: 0px 0px 3px lighten($color-light-gray, 10%);
+  border: 1px solid lighten($color-light-gray, 20%);
+}
+
+$color-bg: #ECF0F1;
+$color-gray: #7F8C8D;
+$color-light-gray: #AAA;
+$color-link: #2C3E50;
+$color-warn: #C0392B;
+$standard-spacing: 8px;
+$standard-border-radius: 5px;
 
 @include sticky-footer(45px);
 
@@ -101,7 +110,7 @@ a {
     }
     &:before {
       content: "< home";
-      padding-left: 5px;
+      padding-left: $standard-spacing;
       line-height: 20px;
     }
   }
@@ -172,7 +181,7 @@ a {
     font-size: 1.2em;
   }
   .description {
-    margin-top: 8px;
+    margin-top: $standard-spacing;
     font-size: 0.8em;
   }
 }
@@ -194,10 +203,11 @@ a {
     color: $color-gray;
 
     .number {
+      @include border-radius($standard-border-radius);
+
       font-size: 2.5em;
       border: 1px solid darken($color-gray, 10%);
-      border-radius: 5px;
-      margin-bottom: 5px;
+      margin-bottom: $standard-spacing;
       border: 1px solid gray;
       font-family: stencil-std;
       height: 38px;
@@ -205,15 +215,26 @@ a {
   }
 }
 
-.yarns, .top {
+.yarns, 
+.top, 
+.yarns-loading {
   float: left;
   width: 100%;
   margin: 25px 0;
   padding-left: 0px;
 }
 
-ul.yarns {
-  list-style: none;
+.yarns-loading {
+  @include border-radius($standard-border-radius);
+  @include standard-box-shadow();
+
+  line-height: 30px;
+  text-align: center;
+  background-color: #fff;
+
+  > div {
+    padding: $standard-spacing;
+  }
 }
 
 .yarn-form {
@@ -257,25 +278,25 @@ ul.yarns {
 }
 
 input {
+  @include border-radius($standard-border-radius);
+  @include standard-box-shadow();
+
   width: 85%;
   background: #fff;
-  box-shadow: 0px 0px 3px #ccc;
-  border: 1px solid #aaa;
-  border-radius: 2px;
   height: 25px;
   width: 100%;
-  padding: 0 8px;
+  padding: 0 $standard-spacing;
 }
 
 textarea {
+  @include standard-box-shadow();
+
   width: 85%;
   background: #fff;
-  box-shadow: 0px 0px 3px #ccc;
-  border: 1px solid #aaa;
   border-radius: 2px;
   height: 25px;
   width: 100%;
-  padding: 0 8px;
+  padding: 0 $standard-spacing;
   height: 40px;
 }
 
@@ -283,7 +304,7 @@ hr {
   float: left;
   width: 100%;
   border: none;
-  border-bottom: 1px solid #CCC;
+  border-bottom: 1px solid $color-gray;
   height: 1px;
 }
 
@@ -293,7 +314,7 @@ hr {
   top: 0;
   width: 20px;
   height: 20px;
-  color: #CCC;
+  color: $color-gray;
   font-family: arial;
   text-align: right;
   margin-right: 3px;
@@ -349,25 +370,25 @@ hr {
 }
 
 .yarn {
+  @include border-radius($standard-border-radius);
+  @include standard-box-shadow();
+
+  text-align: center;
+  padding: 10px;
+  position: relative;
+  text-align: left;
+  background-color: #fff;
+
   > div {
-    margin-bottom: 8px;
+    margin-bottom: $standard-spacing;
     &:last-of-type {
       margin-bottom: 0px;
     }
   }
-  text-align: center;
-  border: 1px solid #CCC;
-  padding: 10px;
-  position: relative;
-  text-align: left;
-  box-shadow: 0px 0px 3px #ccc;
-  border: 1px solid #aaa;
-  background-color: #fff;
-  border-radius: 2px;
 }
 
 .sortable-placeholder {
-  border: 1px dashed #CCC;
+  border: 1px dashed $color-gray;
   background: none;
   height: 115px;
 }
@@ -388,7 +409,8 @@ hr {
     display: block;
     font-size: 1.2em;
     font-weight: bold;
-    color: #CCC;
+    color: $color-gray;
+
     &:hover {
       cursor: move;
       color: #3C3C3C;
@@ -421,7 +443,7 @@ hr {
     }
     .field {
       margin-left: 0px;
-      padding-bottom: 8px;
+      padding-bottom: $standard-spacing;
       width: inherit;
     }
     .label {
@@ -433,7 +455,7 @@ hr {
 .who > .label, .what > .label, .why > .label {
   vertical-align: middle;
   line-height: 30px;
-  margin-right: 8px;
+  margin-right: $standard-spacing;
 }
 
 .who > div.label:before {

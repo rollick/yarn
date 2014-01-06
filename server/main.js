@@ -1,5 +1,16 @@
+wait = function (msecs) {
+  var start = new Date().getTime();
+  var cur = start
+  while(cur - start < msecs) {
+    cur = new Date().getTime();
+  } 
+};
+
+
 Meteor.publish("yarns", function (spinId) {
   check(spinId, String);
+
+  // wait(6000);
 
   return Yarns.find({spinId: spinId});
 });
