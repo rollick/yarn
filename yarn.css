@@ -12,6 +12,11 @@ body > .container {
   font-size: 18px;
 }
 
+a {
+  text-decoration: none;
+  color: #2c3e50;
+}
+
 .version {
   -webkit-transform: rotate(270deg);
   -moz-transform: rotate(270deg);
@@ -107,6 +112,11 @@ body > .container {
   line-height: 30px;
   text-align: center;
   margin: 0 auto;
+}
+
+.create > .inner a {
+  display: block;
+  color: white;
 }
 
 .create > .inner:hover {
