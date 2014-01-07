@@ -29,7 +29,7 @@ $yarn-field-height: 25px;
 
 /* App Style */
 
-@include sticky-footer(45px);
+@include sticky-footer(10px);
 
 html,
 body {
@@ -79,16 +79,12 @@ body {
 
 #footer {
   .version {
-    -webkit-transform: rotate(270deg);
-    -moz-transform: rotate(270deg);
-    -o-transform: rotate(270deg);
-    transform: rotate(270deg);
-    writing-mode: lr-bt;
     position: absolute;
-    font-size: 0.8em;
     color: #ccc;
-    right: -8px;
-    bottom: 12px;
+    font-size: 0.5em;
+    right: 2px;
+    bottom: 1px;
+    overflow: hidden;
   }
 }
 
@@ -237,6 +233,7 @@ a {
   width: 100%;
   margin: 25px 0;
   padding-left: 0px;
+  margin-bottom: 0px;
 }
 
 .yarns-loading {

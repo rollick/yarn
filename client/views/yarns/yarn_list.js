@@ -26,37 +26,29 @@ Template.yarnList.rendered = function () {
     event.stopPropagation();
     event.preventDefault();
 
-    var selectedYarnId = Session.get('selectedYarnId'),
+    // get nonreactive selectedYarnId so this function
+    // isn't rerun again when we set selectedYarnId at the end
+    var selectedYarnId = Deps.nonreactive(function () {
+          return Session.get('selectedYarnId');
+        }),
+        spinId = template.data.spinId,
+        count = Yarns.find({spinId: spinId}).count(),
         newSelection;
 
     if (selectedYarnId) {
-      var selectedYarn = Yarns.findOne(selectedYarnId),
-          spinId = selectedYarn.spinId,
-          conds = {spinId: spinId}, 
-          sort;
+      var conds = {spinId: spinId},
+          selectedYarn = Yarns.findOne(selectedYarnId);
 
-      if (this.shortcut === "down") {
-        conds['order'] = {$gt: selectedYarn.order};
-        sort = {sort: {order: 1}};
-      } else {
-        conds['order'] = {$lt: selectedYarn.order};
-        sort = {sort: {order: -1}};
-      }
+      if (this.shortcut === "down")
+        conds['order'] = selectedYarn.order === count ? 1 : selectedYarn.order+1;
+      else
+        conds['order'] = selectedYarn.order === 1 ? count : selectedYarn.order-1;
 
-      newSelection = Yarns.findOne(conds, sort);
-
-      // if no match then reached either top or bottom of list
-      // TODO: work out how to create mongo query which will loop to start or end
-      //       if there is no next/previous match.
-      if (!newSelection) {
-        var sort = this.shortcut === "down" ? {sort: {order: 1}} : {sort: {order: -1}};
-
-        newSelection = Yarns.findOne({spinId: selectedYarn.spinId}, sort);
-      }
+      newSelection = Yarns.findOne(conds);
     } else {
-      var sort = this.shortcut === "down" ? {sort: {order: 1}} : {sort: {order: -1}};
+      var order = (this.shortcut === "down") ? 1 : count;
 
-      newSelection = Yarns.findOne({spinId: template.data.spinId}, sort);
+      newSelection = Yarns.findOne({spinId: spinId, order: order});
     }
 
     // Set the session variable to trigger ui updates
