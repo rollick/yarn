@@ -430,7 +430,7 @@ hr {
 .sortable-placeholder {
   border: 1px dashed $color-gray;
   background: none;
-  min-height: 3*$yarn-field-height + 3*$standard-spacing + 2*$yarn-padding - 2;
+  min-height: 3*$yarn-field-height + 3*$standard-spacing + 2*$yarn-padding - 2px;
 }
 
 .yarn, .sortable-placeholder {

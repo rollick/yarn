@@ -17,7 +17,7 @@ Yarns.allow({
     return true;
   },
   remove: function (userId, groups) {
-    return true
+    return false; // use yarnRemove method
   }
 });
 
@@ -76,7 +76,7 @@ Meteor.methods({
       yarn.created = epoch;
     }
 
-    // Increment order for all current yarns
+    // Increment 'order' for all current yarns
     Yarns.update({spinId: yarn.spinId}, {$inc: {order: 1}}, {multi: true})
 
     // Create the yarn with a null nextId => top of the list
@@ -90,5 +90,19 @@ Meteor.methods({
     });
 
     return yarnId;
+  },
+  yarnRemove: function(yarnId) {
+    check(yarnId, String);
+
+    var yarn = Yarns.findOne(yarnId);
+
+    if (!yarn)
+      throw new Meteor.Error(404, "Could not find matching yarn");
+
+    // Decrement 'order' for all yarns greater than the yarn to be removed
+    Yarns.update({spinId: yarn.spinId, order: {$gte: yarn.order}}, {$inc: {order: -1}}, {multi: true});
+
+    // Remove the yarn
+    Yarns.remove(yarn._id);
   }
 });

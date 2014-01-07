@@ -76,9 +76,12 @@ Template.yarn.events({
       $(template.find('.save')).hide();
   },
   'click .remove': function (event, template) {
-    if (event.target.className.match(/ready/))
-      Yarns.remove(template.data._id);
-    else {
+    if (event.target.className.match(/ready/)) {
+      Meteor.call('yarnRemove', template.data._id, function (error, yarnId) {
+        if (error)
+          Session.set("displayError", [error.error, error.reason].join(": "));
+      });
+    } else {
       var target = event.target;
       target.className = "remove ready";
 
