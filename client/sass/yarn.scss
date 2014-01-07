@@ -15,6 +15,9 @@ $color-why: #2980b9;
 $standard-spacing: 8px;
 $standard-border-radius: 5px;
 
+$yarn-padding: 10px;
+$yarn-field-height: 25px;
+
 /* Some Mixins */
 
 @mixin standard-box-shadow {
@@ -385,7 +388,7 @@ hr {
   @include standard-box-shadow();
 
   text-align: center;
-  padding: 10px;
+  padding: $yarn-padding;
   position: relative;
   text-align: left;
   background-color: #fff;
@@ -420,24 +423,24 @@ hr {
     padding-top: 2px;
     margin-left: 68px;
     margin-right: 10px;
-    line-height: 25px;
+    line-height: $yarn-field-height;
   }
 }
 
 .sortable-placeholder {
   border: 1px dashed $color-gray;
   background: none;
-  height: 115px;
+  min-height: 3*$yarn-field-height + 3*$standard-spacing + 2*$yarn-padding - 2;
 }
 
 .yarn, .sortable-placeholder {
-  margin-bottom: 10px;
+  margin-bottom: 10px; 
 }
 
 .yarn-form .label, .yarn .label {
   width: 60px;
   float: left;
-  height: 25px;
+  height: $yarn-field-height;
   text-align: right;
 }
 
