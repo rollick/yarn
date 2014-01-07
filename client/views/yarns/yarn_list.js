@@ -13,7 +13,8 @@ Template.yarnList.rendered = function () {
   // Ensure hotkeys aren't triggered when inside editable .text element
   key.filter = function(event) {
     // return false for editable text fields
-    return $(event.target).attr('contentEditable') ? false : true;
+    if ($(event.target).attr('contentEditable'))
+      return false;
 
     // Default tests
     var tagName = (event.target || event.srcElement).tagName;

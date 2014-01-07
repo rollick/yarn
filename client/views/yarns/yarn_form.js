@@ -30,6 +30,8 @@ Template.yarnForm.helpers({
 Template.yarnForm.events({
   'focus input': function (event, template) {
     $(event.target).closest('.who, .what, .why').find('.label').addClass('focus');
+
+    Session.set('selectedYarnId', null);
   },
   'blur input': function (event, template) {
     $(event.target).closest('.who, .what, .why').find('.label').removeClass('focus');
@@ -51,7 +53,7 @@ Template.yarnForm.events({
         what = template.find('.what input'),
         why = template.find('.why input');
 
-    if (spinId && event.keyCode === 13 &&
+    if (spinId && event.keyCode === 13 && // enter to save
         !!who.value && !!what.value && !!why.value) {
       
       var yarn = {
@@ -71,6 +73,8 @@ Template.yarnForm.events({
 
       who.value = what.value = why.value = "";
       who.focus();
+    } else if(event.keyCode === 27) { // esc to de-focus
+      $(event.target).blur();
     } else if (who.value.length > 20) {
       showTip("too long", "As");
     }
