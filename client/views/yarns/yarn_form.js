@@ -35,6 +35,9 @@ Template.yarnForm.events({
   },
   'blur input': function (event, template) {
     $(event.target).closest('.who, .what, .why').find('.label').removeClass('focus');
+
+    // clear autocomplete attribute
+    $(template.find('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
   },
   'click .action.home': function () {
     event.stopPropagation();
@@ -42,10 +45,33 @@ Template.yarnForm.events({
 
     Router.go('/');
   },
-  'keyup .yarn-form': function (event, template) {
-    event.stopPropagation();
-    event.preventDefault();
+  'keyup input': function (event, template) {
+    var target = $(event.target),
+        value = target.val(),
+        field = target.closest('.field'),
+        currentData = field[0].getAttribute('data-yarn-autocomplete'),
+        fieldData = '';
 
+    if (event.keyCode === 39 && !_.isEmpty(currentData)) {
+      target.val(currentData);
+    } else {
+      if (value.length > 2) {
+        var term = new RegExp('^' + value + '.*', 'i'),
+            type = target.closest('.who, .what, .why').
+                          attr('class').match(/(who|what|why)/)[1];
+
+        var conds = {};
+        conds[type] = term;
+
+        var yarn = Yarns.findOne(conds);
+        if (yarn)
+          fieldData = yarn[type];      
+      }
+    }
+
+    field[0].setAttribute('data-yarn-autocomplete', fieldData);
+  },
+  'keyup .yarn-form': function (event, template) {
     Session.set("tip", null);
 
     var spinId = this.spinId,
@@ -56,6 +82,9 @@ Template.yarnForm.events({
     if (spinId && event.keyCode === 13 && // enter to save
         !!who.value && !!what.value && !!why.value) {
       
+      event.stopPropagation();
+      event.preventDefault();
+
       var yarn = {
         spinId: spinId,
         who: who.value,
@@ -71,9 +100,16 @@ Template.yarnForm.events({
         }
       });
 
+      // clear input fields and autocomplete attributes
       who.value = what.value = why.value = "";
+      $(template.find('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
+      
+      // focus first input
       who.focus();
     } else if(event.keyCode === 27) { // esc to de-focus
+      event.stopPropagation();
+      event.preventDefault();
+
       $(event.target).blur();
     } else if (who.value.length > 20) {
       showTip("too long", "As");

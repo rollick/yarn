@@ -297,10 +297,12 @@ input {
   @include standard-box-shadow();
 
   width: 85%;
-  background: #fff;
+  background: rgba(#fff, 0.8);
   height: 25px;
   width: 100%;
   padding: 0 $standard-spacing;
+  font-family: source-sans-pro, sans-serif;
+  font-weight: 300;
 }
 
 textarea {
@@ -453,21 +455,54 @@ hr {
   }
 }
 
-.yarn-form .field {
-  margin-right: 18px;
+.yarn-form {
+  .field {
+    margin-right: 18px;
+
+    &:before {
+      pointer-events: none;
+      text-align: left;
+      position: relative;
+      margin-top: 5px;
+      position: absolute;
+      color: black;
+      height: 25px;
+      z-index: -1;
+      margin: 1px;
+      display: inline-block;
+      vertical-align: middle;
+      height: $yarn-field-height;
+      line-height: $yarn-field-height;
+      padding-left: 8px;
+    }
+
+    &:before, input {
+      font-size: 16px;
+    }
+  }
+
+  .who .field:before {
+    content: attr(data-yarn-autocomplete);
+  }
+
+  .what .field:before {
+    content: attr(data-yarn-autocomplete);
+  }
+
+  .why .field:before {
+    content: attr(data-yarn-autocomplete);
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .yarn-form {
     .label {
       text-align: left;
+      width: inherit;
     }
     .field {
       margin-left: 0px;
       padding-bottom: $standard-spacing;
-      width: inherit;
-    }
-    .label {
       width: inherit;
     }
   }
