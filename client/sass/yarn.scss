@@ -257,7 +257,6 @@ a {
   .field {
     width: auto;
     margin-left: 70px;
-    height: 25px;
   }
 
   float: left;
@@ -387,6 +386,10 @@ hr {
 
 .yarn-form > div {
   margin-bottom: 20px;
+  
+  @media only screen and (max-width: 600px) {
+    margin-bottom: 0px;
+  }
 }
 
 .yarn {
@@ -477,6 +480,13 @@ hr {
       height: $yarn-field-height;
       line-height: $yarn-field-height;
       padding-left: 8px;
+      overflow: hidden;
+      width: 44%;
+
+      @media only screen and (max-width: 600px) {
+        width: 88%;
+        margin-top: 26px;
+      }
     }
 
     &:before, input {
