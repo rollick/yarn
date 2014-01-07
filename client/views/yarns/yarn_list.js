@@ -11,13 +11,13 @@ Template.yarnList.rendered = function () {
   var self = template = this;
 
   // Ensure hotkeys aren't triggered when inside editable .text element
-  key.filter = function(event){
-    // Default tests
-    var tagName = (event.target || event.srcElement).tagName;
-    key.setScope(/^(INPUT|TEXTAREA|SELECT)$/.test(tagName) ? 'input' : 'other');
-
+  key.filter = function(event) {
     // return false for editable text fields
     return $(event.target).attr('contentEditable') ? false : true;
+
+    // Default tests
+    var tagName = (event.target || event.srcElement).tagName;
+    return !(tagName == 'INPUT' || tagName == 'SELECT' || tagName == 'TEXTAREA');
   };
 
   // add some hotkeys
@@ -47,7 +47,6 @@ Template.yarnList.rendered = function () {
       // if no match then reached either top or bottom of list
       // TODO: work out how to create mongo query which will loop to start or end
       //       if there is no next/previous match.
-      debugger
       if (!newSelection) {
         var sort = this.shortcut === "down" ? {sort: {order: 1}} : {sort: {order: -1}};
 

@@ -44,7 +44,7 @@ Template.yarn.events({
     $(event.target).closest('.who, .what, .why').
                     find('.label').addClass('focus');
 
-    Session.set('selectedYarn', $target.closest('.yarn').data('yarnId'));
+    Session.set('selectedYarnId', $target.closest('.yarn').data('yarnId'));
   },  
   'blur .text': function (event, template) {
     $(event.target).closest('.who, .what, .why').
@@ -114,15 +114,23 @@ Template.yarn.events({
 
 Template.yarn.helpers({
   'selected': function () {
-    var selected = Session.equals('selectedYarnId', this._id);
-
-    if (selected) {
+    if (Session.equals('selectedYarnId', this._id)) {
       // scroll view to newly selected yarn
       var yarnElem = $('.yarn[data-yarn-id="' + this._id + '"]');
-      if (yarnElem.length)
-        $('body').scrollTop(yarnElem.position().top - 50);
+      if (yarnElem.length) {
+        var windowHeight = $(window).height(),
+            yarnHeight = yarnElem.innerHeight(),
+            yarnTop = yarnElem.position().top,
+            newTop = yarnTop - windowHeight/2 + yarnHeight/2;
+
+        if (newTop > 0)
+          $('body').scrollTop(newTop);
+
+        return true;
+      }
+    } else {
+      return false;
     }
 
-    return selected;
   }
 })
