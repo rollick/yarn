@@ -53,6 +53,9 @@ Template.yarnList.rendered = function () {
       else
         $(self.find('.yarn:last-of-type')).addClass('selected').focus();
     }
+
+    selectYarn = $(self.find('.yarn.selected'));
+    $('body').scrollTop(selectYarn.position().top - 50);
   });
 
   // change order of yarn if selected
