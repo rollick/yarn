@@ -8,6 +8,7 @@ $color-gray: #7F8C8D;
 $color-light-gray: #AAA;
 $color-link: #2C3E50;
 $color-warn: #C0392B;
+$color-notice: #27ae60;
 $color-who: #c0392b;
 $color-what: #27ae60;
 $color-why: #2980b9;
@@ -341,7 +342,7 @@ hr {
 
 .remove {
   &:hover {
-    color: red;
+    color: $color-warn;
     /*color: white;*/
     cursor: pointer;
   }
@@ -353,7 +354,7 @@ hr {
     font-size: 0.9em;
   }
   &.ready {
-    color: red;
+    color: $color-warn;
     /*color: white;*/
     width: 80px;
     &:before {
@@ -366,7 +367,7 @@ hr {
   top: 20px;
   display: none;
   &:hover {
-    color: green;
+    color: $color-notice;
     /*color: white;*/
     cursor: pointer;
   }
@@ -410,12 +411,12 @@ hr {
     top: 0em;
     width: 20px;
     height: 20px;
-    padding-left: 4px;
-    line-height: 20px;
+    padding-left: 3px;
     display: block;
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: bold;
     color: $color-gray;
+    text-align: center;
 
     &:hover {
       cursor: move;
