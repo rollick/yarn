@@ -4,6 +4,14 @@
 Template.yarn.created = function () {
   var self = this;
   
+  self._selectYarn = function (yarnId) {
+    $('.yarns .yarn').removeClass('selected').
+                      find('[data-yarn-id="' + yarnId + '"]').
+                      addClass('selected');
+
+    return true;
+  }
+
   self._saveYarn = function () {
     var who = self.find('.who .text'),
         what = self.find('.what .text'),
@@ -31,14 +39,16 @@ Template.yarn.created = function () {
 
 Template.yarn.events({
   'focus .text': function (event, template) {
+    var $target = $(event.target);
+
     $(event.target).closest('.who, .what, .why').
-                    find('.label').addClass('focus').
-                    closest('.yarn').addClass('selected');
+                    find('.label').addClass('focus');
+
+    Session.set('selectedYarn', $target.closest('.yarn').data('yarnId'));
   },  
   'blur .text': function (event, template) {
     $(event.target).closest('.who, .what, .why').
-                    find('.label').removeClass('focus').
-                    closest('.yarn').removeClass('selected');
+                    find('.label').removeClass('focus');
   },
   'keydown .text': function (event, template) {
     if(event.keyCode === 27 || event.keyCode === 13) {
@@ -101,3 +111,18 @@ Template.yarn.events({
     }
   }
 });
+
+Template.yarn.helpers({
+  'selected': function () {
+    var selected = Session.equals('selectedYarnId', this._id);
+
+    if (selected) {
+      // scroll view to newly selected yarn
+      var yarnElem = $('.yarn[data-yarn-id="' + this._id + '"]');
+      if (yarnElem.length)
+        $('body').scrollTop(yarnElem.position().top - 50);
+    }
+
+    return selected;
+  }
+})

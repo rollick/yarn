@@ -1,5 +1,5 @@
 <template name="yarn">
-  <div class="yarn" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
+  <div class="yarn {{#if selected}}selected{{/if}}" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
     <span class="action handle">
       :: {{order}}
     </span>

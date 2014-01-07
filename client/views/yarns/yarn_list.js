@@ -1,9 +1,3 @@
-var selectYarn = function (yarnId) {
-  $('.yarns .yarn').removeClass('selected').
-                    find('[data-yarn-id=' + yarnId + ']').
-                    addClass('selected');
-}
-
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn List
 
@@ -14,7 +8,7 @@ Template.yarnList.helpers({
 });
 
 Template.yarnList.rendered = function () {
-  var self = this;
+  var self = template = this;
 
   // Ensure hotkeys aren't triggered when inside editable .text element
   key.filter = function(event){
@@ -31,31 +25,42 @@ Template.yarnList.rendered = function () {
     event.stopPropagation();
     event.preventDefault();
 
-    var selectedYarn = $(self.find('.yarn.selected')),
-        totalYarns = $(self.findAll('.yarn')).length;
+    var selectedYarnId = Session.get('selectedYarnId'),
+        newSelection;
 
-    if (selectedYarn.length) {
-      // using getAttribute below as jquery data() was returning a cached older
-      // value after the list was reordered
-      var order = parseInt(selectedYarn[0].getAttribute("data-yarn-order"));
+    if (selectedYarnId) {
+      var selectedYarn = Yarns.findOne(selectedYarnId),
+          spinId = selectedYarn.spinId,
+          conds = {spinId: spinId}, 
+          sort;
 
-      if (this.shortcut === "down")
-        order = order === totalYarns ? 1 : order+1;
-      else
-        order = order === 1 ? totalYarns : order-1;
+      if (this.shortcut === "down") {
+        conds['order'] = {$gt: selectedYarn.order};
+        sort = {sort: {order: 1}};
+      } else {
+        conds['order'] = {$lt: selectedYarn.order};
+        sort = {sort: {order: -1}};
+      }
 
-      selectedYarn.removeClass('selected').
-                    siblings('[data-yarn-order=' + order + ']').
-                    addClass('selected');
+      newSelection = Yarns.findOne(conds, sort);
+
+      // if no match then reached either top or bottom of list
+      // TODO: work out how to create mongo query which will loop to start or end
+      //       if there is no next/previous match.
+      debugger
+      if (!newSelection) {
+        var sort = this.shortcut === "down" ? {sort: {order: 1}} : {sort: {order: -1}};
+
+        newSelection = Yarns.findOne({spinId: selectedYarn.spinId}, sort);
+      }
     } else {
-      if (this.shortcut === "down")
-        $(self.find('.yarn:first-of-type')).addClass('selected').focus();
-      else
-        $(self.find('.yarn:last-of-type')).addClass('selected').focus();
+      var sort = this.shortcut === "down" ? {sort: {order: 1}} : {sort: {order: -1}};
+
+      newSelection = Yarns.findOne({spinId: template.data.spinId}, sort);
     }
 
-    selectYarn = $(self.find('.yarn.selected'));
-    $('body').scrollTop(selectYarn.position().top - 50);
+    // Set the session variable to trigger ui updates
+    Session.set('selectedYarnId', newSelection._id);
   });
 
   // change order of yarn if selected
