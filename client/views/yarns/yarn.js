@@ -123,8 +123,7 @@ Template.yarn.helpers({
             yarnTop = yarnElem.position().top,
             newTop = yarnTop - windowHeight/2 + yarnHeight/2;
 
-        if (newTop > 0)
-          $('body').scrollTop(newTop);
+        $('body').scrollTop(newTop);
 
         return true;
       }
