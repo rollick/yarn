@@ -2,6 +2,22 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn Form
 
+Template.yarnForm.rendered = function () {
+  var self = this;
+
+  // add some hotkeys
+  key('n', function() {
+    event.stopPropagation();
+    event.preventDefault();
+
+    $(self.find('.who input')).focus();
+  });
+};
+
+Template.yarnForm.destroyed = function () {
+  key.unbind('n');
+};
+
 Template.yarnForm.helpers({
   tip: function () {
     return Session.get("tip");
@@ -12,6 +28,12 @@ Template.yarnForm.helpers({
 });
 
 Template.yarnForm.events({
+  'focus input': function (event, template) {
+    $(event.target).closest('.who, .what, .why').find('.label').addClass('focus');
+  },
+  'blur input': function (event, template) {
+    $(event.target).closest('.who, .what, .why').find('.label').removeClass('focus');
+  },
   'click .action.home': function () {
     event.stopPropagation();
     event.preventDefault();

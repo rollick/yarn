@@ -20,9 +20,9 @@ $yarn-field-height: 25px;
 
 /* Some Mixins */
 
-@mixin standard-box-shadow {
-  box-shadow: 0px 0px 3px lighten($color-light-gray, 10%);
-  border: 1px solid lighten($color-light-gray, 20%);
+@mixin standard-box-shadow($box-color: $color-light-gray) {
+  box-shadow: 0px 0px 3px lighten($box-color, 10%);
+  border: 1px solid lighten($box-color, 20%);
 }
 
 
@@ -393,6 +393,10 @@ hr {
   text-align: left;
   background-color: #fff;
 
+  &.selected {
+    @include standard-box-shadow($color-link);
+  }
+
   > div {
     margin-bottom: $standard-spacing;
     &:last-of-type {
@@ -442,6 +446,10 @@ hr {
   float: left;
   height: $yarn-field-height;
   text-align: right;
+
+  &.focus {
+    font-weight: bold;
+  }
 }
 
 .yarn-form .field {

@@ -30,6 +30,16 @@ Template.yarn.created = function () {
 },
 
 Template.yarn.events({
+  'focus .text': function (event, template) {
+    $(event.target).closest('.who, .what, .why').
+                    find('.label').addClass('focus').
+                    closest('.yarn').addClass('selected');
+  },  
+  'blur .text': function (event, template) {
+    $(event.target).closest('.who, .what, .why').
+                    find('.label').removeClass('focus').
+                    closest('.yarn').removeClass('selected');
+  },
   'keydown .text': function (event, template) {
     if(event.keyCode === 27 || event.keyCode === 13) {
       event.stopPropagation();
