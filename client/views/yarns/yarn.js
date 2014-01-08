@@ -67,13 +67,13 @@ Template.yarn.events({
       event.preventDefault();
 
       $(event.target).blur();
+      $(template.find('.note')).addClass('hide');
 
       if (event.keyCode === 13) {
         var success = template._saveYarn();
 
         if (success) {
           $(template.find('.save')).hide();
-          $(template.find('.note')).addClass('hide');
         }
       }
     }
