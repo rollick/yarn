@@ -63,7 +63,8 @@ Template.yarnForm.events({
         var conds = {};
         conds[type] = term;
 
-        var yarn = Yarns.findOne(conds);
+        // get the most recent match
+        var yarn = Yarns.findOne(conds, {sort: {created: -1}});
         if (yarn)
           fieldData = yarn[type];      
       }
