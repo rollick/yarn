@@ -150,7 +150,10 @@ Template.colorPicker.events({
 
       // Save the new color when the transition ends so that it is smooootherrr
       var transitions = 'webkitTransitionEnd oTransitionEnd oTransitionEnd msTransitionEnd transitionend';
-      target.one(transitions, function () {
+      target.siblings().one(transitions, function () {
+        // cancel any events from siblings
+        target.siblings().off(transitions);
+        
         match = target.attr('class').match(/^.*(\d{1})/);
         if (match) {
           var color = parseInt(match[1]);
