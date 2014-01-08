@@ -102,7 +102,7 @@ Template.yarnForm.events({
 
       // clear input fields and autocomplete attributes
       who.value = what.value = why.value = "";
-      $(template.find('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
+      $(template.findAll('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
       
       // focus first input
       who.focus();
