@@ -464,29 +464,29 @@ a.home:before {
 /* line 428, ../sass/yarn.scss */
 .yarn .color .color1 {
   background-color: #1abc9c;
-  bottom: 3px;
+  bottom: 5px;
 }
 /* line 433, ../sass/yarn.scss */
 .yarn .color .color2 {
   background-color: #f1c40f;
-  bottom: 21px;
+  bottom: 25px;
 }
 /* line 438, ../sass/yarn.scss */
 .yarn .color .color3 {
-  background-color: #3498db;
-  bottom: 39px;
+  background-color: #e74c3c;
+  bottom: 45px;
 }
 /* line 443, ../sass/yarn.scss */
 .yarn .color .color4 {
   background-color: #ecf0f1;
-  bottom: 57px;
+  bottom: 65px;
 }
 /* line 453, ../sass/yarn.scss */
 .yarn .color.close .color1,
 .yarn .color.close .color2,
 .yarn .color.close .color3,
 .yarn .color.close .color4 {
-  bottom: 3px;
+  bottom: 5px;
 }
 /* line 456, ../sass/yarn.scss */
 .yarn .color.close .color1.selected,
@@ -507,8 +507,8 @@ a.home:before {
 }
 /* line 469, ../sass/yarn.scss */
 .yarn .color.close .color3.selected {
-  box-shadow: 0px 0px 0px #5faee3;
-  border: 1px solid #8bc4ea;
+  box-shadow: 0px 0px 0px #ed7669;
+  border: 1px solid #f29f97;
 }
 /* line 473, ../sass/yarn.scss */
 .yarn .color.close .color4.selected {
