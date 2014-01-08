@@ -28,7 +28,7 @@ $yarn-field-height: 25px;
 
 /*** Some Mixins ***/
 
-@mixin standard-box-shadow($box-color: $color-light-gray, $box-size: 3px, $border-size: 1px) {
+@mixin standard-border($box-color: $color-light-gray, $box-size: 0px, $border-size: 1px) {
   box-shadow: 0px 0px $box-size lighten($box-color, 10%);
   border: $border-size solid lighten($box-color, 20%);
 }
@@ -54,8 +54,7 @@ body {
 
 
 input {
-  @include border-radius($standard-border-radius);
-  @include standard-box-shadow();
+  @include standard-border();
 
   width: 85%;
   background: rgba(#fff, 0.8);
@@ -67,11 +66,10 @@ input {
 }
 
 textarea {
-  @include standard-box-shadow();
+  @include standard-border();
 
   width: 85%;
   background: #fff;
-  border-radius: 2px;
   height: 25px;
   width: 100%;
   padding: 0 $standard-spacing;
@@ -261,8 +259,6 @@ a {
     color: $color-gray;
 
     .number {
-      @include border-radius($standard-border-radius);
-
       font-size: 2.5em;
       border: 1px solid darken($color-gray, 10%);
       margin-bottom: $standard-spacing;
@@ -285,10 +281,11 @@ a {
   margin-bottom: 0px;
 }
 
-.yarns-loading {
-  @include border-radius($standard-border-radius);
-  @include standard-box-shadow();
+.yarns-loading, .yarn {
+  @include standard-border();
+}
 
+.yarns-loading {
   line-height: 30px;
   text-align: center;
   background-color: #fff;
@@ -328,8 +325,6 @@ a {
   margin-top: $standard-spacing;
 
   li {
-    @include border-radius(4px);
-
     cursor: help;
     color: $color-gray;
     line-height: 1.6em;
@@ -343,9 +338,6 @@ a {
 }
 
 .yarn {
-  @include border-radius($standard-border-radius);
-  @include standard-box-shadow();
-
   text-align: center;
   padding: $yarn-padding;
   position: relative;
@@ -353,7 +345,6 @@ a {
   background-color: #fff;
 
   &.selected {
-    @include standard-box-shadow($color-link);
   }
 
   > div {
@@ -385,8 +376,6 @@ a {
   }
 
   .color {
-    @include border-left-radius($standard-border-radius);
-
     $color-picker-height: 15px;
     $color-picker-width: 15px;
     $color-picker-offset: 5px;
@@ -415,7 +404,6 @@ a {
       height: $color-picker-height;
       position: absolute;
       cursor: pointer;
-      border-radius: $color-picker-width;
       left: $color-picker-left;
       margin-top: 5px;
       z-index: 1;
@@ -459,19 +447,19 @@ a {
       }
 
       .color1.selected {
-        @include standard-box-shadow($color-picker-1, $box-size, $border-size: $box-border-size);
+        @include standard-border($color-picker-1, $box-size, $border-size: $box-border-size);
       }
 
       .color2.selected {
-        @include standard-box-shadow($color-picker-2, $box-size, $border-size: $box-border-size);
+        @include standard-border($color-picker-2, $box-size, $border-size: $box-border-size);
       }
 
       .color3.selected {
-        @include standard-box-shadow($color-picker-3, $box-size, $border-size: $box-border-size);
+        @include standard-border($color-picker-3, $box-size, $border-size: $box-border-size);
       }
 
       .color4.selected {
-        @include standard-box-shadow($color-picker-4, $box-size, $border-size: $box-border-size);
+        @include standard-border($color-picker-4, $box-size, $border-size: $box-border-size);
       }
 
     }
