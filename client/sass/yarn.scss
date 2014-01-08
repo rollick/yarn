@@ -453,6 +453,7 @@ a {
     cursor: pointer;
     
     &.handle {
+      width: 20px;
       left: $action-padding;
       top: 0;
       display: block;
@@ -462,6 +463,10 @@ a {
       overflow: visible;
       background-color: transparent;
       font-family: source-sans-pro, sans-serif;
+
+      &:before {
+        content: "::::";
+      }
 
       &:hover {
         cursor: move;

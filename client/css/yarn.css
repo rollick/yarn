@@ -472,6 +472,7 @@ a.home:before {
 }
 /* line 455, ../sass/yarn.scss */
 .yarn .action.handle {
+  width: 20px;
   left: 2px;
   top: 0;
   display: block;
@@ -482,18 +483,22 @@ a.home:before {
   background-color: transparent;
   font-family: source-sans-pro, sans-serif;
 }
-/* line 466, ../sass/yarn.scss */
+/* line 467, ../sass/yarn.scss */
+.yarn .action.handle:before {
+  content: "::::";
+}
+/* line 471, ../sass/yarn.scss */
 .yarn .action.handle:hover {
   cursor: move;
   color: #424a4a;
 }
-/* line 472, ../sass/yarn.scss */
+/* line 477, ../sass/yarn.scss */
 .yarn .action.note-toggle {
   right: 2px;
   bottom: 2px;
   background-color: #ecf0f1;
 }
-/* line 477, ../sass/yarn.scss */
+/* line 482, ../sass/yarn.scss */
 .yarn .action.note-toggle:before {
   content: "";
   position: absolute;
@@ -503,58 +508,58 @@ a.home:before {
   border-style: solid;
   border-color: #dde4e6 white;
 }
-/* line 487, ../sass/yarn.scss */
+/* line 492, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight {
   background-color: #f1c40f;
 }
-/* line 490, ../sass/yarn.scss */
+/* line 495, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight:before {
   border-color: #dab10d white;
 }
-/* line 496, ../sass/yarn.scss */
+/* line 501, ../sass/yarn.scss */
 .yarn .action.remove, .yarn .action.save {
   right: 2px;
   top: 2px;
   background-color: inherit;
 }
-/* line 503, ../sass/yarn.scss */
+/* line 508, ../sass/yarn.scss */
 .yarn .action.remove:hover {
   color: #c0392b;
   cursor: pointer;
 }
-/* line 508, ../sass/yarn.scss */
+/* line 513, ../sass/yarn.scss */
 .yarn .action.remove:before {
   content: "X";
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 515, ../sass/yarn.scss */
+/* line 520, ../sass/yarn.scss */
 .yarn .action.remove.ready {
   color: #c0392b;
   width: 65px;
 }
-/* line 519, ../sass/yarn.scss */
+/* line 524, ../sass/yarn.scss */
 .yarn .action.remove.ready:before {
   content: "Really? X";
 }
-/* line 525, ../sass/yarn.scss */
+/* line 530, ../sass/yarn.scss */
 .yarn .action.save {
   top: 19px;
   display: none;
 }
-/* line 529, ../sass/yarn.scss */
+/* line 534, ../sass/yarn.scss */
 .yarn .action.save:hover {
   color: #27ae60;
   cursor: pointer;
 }
-/* line 534, ../sass/yarn.scss */
+/* line 539, ../sass/yarn.scss */
 .yarn .action.save:before {
   content: "✓";
   text-align: right;
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 542, ../sass/yarn.scss */
+/* line 547, ../sass/yarn.scss */
 .yarn .action.color {
   position: absolute;
   left: 2px;
@@ -564,7 +569,7 @@ a.home:before {
   overflow: visible;
   background-color: transparent;
 }
-/* line 561, ../sass/yarn.scss */
+/* line 566, ../sass/yarn.scss */
 .yarn .action.color .color1,
 .yarn .action.color .color2,
 .yarn .action.color .color3,
@@ -589,34 +594,34 @@ a.home:before {
   margin-top: 5px;
   z-index: 1;
 }
-/* line 574, ../sass/yarn.scss */
+/* line 579, ../sass/yarn.scss */
 .yarn .action.color .color1.selected,
 .yarn .action.color .color2.selected,
 .yarn .action.color .color3.selected,
 .yarn .action.color .color4.selected {
   z-index: 2;
 }
-/* line 579, ../sass/yarn.scss */
+/* line 584, ../sass/yarn.scss */
 .yarn .action.color .color1 {
   background-color: #1abc9c;
   bottom: 0em;
 }
-/* line 584, ../sass/yarn.scss */
+/* line 589, ../sass/yarn.scss */
 .yarn .action.color .color2 {
   background-color: #f1c40f;
   bottom: 20px;
 }
-/* line 589, ../sass/yarn.scss */
+/* line 594, ../sass/yarn.scss */
 .yarn .action.color .color3 {
   background-color: #e74c3c;
   bottom: 40px;
 }
-/* line 594, ../sass/yarn.scss */
+/* line 599, ../sass/yarn.scss */
 .yarn .action.color .color4 {
   background-color: #ecf0f1;
   bottom: 60px;
 }
-/* line 604, ../sass/yarn.scss */
+/* line 609, ../sass/yarn.scss */
 .yarn .action.color.close .color1,
 .yarn .action.color.close .color2,
 .yarn .action.color.close .color3,
@@ -625,60 +630,60 @@ a.home:before {
   height: 15px;
 }
 
-/* line 616, ../sass/yarn.scss */
+/* line 621, ../sass/yarn.scss */
 .sortable-placeholder {
   border: 1px dashed #7f8c8d;
   background: none;
   min-height: 117px;
 }
 
-/* line 622, ../sass/yarn.scss */
+/* line 627, ../sass/yarn.scss */
 .yarn, .sortable-placeholder {
   margin-bottom: 10px;
 }
 
-/* line 626, ../sass/yarn.scss */
+/* line 631, ../sass/yarn.scss */
 .yarn-form .label, .yarn .label {
   width: 70px;
   float: left;
   height: 25px;
   text-align: right;
 }
-/* line 632, ../sass/yarn.scss */
+/* line 637, ../sass/yarn.scss */
 .yarn-form .label.focus, .yarn .label.focus {
   font-weight: bold;
 }
 
-/* line 637, ../sass/yarn.scss */
+/* line 642, ../sass/yarn.scss */
 .yarn-form {
   float: left;
   width: 60%;
 }
-/* line 641, ../sass/yarn.scss */
+/* line 646, ../sass/yarn.scss */
 .yarn-form > div {
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 641, ../sass/yarn.scss */
+  /* line 646, ../sass/yarn.scss */
   .yarn-form > div {
     margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 637, ../sass/yarn.scss */
+  /* line 642, ../sass/yarn.scss */
   .yarn-form {
     width: 100%;
     margin-bottom: 25px;
   }
 }
-/* line 654, ../sass/yarn.scss */
+/* line 659, ../sass/yarn.scss */
 .yarn-form .field {
   margin-right: 18px;
   margin-left: 78px;
   width: auto;
   position: relative;
 }
-/* line 660, ../sass/yarn.scss */
+/* line 665, ../sass/yarn.scss */
 .yarn-form .field:before {
   position: absolute;
   pointer-events: none;
@@ -692,62 +697,62 @@ a.home:before {
   padding-left: 8px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 660, ../sass/yarn.scss */
+  /* line 665, ../sass/yarn.scss */
   .yarn-form .field:before {
     width: 88%;
     margin-top: 26px;
   }
 }
-/* line 678, ../sass/yarn.scss */
+/* line 683, ../sass/yarn.scss */
 .yarn-form .field:before, .yarn-form .field input {
   font-size: 16px;
 }
-/* line 683, ../sass/yarn.scss */
+/* line 688, ../sass/yarn.scss */
 .yarn-form .who .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 687, ../sass/yarn.scss */
+/* line 692, ../sass/yarn.scss */
 .yarn-form .what .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 691, ../sass/yarn.scss */
+/* line 696, ../sass/yarn.scss */
 .yarn-form .why .field:before {
   content: attr(data-yarn-autocomplete);
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 698, ../sass/yarn.scss */
+  /* line 703, ../sass/yarn.scss */
   .yarn-form .label {
     text-align: left;
     width: inherit;
   }
-  /* line 702, ../sass/yarn.scss */
+  /* line 707, ../sass/yarn.scss */
   .yarn-form .field {
     margin-left: 0px;
     padding-bottom: 8px;
     width: inherit;
   }
 }
-/* line 710, ../sass/yarn.scss */
+/* line 715, ../sass/yarn.scss */
 .who > .label, .what > .label, .why > .label {
   vertical-align: middle;
   line-height: 30px;
   margin-right: 8px;
 }
 
-/* line 716, ../sass/yarn.scss */
+/* line 721, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 721, ../sass/yarn.scss */
+/* line 726, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 726, ../sass/yarn.scss */
+/* line 731, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;
