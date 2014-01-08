@@ -377,7 +377,8 @@ a.home:before {
 }
 /* line 374, ../sass/yarn.scss */
 .yarn.selected {
-  border: 1px solid #698aac;
+  box-shadow: 0px 0px 1px #3e5771;
+  border: 1px solid #507192;
 }
 /* line 378, ../sass/yarn.scss */
 .yarn .who, .yarn .what, .yarn .why {

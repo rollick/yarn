@@ -27,7 +27,7 @@ $standard-border-radius: 5px;
 
 $yarn-padding: 10px;
 $yarn-field-height: 25px;
-$yarn-selected-color: lighten($color-link, 30%);
+$yarn-selected-color: $color-link;
 
 /*** Some Mixins ***/
 
@@ -372,7 +372,7 @@ a {
   }
 
   &.selected {
-    border: 1px solid $yarn-selected-color;
+    @include standard-border($yarn-selected-color, $box-size:1px);
   }
 
   .who, .what, .why {
