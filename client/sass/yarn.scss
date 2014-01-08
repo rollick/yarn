@@ -325,8 +325,8 @@ a {
   margin-top: $standard-spacing;
 
   li {
-    cursor: help;
-    color: $color-gray;
+    cursor: default;
+    color: lighten($color-gray, 20%);
     line-height: 1.6em;
     display: inline;
     list-style-type: none;
@@ -334,6 +334,12 @@ a {
     white-space: nowrap;
     padding: 0px 8px;
     background-color: darken(#FFF, 1%);
+  }
+
+  &:hover {
+    li { 
+      color: $color-gray;
+    }
   }
 }
 
