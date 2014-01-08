@@ -37,7 +37,7 @@ Template.yarnForm.events({
     $(event.target).closest('.who, .what, .why').find('.label').removeClass('focus');
 
     // clear autocomplete attribute
-    $(template.find('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
+    $(template.findAll('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')
   },
   'click .action.home': function () {
     event.stopPropagation();
