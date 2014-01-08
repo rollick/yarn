@@ -114,23 +114,7 @@ Template.yarn.events({
 
 Template.yarn.helpers({
   'selected': function () {
-    if (Session.equals('selectedYarnId', this._id)) {
-      // scroll view to newly selected yarn
-      var yarnElem = $('.yarn[data-yarn-id="' + this._id + '"]');
-      if (yarnElem.length) {
-        var windowHeight = $(window).height(),
-            yarnHeight = yarnElem.innerHeight(),
-            yarnTop = yarnElem.position().top,
-            newTop = yarnTop - windowHeight/2 + yarnHeight/2;
-
-        $('body').scrollTop(newTop);
-
-        return true;
-      }
-    } else {
-      return false;
-    }
-
+    return Session.equals('selectedYarnId', this._id);
   }
 });
 

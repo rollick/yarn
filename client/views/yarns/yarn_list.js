@@ -1,3 +1,16 @@
+// scroll view to newly selected yarn
+var scrollToYarn = function (yarnId) {
+  var yarnElem = $('.yarn[data-yarn-id="' + yarnId + '"]');
+  if (yarnElem.length) {
+    var windowHeight = $(window).height(),
+        yarnHeight = yarnElem.innerHeight(),
+        yarnTop = yarnElem.position().top,
+        newTop = yarnTop - windowHeight/2 + yarnHeight/2;
+
+    $('body').scrollTop(newTop);
+  }
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn List
 
@@ -53,6 +66,8 @@ Template.yarnList.rendered = function () {
 
     // Set the session variable to trigger ui updates
     Session.set('selectedYarnId', newSelection._id);
+
+    scrollToYarn(newSelection._id);
   });
 
   // change order of yarn if selected
@@ -85,6 +100,8 @@ Template.yarnList.rendered = function () {
           }
         });
       }
+
+      scrollToYarn(id);
     }
   });
 
