@@ -4,7 +4,7 @@ YarnCount = new Meteor.Collection("yarnCount");
 Yarns.deny({
   update: function(userId, post, fieldNames) {
     // deny the update if it contains something other than the following fields
-    return (_.without(fieldNames, 'who', 'what', 'why', 'spinId', 'order', 'created', 'color').length > 0);
+    return (_.without(fieldNames, 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0);
   }
 });
 
@@ -86,6 +86,7 @@ Meteor.methods({
       who: yarn.who,
       what: yarn.what,
       why: yarn.why,
+      note: yarn.note,
       created: yarn.created
     });
 

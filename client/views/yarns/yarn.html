@@ -1,22 +1,28 @@
 <template name="yarn">
   <div class="yarn {{#if selected}}selected{{/if}}" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
     <span class="action handle">
-      :::: {{order}}
+      ::: {{order}}
     </span>
     {{> colorPicker this}}
     <div class="action remove"></div>
     <div class="action save"></div>
-    <div class="who">
-      <div class="label"></div>
-      <div class="text" contenteditable="true">{{who}}</div>
+    <div class="action note-toggle {{#if hasNote}}highlight{{/if}}"></div>
+    <div class="main">
+      <div class="who">
+        <div class="label"></div>
+        <div class="text" contenteditable="true">{{who}}</div>
+      </div>
+      <div class="what">
+        <div class="label"></div>
+        <div class="text" contenteditable="true">{{what}}</div>
+      </div>
+      <div class="why">
+        <div class="label"></div>
+        <div class="text" contenteditable="true">{{why}}</div>
+      </div>
     </div>
-    <div class="what">
-      <div class="label"></div>
-      <div class="text" contenteditable="true">{{what}}</div>
-    </div>
-    <div class="why">
-      <div class="label"></div>
-      <div class="text" contenteditable="true">{{why}}</div>
+    <div class="note hide">
+      <div class="text" contenteditable="true">{{note}}</div>
     </div>
   </div>
 </template>

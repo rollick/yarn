@@ -109,7 +109,7 @@ Template.yarnList.rendered = function () {
   key('enter', function() {
     var selectedYarn = $(self.find('.yarn.selected'));
 
-    if (selectedYarn) {
+    if (selectedYarn.length) {
       event.stopPropagation();
       event.preventDefault();
 
@@ -135,6 +135,24 @@ Template.yarnList.rendered = function () {
     }
   });
 
+  // toggle note 
+  key('n', function() {
+    var selectedYarn = $(self.find('.yarn.selected'));
+
+    if (selectedYarn.length) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      var note = selectedYarn.find('.note');
+
+      if (note.hasClass('hide')) {
+        note.removeClass('hide').find('.text').focus();
+      } else {
+        note.addClass('hide').find('.text').blur();
+      }
+    }
+  });
+
   // Init sortable library for list of yarns
   $('.yarns').sortable({
     handle: '.handle'
@@ -156,5 +174,5 @@ Template.yarnList.rendered = function () {
 };
 
 Template.yarnForm.destroyed = function () {
-  key.unbind('up, down, enter, ⌘+up, ctrl+up, ⌘+down, ctrl+down');
+  key.unbind('n', '1', '2', '3', '4', 'up', 'down', 'enter', '⌘+up', 'ctrl+up', '⌘+down', 'ctrl+down');
 };

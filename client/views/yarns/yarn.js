@@ -15,7 +15,8 @@ Template.yarn.created = function () {
   self._saveYarn = function () {
     var who = self.find('.who .text'),
         what = self.find('.what .text'),
-        why = self.find('.why .text');
+        why = self.find('.why .text'),
+        note = self.find('.note .text');
 
     // ensure all fields have a value
     var fail = _.any([who, what, why], function (field) {
@@ -29,7 +30,8 @@ Template.yarn.created = function () {
       $set: {
         who: who.innerText,
         what: what.innerText,
-        why: why.innerText
+        why: why.innerText,
+        note: note.innerText
       }
     }, {multi: false});
 
@@ -38,6 +40,15 @@ Template.yarn.created = function () {
 },
 
 Template.yarn.events({
+  'click .note-toggle': function (event, template) {
+    var note = $(template.find('.note'));
+
+    if (note.hasClass('hide')) {
+      note.removeClass('hide').find('.text').focus();
+    } else {
+      note.addClass('hide').find('.text').blur();
+    }
+  },
   'focus .text': function (event, template) {
     var $target = $(event.target);
 
@@ -60,8 +71,10 @@ Template.yarn.events({
       if (event.keyCode === 13) {
         var success = template._saveYarn();
 
-        if (success)
+        if (success) {
           $(template.find('.save')).hide();
+          $(template.find('.note')).addClass('hide');
+        }
       }
     }
   },
@@ -73,10 +86,10 @@ Template.yarn.events({
     template._keyupTimer = setTimeout(function () {
       // If nothing has changed then disable save link
       var id = template.data._id,
-          yarn = Yarns.findOne(id, {who: 1, what: 1, why: 1}),
+          yarn = Yarns.findOne(id, {who: 1, what: 1, why: 1, note: 1}),
           save = $(template.find('.save')),
-          changed = _.any(["who", "what", "why"], function (field) {
-            return template.find("." + field + " .text").innerText != yarn[field];
+          changed = _.any(['who', 'what', 'why', 'note'], function (field) {
+            return template.find('.' + field + ' .text').innerText != yarn[field];
           });
       
       if (changed)
@@ -102,11 +115,11 @@ Template.yarn.events({
           Session.set("displayError", [error.error, error.reason].join(": "));
       });
     } else {
-      var target = event.target;
-      target.className = "remove ready";
+      var target = $(event.target);
+      target.addClass("ready");
 
       setTimeout(function (){
-        target.className = "remove";
+        target.removeClass("ready");
       }, 2000)
     }
   }
@@ -115,6 +128,9 @@ Template.yarn.events({
 Template.yarn.helpers({
   'selected': function () {
     return Session.equals('selectedYarnId', this._id);
+  },
+  'hasNote': function () {
+    return !_.isEmpty(this.note);
   }
 });
 

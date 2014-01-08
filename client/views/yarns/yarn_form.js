@@ -6,7 +6,7 @@ Template.yarnForm.rendered = function () {
   var self = this;
 
   // add some hotkeys
-  key('n', function() {
+  key('c', function() {
     event.stopPropagation();
     event.preventDefault();
 
@@ -15,7 +15,7 @@ Template.yarnForm.rendered = function () {
 };
 
 Template.yarnForm.destroyed = function () {
-  key.unbind('n');
+  key.unbind('c');
 };
 
 Template.yarnForm.helpers({

@@ -19,12 +19,15 @@ $color-notice: #27ae60;
 $color-who: #c0392b;
 $color-what: #27ae60;
 $color-why: #2980b9;
+$color-note: $color-picker-4;
+$color-note-highlight: #f1c40f;
 
 $standard-spacing: 8px;
 $standard-border-radius: 5px;
 
 $yarn-padding: 10px;
 $yarn-field-height: 25px;
+$yarn-selected-color: lighten($color-link, 30%);
 
 /*** Some Mixins ***/
 
@@ -354,16 +357,21 @@ a {
 }
 
 .yarn {
+  $action-padding: 2px;
+  $action-width: 15px;
+
   text-align: center;
   padding: $yarn-padding;
   position: relative;
   text-align: left;
   background-color: #fff;
+  z-index: 1;
 
   &.selected {
+    border: 1px solid $yarn-selected-color;
   }
 
-  > div {
+  .who, .what, .why {
     margin-bottom: $standard-spacing;
 
     &:last-of-type {
@@ -371,113 +379,46 @@ a {
     }
   }
 
-  > span.handle {
+  .note {
+    @include transition-property(width);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease);
+
     position: absolute;
-    left: 0em;
+    right: 0em;
     top: 0em;
-    width: 20px;
-    height: 20px;
-    padding-left: 3px;
-    display: block;
-    font-size: 1em;
-    font-weight: bold;
-    color: $color-gray;
-    text-align: center;
-    z-index: 2;
-
-    &:hover {
-      cursor: move;
-      color: darken($color-gray, 25%);
-    }
-  }
-
-  .color {
-    $color-picker-height: 15px;
-    $color-picker-width: 15px;
-    $color-picker-offset: 5px;
-    $color-picker-left: 5px;
-    $box-size: 0px;
-    $box-border-size: 1px;
-
-    position: absolute;
-    left: 0em;
     bottom: 0em;
-    margin-bottom: 0em;
-    z-index: 2;
-    top: 0em;
-    height: 100%;
     z-index: 1;
+    overflow: hidden;
+    border-left: 1px solid lighten($color-light-gray, 20%);
+    background-color: #fff;    
+    width: 50%;
+    
+    @media only screen and (max-width: 600px) {
+      width: 100%;
+    }
 
-    .color1,
-    .color2,
-    .color3,
-    .color4 {
-      @include transition-property(bottom);
-      @include transition-duration(0.3s);
-      @include transition-timing-function(ease);
+    .text {
+      @include standard-border();
 
-      width: $color-picker-width;
-      height: $color-picker-height;
+      overflow: hidden;
+      background: rgba(#fff, 0.8);
+      margin: 5px;
       position: absolute;
-      cursor: pointer;
-      left: $color-picker-left;
-      margin-top: 5px;
-      z-index: 1;
+      display: inline-block;
+      top: $action-padding;
+      bottom: $action-padding;
+      left: $action-padding;
+      right: ($action-padding + $action-width)*1.5;
 
-      &.selected {
-        z-index: 2;
+      @media only screen and (max-width: 600px) {
+        left: ($action-padding + $action-width)*2;
       }
     }
 
-    .color1 {
-      background-color: $color-picker-1;
-      bottom: $color-picker-offset;
-    }
-
-    .color2 {
-      background-color: $color-picker-2;
-      bottom: $color-picker-height + $color-picker-offset*2;
-    }
-
-    .color3 {
-      background-color: $color-picker-3;
-      bottom: $color-picker-height*2 + $color-picker-offset*3;
-    }
-
-    .color4 {
-      background-color: $color-picker-4;
-      bottom: $color-picker-height*3 + $color-picker-offset*4;
-    }
-
-
-    &.close {
-      .color1,
-      .color2,
-      .color3,
-      .color4 {
-        bottom: $color-picker-offset;
-
-        &.selected {
-          left: $color-picker-left - $box-border-size;
-        }
-      }
-
-      .color1.selected {
-        @include standard-border($color-picker-1, $box-size, $border-size: $box-border-size);
-      }
-
-      .color2.selected {
-        @include standard-border($color-picker-2, $box-size, $border-size: $box-border-size);
-      }
-
-      .color3.selected {
-        @include standard-border($color-picker-3, $box-size, $border-size: $box-border-size);
-      }
-
-      .color4.selected {
-        @include standard-border($color-picker-4, $box-size, $border-size: $box-border-size);
-      }
-
+    &.hide {
+      width: 0px;
+      border-left: none;
     }
   }
 
@@ -487,7 +428,7 @@ a {
     vertical-align: middle;
     padding-top: 2px;
     margin-left: 78px;
-    margin-right: 10px;
+    margin-right: $action-width + $action-padding;
     line-height: $yarn-field-height;
     -webkit-user-select: text;
     -khtml-user-select: text;
@@ -495,57 +436,192 @@ a {
     -o-user-select: text;
   }
 
-  .remove, .save {
+  .action {
+    width: $action-width;
+    height: $action-width;
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    color: $color-gray;
-    font-family: arial;
-    text-align: right;
-    margin-right: 3px;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+    background-color: darken(#FFF, 5%);
+    font-family: arial;
+    text-align: center;
+    z-index: 5;
+    cursor: pointer;
+    
+    &.handle {
+      left: $action-padding;
+      top: 0;
+      display: block;
+      font-size: 1em;
+      font-weight: bold;
+      color: $color-gray;
+      overflow: visible;
+      background-color: transparent;
+      font-family: source-sans-pro, sans-serif;
 
-  .remove {
-    &:hover {
-      color: $color-warn;
-      cursor: pointer;
-    }
-
-    &:before {
-      content: "X";
-      text-align: right;
-      line-height: 20px;
-      font-size: 0.9em;
-    }
-
-    &.ready {
-      color: $color-warn;
-      width: 80px;
-
-      &:before {
-        content: "Really? X";
+      &:hover {
+        cursor: move;
+        color: darken($color-gray, 25%);
       }
     }
-  }
 
-  .save {
-    top: 20px;
-    display: none;
+    &.note-toggle {
+      right: $action-padding;
+      bottom: $action-padding;
+      background-color: $color-note;
 
-    &:hover {
-      color: $color-notice;
-      cursor: pointer;
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        border-width: 0 6px 6px 0;
+        border-style: solid;
+        border-color: darken($color-note, 5%) #fff;
+      }
+
+      &.highlight {
+        background-color: $color-note-highlight;
+
+        &:before {
+          border-color: darken($color-note-highlight, 5%) #fff;
+        }
+      }
     }
 
-    &:before {
-      content: "✓";
-      text-align: right;
-      line-height: 20px;
-      font-size: 0.9em;
+    &.remove, &.save {
+      right: $action-padding;
+      top: $action-padding;
+      background-color: inherit;
+    }
+
+    &.remove {
+      &:hover {
+        color: $color-warn;
+        cursor: pointer;
+      }
+
+      &:before {
+        content: "X";
+        // text-align: right;
+        line-height: $action-width;
+        font-size: 0.9em;
+      }
+
+      &.ready {
+        color: $color-warn;
+        width: 65px;
+
+        &:before {
+          content: "Really? X";
+        }
+      }
+    }
+
+    &.save {
+      top: $action-width + $action-padding*2;
+      display: none;
+
+      &:hover {
+        color: $color-notice;
+        cursor: pointer;
+      }
+
+      &:before {
+        content: "✓";
+        text-align: right;
+        line-height: $action-width;
+        font-size: 0.9em;
+      }
+    }
+
+    &.color {
+      $color-picker-height: $action-width;
+      $color-picker-width: $action-width;
+      $color-picker-offset: 5px;
+      $color-picker-left: 0px;
+      $box-size: 0px;
+      $box-border-size: 1px;
+
+      position: absolute;
+      left: $action-padding;
+      bottom: $action-padding;
+      margin-bottom: 0em;
+      z-index: 6;
+      overflow: visible;
+      background-color: transparent;
+
+      .color1,
+      .color2,
+      .color3,
+      .color4 {
+        @include transition-property(bottom);
+        @include transition-duration(0.3s);
+        @include transition-timing-function(ease);
+
+        width: $color-picker-width;
+        height: $color-picker-height;
+        position: absolute;
+        cursor: pointer;
+        left: $color-picker-left;
+        margin-top: 5px;
+        z-index: 1;
+
+        &.selected {
+          z-index: 2;
+        }
+      }
+
+      .color1 {
+        background-color: $color-picker-1;
+        bottom: 0em;
+      }
+
+      .color2 {
+        background-color: $color-picker-2;
+        bottom: $color-picker-height + $color-picker-offset;
+      }
+
+      .color3 {
+        background-color: $color-picker-3;
+        bottom: $color-picker-height*2 + $color-picker-offset*2;
+      }
+
+      .color4 {
+        background-color: $color-picker-4;
+        bottom: $color-picker-height*3 + $color-picker-offset*3;
+      }
+
+
+      &.close {
+        .color1,
+        .color2,
+        .color3,
+        .color4 {
+          bottom: 0em;
+          height: $color-picker-height;
+
+          &.selected {
+            left: $color-picker-left - $box-border-size;
+          }
+        }
+
+        .color1.selected {
+          @include standard-border($color-picker-1, $box-size, $border-size: $box-border-size);
+        }
+
+        .color2.selected {
+          @include standard-border($color-picker-2, $box-size, $border-size: $box-border-size);
+        }
+
+        .color3.selected {
+          @include standard-border($color-picker-3, $box-size, $border-size: $box-border-size);
+        }
+
+        .color4.selected {
+          @include standard-border($color-picker-4, $box-size, $border-size: $box-border-size);
+        }
+      }
     }
   }
 }
