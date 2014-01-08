@@ -29,12 +29,12 @@ Template.yarnForm.helpers({
 
 Template.yarnForm.events({
   'focus input': function (event, template) {
-    $(event.target).closest('.who, .what, .why').find('.label').addClass('focus');
+    $(event.target).closest('.who, .what, .why').addClass('focus');
 
     Session.set('selectedYarnId', null);
   },
   'blur input': function (event, template) {
-    $(event.target).closest('.who, .what, .why').find('.label').removeClass('focus');
+    $(event.target).closest('.who, .what, .why').removeClass('focus');
 
     // clear autocomplete attribute
     $(template.findAll('[data-yarn-autocomplete]')).attr('data-yarn-autocomplete', '')

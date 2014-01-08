@@ -408,9 +408,9 @@ a.home:before {
   bottom: 0em;
   z-index: 1;
   overflow: hidden;
-  border-left: 1px solid #dddddd;
   background-color: #fff;
-  width: 50%;
+  width: 0px;
+  border-left: none;
 }
 @media only screen and (max-width: 600px) {
   /* line 386, ../sass/yarn.scss */
@@ -439,9 +439,9 @@ a.home:before {
   }
 }
 /* line 423, ../sass/yarn.scss */
-.yarn .note.hide {
-  width: 0px;
-  border-left: none;
+.yarn .note.focus {
+  width: 50%;
+  border-left: 1px solid #dddddd;
 }
 /* line 429, ../sass/yarn.scss */
 .yarn .text {
@@ -640,51 +640,47 @@ a.home:before {
 
 /* line 627, ../sass/yarn.scss */
 .yarn, .sortable-placeholder {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-/* line 631, ../sass/yarn.scss */
+/* line 632, ../sass/yarn.scss */
 .yarn-form .label, .yarn .label {
   width: 70px;
   float: left;
   height: 25px;
   text-align: right;
 }
-/* line 637, ../sass/yarn.scss */
-.yarn-form .label.focus, .yarn .label.focus {
-  font-weight: bold;
-}
 
-/* line 642, ../sass/yarn.scss */
+/* line 641, ../sass/yarn.scss */
 .yarn-form {
   float: left;
   width: 60%;
 }
-/* line 646, ../sass/yarn.scss */
+/* line 645, ../sass/yarn.scss */
 .yarn-form > div {
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 646, ../sass/yarn.scss */
+  /* line 645, ../sass/yarn.scss */
   .yarn-form > div {
     margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 642, ../sass/yarn.scss */
+  /* line 641, ../sass/yarn.scss */
   .yarn-form {
     width: 100%;
     margin-bottom: 25px;
   }
 }
-/* line 659, ../sass/yarn.scss */
+/* line 658, ../sass/yarn.scss */
 .yarn-form .field {
   margin-right: 18px;
   margin-left: 78px;
   width: auto;
   position: relative;
 }
-/* line 665, ../sass/yarn.scss */
+/* line 664, ../sass/yarn.scss */
 .yarn-form .field:before {
   position: absolute;
   pointer-events: none;
@@ -698,36 +694,36 @@ a.home:before {
   padding-left: 8px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 665, ../sass/yarn.scss */
+  /* line 664, ../sass/yarn.scss */
   .yarn-form .field:before {
     width: 88%;
     margin-top: 26px;
   }
 }
-/* line 683, ../sass/yarn.scss */
+/* line 682, ../sass/yarn.scss */
 .yarn-form .field:before, .yarn-form .field input {
   font-size: 16px;
 }
-/* line 688, ../sass/yarn.scss */
+/* line 687, ../sass/yarn.scss */
 .yarn-form .who .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 692, ../sass/yarn.scss */
+/* line 691, ../sass/yarn.scss */
 .yarn-form .what .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 696, ../sass/yarn.scss */
+/* line 695, ../sass/yarn.scss */
 .yarn-form .why .field:before {
   content: attr(data-yarn-autocomplete);
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 703, ../sass/yarn.scss */
+  /* line 702, ../sass/yarn.scss */
   .yarn-form .label {
     text-align: left;
     width: inherit;
   }
-  /* line 707, ../sass/yarn.scss */
+  /* line 706, ../sass/yarn.scss */
   .yarn-form .field {
     margin-left: 0px;
     padding-bottom: 8px;
@@ -740,20 +736,24 @@ a.home:before {
   line-height: 30px;
   margin-right: 8px;
 }
-
 /* line 721, ../sass/yarn.scss */
+.who.focus .label, .what.focus .label, .why.focus .label {
+  font-weight: bold;
+}
+
+/* line 726, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 726, ../sass/yarn.scss */
+/* line 731, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 731, ../sass/yarn.scss */
+/* line 736, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;

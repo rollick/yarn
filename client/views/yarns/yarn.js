@@ -43,23 +43,21 @@ Template.yarn.events({
   'click .note-toggle': function (event, template) {
     var note = $(template.find('.note'));
 
-    if (note.hasClass('hide')) {
-      note.removeClass('hide').find('.text').focus();
+    if (note.hasClass('focus')) {
+      note.removeClass('focus').find('.text').blur();
     } else {
-      note.addClass('hide').find('.text').blur();
+      note.addClass('focus').find('.text').focus();
     }
   },
   'focus .text': function (event, template) {
     var $target = $(event.target);
 
-    $(event.target).closest('.who, .what, .why').
-                    find('.label').addClass('focus');
-
+    $(event.target).closest('.who, .what, .why').addClass('focus');
+    
     Session.set('selectedYarnId', $target.closest('.yarn').data('yarnId'));
   },  
   'blur .text': function (event, template) {
-    $(event.target).closest('.who, .what, .why').
-                    find('.label').removeClass('focus');
+    $(event.target).closest('.who, .what, .why').removeClass('focus');
   },
   'keydown .text': function (event, template) {
     if(event.keyCode === 27 || event.keyCode === 13) {
@@ -153,7 +151,7 @@ Template.colorPicker.events({
       target.siblings().one(transitions, function () {
         // cancel any events from siblings
         target.siblings().off(transitions);
-        
+
         match = target.attr('class').match(/^.*(\d{1})/);
         if (match) {
           var color = parseInt(match[1]);

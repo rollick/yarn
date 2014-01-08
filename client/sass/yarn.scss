@@ -394,10 +394,10 @@ a {
     bottom: 0em;
     z-index: 1;
     overflow: hidden;
-    border-left: 1px solid lighten($color-light-gray, 20%);
     background-color: #fff;    
-    width: 50%;
-    
+    width: 0px;
+    border-left: none;
+
     @media only screen and (max-width: 600px) {
       width: 100%;
     }
@@ -420,9 +420,9 @@ a {
       }
     }
 
-    &.hide {
-      width: 0px;
-      border-left: none;
+    &.focus {
+      width: 50%;
+      border-left: 1px solid lighten($color-light-gray, 20%);
     }
   }
 
@@ -625,19 +625,18 @@ a {
 }
 
 .yarn, .sortable-placeholder {
-  margin-bottom: 10px; 
+  margin-bottom: 15px; 
 }
 
-.yarn-form .label, .yarn .label {
-  width: 70px;
-  float: left;
-  height: $yarn-field-height;
-  text-align: right;
-
-  &.focus {
-    font-weight: bold;
+.yarn-form, .yarn {
+  .label {
+    width: 70px;
+    float: left;
+    height: $yarn-field-height;
+    text-align: right;
   }
 }
+
 
 .yarn-form {
   float: left;
@@ -712,10 +711,16 @@ a {
   }
 }
 
-.who > .label, .what > .label, .why > .label {
-  vertical-align: middle;
-  line-height: 30px;
-  margin-right: $standard-spacing;
+.who, .what, .why {
+  > .label {
+    vertical-align: middle;
+    line-height: 30px;
+    margin-right: $standard-spacing;
+  }
+
+  &.focus .label {
+    font-weight: bold;
+  }
 }
 
 .who > div.label:before {
