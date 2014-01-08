@@ -391,7 +391,7 @@ a {
     $color-picker-width: 15px;
     $color-picker-offset: 3px;
     $color-picker-left: 5px;
-    $box-size: 1px;
+    $box-size: 0px;
     $box-border-size: 1px;
 
     position: absolute;
@@ -408,7 +408,7 @@ a {
     .color3,
     .color4 {
       @include transition-property(bottom);
-      @include transition-duration(0.5s);
+      @include transition-duration(0.3s);
       @include transition-timing-function(ease);
 
       width: $color-picker-width;

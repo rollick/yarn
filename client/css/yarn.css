@@ -437,10 +437,10 @@ a.home:before {
   -moz-transition-property: bottom;
   -o-transition-property: bottom;
   transition-property: bottom;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
   -webkit-transition-timing-function: ease;
   -moz-transition-timing-function: ease;
   -o-transition-timing-function: ease;
@@ -497,22 +497,22 @@ a.home:before {
 }
 /* line 461, ../sass/yarn.scss */
 .yarn .color.close .color1.selected {
-  box-shadow: 0px 0px 1px #28e1bd;
+  box-shadow: 0px 0px 0px #28e1bd;
   border: 1px solid #55e7ca;
 }
 /* line 465, ../sass/yarn.scss */
 .yarn .color.close .color2.selected {
-  box-shadow: 0px 0px 1px #f4d03f;
+  box-shadow: 0px 0px 0px #f4d03f;
   border: 1px solid #f7dc6f;
 }
 /* line 469, ../sass/yarn.scss */
 .yarn .color.close .color3.selected {
-  box-shadow: 0px 0px 1px #5faee3;
+  box-shadow: 0px 0px 0px #5faee3;
   border: 1px solid #8bc4ea;
 }
 /* line 473, ../sass/yarn.scss */
 .yarn .color.close .color4.selected {
-  box-shadow: 0px 0px 1px white;
+  box-shadow: 0px 0px 0px white;
   border: 1px solid white;
 }
 /* line 480, ../sass/yarn.scss */
