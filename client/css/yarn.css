@@ -339,6 +339,31 @@ a.home:before {
 }
 
 /* line 318, ../sass/yarn.scss */
+.hotkeys {
+  font-size: 0.7em;
+  line-height: 1.5em;
+  overflow: auto;
+  margin-top: 8px;
+}
+/* line 324, ../sass/yarn.scss */
+.hotkeys li {
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+  cursor: help;
+  color: #7f8c8d;
+  line-height: 1.6em;
+  display: inline;
+  list-style-type: none;
+  padding-right: 20px;
+  white-space: nowrap;
+  padding: 0px 8px;
+  background-color: #fcfcfc;
+}
+
+/* line 339, ../sass/yarn.scss */
 .yarn {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -353,20 +378,20 @@ a.home:before {
   text-align: left;
   background-color: #fff;
 }
-/* line 328, ../sass/yarn.scss */
+/* line 349, ../sass/yarn.scss */
 .yarn.selected {
   box-shadow: 0px 0px 3px #3e5771;
   border: 1px solid #507192;
 }
-/* line 332, ../sass/yarn.scss */
+/* line 353, ../sass/yarn.scss */
 .yarn > div {
   margin-bottom: 8px;
 }
-/* line 335, ../sass/yarn.scss */
+/* line 356, ../sass/yarn.scss */
 .yarn > div:last-of-type {
   margin-bottom: 0px;
 }
-/* line 340, ../sass/yarn.scss */
+/* line 361, ../sass/yarn.scss */
 .yarn > span.handle {
   position: absolute;
   left: 0em;
@@ -380,12 +405,12 @@ a.home:before {
   color: #7f8c8d;
   text-align: center;
 }
-/* line 353, ../sass/yarn.scss */
+/* line 374, ../sass/yarn.scss */
 .yarn > span.handle:hover {
   cursor: move;
   color: #3C3C3C;
 }
-/* line 359, ../sass/yarn.scss */
+/* line 380, ../sass/yarn.scss */
 .yarn .text {
   -webkit-user-select: text;
   -moz-user-select: text;
@@ -400,7 +425,7 @@ a.home:before {
   -moz-user-select: text;
   -o-user-select: text;
 }
-/* line 373, ../sass/yarn.scss */
+/* line 394, ../sass/yarn.scss */
 .yarn .remove, .yarn .save {
   position: absolute;
   right: 0;
@@ -414,38 +439,38 @@ a.home:before {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* line 388, ../sass/yarn.scss */
+/* line 409, ../sass/yarn.scss */
 .yarn .remove:hover {
   color: #c0392b;
   cursor: pointer;
 }
-/* line 393, ../sass/yarn.scss */
+/* line 414, ../sass/yarn.scss */
 .yarn .remove:before {
   content: "X";
   text-align: right;
   line-height: 20px;
   font-size: 0.9em;
 }
-/* line 400, ../sass/yarn.scss */
+/* line 421, ../sass/yarn.scss */
 .yarn .remove.ready {
   color: #c0392b;
   width: 80px;
 }
-/* line 404, ../sass/yarn.scss */
+/* line 425, ../sass/yarn.scss */
 .yarn .remove.ready:before {
   content: "Really? X";
 }
-/* line 410, ../sass/yarn.scss */
+/* line 431, ../sass/yarn.scss */
 .yarn .save {
   top: 20px;
   display: none;
 }
-/* line 414, ../sass/yarn.scss */
+/* line 435, ../sass/yarn.scss */
 .yarn .save:hover {
   color: #27ae60;
   cursor: pointer;
 }
-/* line 419, ../sass/yarn.scss */
+/* line 440, ../sass/yarn.scss */
 .yarn .save:before {
   content: "✓";
   text-align: right;
@@ -453,60 +478,60 @@ a.home:before {
   font-size: 0.9em;
 }
 
-/* line 428, ../sass/yarn.scss */
+/* line 449, ../sass/yarn.scss */
 .sortable-placeholder {
   border: 1px dashed #7f8c8d;
   background: none;
   min-height: 117px;
 }
 
-/* line 434, ../sass/yarn.scss */
+/* line 455, ../sass/yarn.scss */
 .yarn, .sortable-placeholder {
   margin-bottom: 10px;
 }
 
-/* line 438, ../sass/yarn.scss */
+/* line 459, ../sass/yarn.scss */
 .yarn-form .label, .yarn .label {
   width: 60px;
   float: left;
   height: 25px;
   text-align: right;
 }
-/* line 444, ../sass/yarn.scss */
+/* line 465, ../sass/yarn.scss */
 .yarn-form .label.focus, .yarn .label.focus {
   font-weight: bold;
 }
 
-/* line 449, ../sass/yarn.scss */
+/* line 470, ../sass/yarn.scss */
 .yarn-form {
   float: left;
   width: 60%;
 }
-/* line 453, ../sass/yarn.scss */
+/* line 474, ../sass/yarn.scss */
 .yarn-form > div {
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 453, ../sass/yarn.scss */
+  /* line 474, ../sass/yarn.scss */
   .yarn-form > div {
     margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 449, ../sass/yarn.scss */
+  /* line 470, ../sass/yarn.scss */
   .yarn-form {
     width: 100%;
     margin-bottom: 25px;
   }
 }
-/* line 466, ../sass/yarn.scss */
+/* line 487, ../sass/yarn.scss */
 .yarn-form .field {
   margin-right: 18px;
   margin-left: 70px;
   width: auto;
   position: relative;
 }
-/* line 472, ../sass/yarn.scss */
+/* line 493, ../sass/yarn.scss */
 .yarn-form .field:before {
   position: absolute;
   pointer-events: none;
@@ -520,62 +545,62 @@ a.home:before {
   padding-left: 8px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 472, ../sass/yarn.scss */
+  /* line 493, ../sass/yarn.scss */
   .yarn-form .field:before {
     width: 88%;
     margin-top: 26px;
   }
 }
-/* line 490, ../sass/yarn.scss */
+/* line 511, ../sass/yarn.scss */
 .yarn-form .field:before, .yarn-form .field input {
   font-size: 16px;
 }
-/* line 495, ../sass/yarn.scss */
+/* line 516, ../sass/yarn.scss */
 .yarn-form .who .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 499, ../sass/yarn.scss */
+/* line 520, ../sass/yarn.scss */
 .yarn-form .what .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 503, ../sass/yarn.scss */
+/* line 524, ../sass/yarn.scss */
 .yarn-form .why .field:before {
   content: attr(data-yarn-autocomplete);
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 510, ../sass/yarn.scss */
+  /* line 531, ../sass/yarn.scss */
   .yarn-form .label {
     text-align: left;
     width: inherit;
   }
-  /* line 514, ../sass/yarn.scss */
+  /* line 535, ../sass/yarn.scss */
   .yarn-form .field {
     margin-left: 0px;
     padding-bottom: 8px;
     width: inherit;
   }
 }
-/* line 522, ../sass/yarn.scss */
+/* line 543, ../sass/yarn.scss */
 .who > .label, .what > .label, .why > .label {
   vertical-align: middle;
   line-height: 30px;
   margin-right: 8px;
 }
 
-/* line 528, ../sass/yarn.scss */
+/* line 549, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 533, ../sass/yarn.scss */
+/* line 554, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 538, ../sass/yarn.scss */
+/* line 559, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;

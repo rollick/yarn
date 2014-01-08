@@ -315,6 +315,27 @@ a {
   }
 }
 
+.hotkeys {
+  font-size: 0.7em;
+  line-height: 1.5em;
+  overflow: auto;
+  margin-top: $standard-spacing;
+
+  li {
+    @include border-radius(4px);
+
+    cursor: help;
+    color: $color-gray;
+    line-height: 1.6em;
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    white-space: nowrap;
+    padding: 0px 8px;
+    background-color: darken(#FFF, 1%);
+  }
+}
+
 .yarn {
   @include border-radius($standard-border-radius);
   @include standard-box-shadow();
