@@ -321,8 +321,9 @@ a {
 .hotkeys {
   font-size: 0.7em;
   line-height: 1.5em;
-  overflow: auto;
+  overflow: visible;
   margin-top: $standard-spacing;
+  position: relative;
 
   li {
     cursor: default;
@@ -334,11 +335,20 @@ a {
     white-space: nowrap;
     padding: 0px 8px;
     background-color: darken(#FFF, 1%);
-  }
 
-  &:hover {
-    li { 
-      color: $color-gray;
+    &:hover {
+      color: darken($color-gray, 20%);
+
+      &:before {
+        color: darken($color-gray, 20%);
+        content: attr(yarn-hotkey-description);
+        z-index: 2;
+        position: absolute;
+        top: -1.5em;
+        left: 0px;
+        text-align: center;
+        right: 0px;
+      }
     }
   }
 }
