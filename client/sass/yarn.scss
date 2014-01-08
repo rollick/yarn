@@ -367,6 +367,10 @@ a {
   background-color: #fff;
   z-index: 1;
 
+  > .main {
+    margin: 10px 0;
+  }
+
   &.selected {
     border: 1px solid $yarn-selected-color;
   }
@@ -602,24 +606,7 @@ a {
           height: $color-picker-height;
 
           &.selected {
-            left: $color-picker-left - $box-border-size;
           }
-        }
-
-        .color1.selected {
-          @include standard-border($color-picker-1, $box-size, $border-size: $box-border-size);
-        }
-
-        .color2.selected {
-          @include standard-border($color-picker-2, $box-size, $border-size: $box-border-size);
-        }
-
-        .color3.selected {
-          @include standard-border($color-picker-3, $box-size, $border-size: $box-border-size);
-        }
-
-        .color4.selected {
-          @include standard-border($color-picker-4, $box-size, $border-size: $box-border-size);
         }
       }
     }
