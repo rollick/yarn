@@ -132,4 +132,49 @@ Template.yarn.helpers({
     }
 
   }
-})
+});
+
+///////////////////////////////////////////////////////////////////////////////
+// Yarn
+
+Template.colorPicker.events({
+  'click .action.color > div': function (event, template) {
+    var target = $(event.target),
+        closed = target.parent().hasClass('close');
+
+    if (!closed) {
+      // TODO: shouldn't be editing the dom here but if we don't then
+      //        the transition ends with the old color selected and then
+      //        changes after the yarn color gets saved
+      target.addClass('selected').siblings().removeClass('selected');
+
+      // Save the new color when the transition ends so that it is smooootherrr
+      var transitions = 'webkitTransitionEnd oTransitionEnd oTransitionEnd msTransitionEnd transitionend';
+      target.one(transitions, function () {
+        match = target.attr('class').match(/^.*(\d{1})/);
+        if (match) {
+          var color = parseInt(match[1]);
+
+          Yarns.update({_id: template.data._id}, {
+            $set: {
+              color: color
+            }
+          });
+        }
+      })
+    }
+
+    target.parent().toggleClass('close');
+  },
+});
+
+Template.colorPicker.helpers({
+  colors: function () {
+    return [
+      {number: 1, cls: (this.color === 1 ? 'selected' : '')},
+      {number: 2, cls: (this.color === 2 ? 'selected' : '')},
+      {number: 3, cls: (this.color === 3 ? 'selected' : '')},
+      {number: 4, cls: (this.color === 4 ? 'selected' : '')}
+    ]
+  }
+});

@@ -100,6 +100,24 @@ Template.yarnList.rendered = function () {
     }
   });
 
+  // Set the color on the selected yarn
+  key('1,2,3,4', function() {
+    var selectedYarnId = Deps.nonreactive(function () {
+          return Session.get('selectedYarnId');
+        });
+
+    if (selectedYarnId) {
+      event.stopPropagation();
+      event.preventDefault();
+
+      Yarns.update({_id: selectedYarnId}, {
+        $set: {
+          color: parseInt(this.shortcut)
+        }
+      });
+    }
+  });
+
   // Init sortable library for list of yarns
   $('.yarns').sortable({
     handle: '.handle'
