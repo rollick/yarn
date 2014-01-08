@@ -145,10 +145,10 @@ Template.yarnList.rendered = function () {
 
       var note = selectedYarn.find('.note');
 
-      if (note.hasClass('hide')) {
-        note.removeClass('hide').find('.text').focus();
+      if (note.hasClass('focus')) {
+        note.removeClass('focus').find('.text').blur();
       } else {
-        note.addClass('hide').find('.text').blur();
+        note.addClass('focus').find('.text').focus();
       }
     }
   });

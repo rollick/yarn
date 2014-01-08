@@ -53,7 +53,7 @@ Template.yarn.events({
     var $target = $(event.target);
 
     $(event.target).closest('.who, .what, .why').addClass('focus');
-    
+
     Session.set('selectedYarnId', $target.closest('.yarn').data('yarnId'));
   },  
   'blur .text': function (event, template) {
@@ -65,7 +65,7 @@ Template.yarn.events({
       event.preventDefault();
 
       $(event.target).blur();
-      $(template.find('.note')).addClass('hide');
+      $(template.find('.note')).removeClass('focus');
 
       if (event.keyCode === 13) {
         var success = template._saveYarn();
