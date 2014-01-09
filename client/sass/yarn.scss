@@ -451,7 +451,8 @@ a {
     text-align: center;
     z-index: 5;
     cursor: pointer;
-    
+    color: $color-gray;
+
     &.handle {
       width: 20px;
       left: $action-padding;
@@ -459,7 +460,6 @@ a {
       display: block;
       font-size: 1em;
       font-weight: bold;
-      color: $color-gray;
       overflow: visible;
       background-color: transparent;
       font-family: source-sans-pro, sans-serif;
@@ -512,7 +512,6 @@ a {
 
       &:before {
         content: "X";
-        // text-align: right;
         line-height: $action-width;
         font-size: 0.9em;
       }
