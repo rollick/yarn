@@ -9,7 +9,7 @@ Template.yarn.created = function () {
                       find('[data-yarn-id="' + yarnId + '"]').
                       addClass('selected');
 
-    return true;
+    return false;
   }
 
   self._saveYarn = function () {
@@ -41,7 +41,9 @@ Template.yarn.created = function () {
 
 Template.yarn.events({
   'click .yarn': function (event, template) {
-    Session.set('selectedYarnId', this._id)
+    Session.set('selectedYarnId', this._id);
+
+    return true;
   },
   'click .note-toggle': function (event, template) {
     var note = $(template.find('.note'));

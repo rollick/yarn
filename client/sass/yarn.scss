@@ -19,7 +19,7 @@ $color-notice: #27ae60;
 $color-who: #c0392b;
 $color-what: #27ae60;
 $color-why: #2980b9;
-$color-note: $color-picker-4;
+$color-note: #ecf0f1;
 $color-note-highlight: #f1c40f;
 
 $standard-spacing: 8px;
@@ -502,14 +502,14 @@ a {
         right: 0;
         border-width: 0 6px 6px 0;
         border-style: solid;
-        border-color: darken($color-note, 5%) #fff;
+        border-color: darken($color-note, 20%) #fff;
       }
 
       &.highlight {
         background-color: $color-note-highlight;
 
         &:before {
-          border-color: darken($color-note-highlight, 5%) #fff;
+          border-color: darken($color-note-highlight, 20%) #fff;
         }
       }
     }

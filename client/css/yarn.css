@@ -506,7 +506,7 @@ a.home:before {
 .yarn .action.note-toggle {
   right: 2px;
   bottom: 2px;
-  background-color: #bdc3c7;
+  background-color: #ecf0f1;
 }
 /* line 498, ../sass/yarn.scss */
 .yarn .action.note-toggle:before {
@@ -516,7 +516,7 @@ a.home:before {
   right: 0;
   border-width: 0 6px 6px 0;
   border-style: solid;
-  border-color: #afb6bb white;
+  border-color: #b1c2c6 white;
 }
 /* line 508, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight {
@@ -524,7 +524,7 @@ a.home:before {
 }
 /* line 511, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight:before {
-  border-color: #dab10d white;
+  border-color: #927608 white;
 }
 /* line 517, ../sass/yarn.scss */
 .yarn .action.remove, .yarn .action.save {

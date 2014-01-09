@@ -43,6 +43,8 @@ Template.colorPicker.events(_.extend({}, colorPickerEvents));
 Template.colorPicker.helpers(_.extend({}, colorPickerHelpers));
 
 Template.colorPicker.created = function () {
+  var self = this;
+
   this._changeHandler = function (event, template) {
     match = $(event.target).attr('class').match(/^.*(\d{1})/);
     if (match) {

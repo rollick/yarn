@@ -26,6 +26,8 @@ Router.map(function () {
       return Meteor.subscribe('yarns', spinId);
     },
     action: function () {
+      Session.set('spinId', this.params.spinId);
+
       this.render('yarnForm', {to: 'header'}); 
       
       if (this.ready()) {
@@ -39,7 +41,7 @@ Router.map(function () {
     },
     data: function () {
       return {
-        spinId: this.params.spinId,
+        spinId: Session.get('spinId'),
         color: Session.get('colorFilter'),
         yarnId: Session.get('selectedYarnId')
       }
@@ -54,6 +56,15 @@ Meteor.subscribe("yarnCount");
 
 Meteor.startup(function () {
   console.log("++ Starting Yarn");
+
+  Deps.autorun(function (computation) {
+    if (Session.get('selectedYarnId'))
+      key.setScope('yarn');
+    else if (Session.get('spinId'))
+      key.setScope('spin');
+    else
+      key.setScope('home');
+  });
 });
 
 ///////////////////////////////////////////////////////////////////////////////

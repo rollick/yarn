@@ -1,3 +1,3 @@
 App = {
-  version: "v0.2.26"
+  version: "v0.2.27"
 };

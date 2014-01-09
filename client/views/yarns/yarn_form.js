@@ -2,22 +2,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 // Yarn Form
 
-Template.yarnForm.rendered = function () {
-  var self = this;
-
-  // add some hotkeys
-  key('c', function() {
-    event.stopPropagation();
-    event.preventDefault();
-
-    $(self.find('.who input')).focus();
-  });
-};
-
-Template.yarnForm.destroyed = function () {
-  key.unbind('c');
-};
-
 Template.yarnForm.helpers({
   tip: function () {
     return Session.get("tip");
