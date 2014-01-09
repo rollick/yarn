@@ -40,6 +40,9 @@ Template.yarn.created = function () {
 },
 
 Template.yarn.events({
+  'click .yarn': function (event, template) {
+    Session.set('selectedYarnId', this._id)
+  },
   'click .note-toggle': function (event, template) {
     var note = $(template.find('.note'));
 
@@ -54,7 +57,7 @@ Template.yarn.events({
 
     $(event.target).closest('.who, .what, .why').addClass('focus');
 
-    Session.set('selectedYarnId', $target.closest('.yarn').data('yarnId'));
+    Session.set('selectedYarnId', this._id);
   },  
   'blur .text': function (event, template) {
     $(event.target).closest('.who, .what, .why').removeClass('focus');
