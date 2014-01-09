@@ -20,18 +20,18 @@ Template.yarn.created = function () {
 
     // ensure all fields have a value
     var fail = _.any([who, what, why], function (field) {
-          return _.isEmpty(field.innerText);
+          return _.isEmpty(field.textContent);
         });
 
     if (fail)
       return false;
-
+    
     Yarns.update({_id: self.data._id}, {
       $set: {
-        who: who.innerText,
-        what: what.innerText,
-        why: why.innerText,
-        note: note.innerText
+        who: who.textContent,
+        what: what.textContent,
+        why: why.textContent,
+        note: note.textContent
       }
     }, {multi: false});
 
