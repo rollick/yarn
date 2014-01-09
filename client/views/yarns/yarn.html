@@ -1,8 +1,6 @@
 <template name="yarn">
-  <div class="yarn {{#if selected}}selected{{/if}}" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
-    <span class="action handle">
-      {{order}}
-    </span>
+  <div class="yarn {{#unless sortable}}unsortable{{/unless}} {{#if hide}}hide{{/if}} {{#if selected}}selected{{/if}}" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
+    <span class="action order"> {{order}}</span>
     {{> colorPicker this}}
     <div class="action remove"></div>
     <div class="action save"></div>
@@ -24,13 +22,5 @@
     <div class="note">
       <div class="text" contenteditable="true">{{note}}</div>
     </div>
-  </div>
-</template>
-
-<template name="colorPicker">
-  <div class="action color close">
-    {{#each colors}}
-      <div class="color{{number}} {{cls}}"></div>
-    {{/each}}
   </div>
 </template>

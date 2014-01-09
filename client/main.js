@@ -39,7 +39,9 @@ Router.map(function () {
     },
     data: function () {
       return {
-        spinId: this.params.spinId
+        spinId: this.params.spinId,
+        color: Session.get('colorFilter'),
+        yarnId: Session.get('selectedYarnId')
       }
     }
   });

@@ -16,7 +16,9 @@ var scrollToYarn = function (yarnId) {
 
 Template.yarnList.helpers({
   yarns: function () {
-    return Yarns.find({spinId: this.spinId}, {sort: {order: 1}});
+    var conds = {spinId: this.spinId};
+
+    return Yarns.find(conds, {sort: {order: 1}});
   }
 });
 
@@ -41,27 +43,40 @@ Template.yarnList.rendered = function () {
 
     // get nonreactive selectedYarnId so this function
     // isn't rerun again when we set selectedYarnId at the end
-    var selectedYarnId = Deps.nonreactive(function () {
-          return Session.get('selectedYarnId');
-        }),
+    var selectedYarnId = template.data.yarnId,
+        colorFilter = template.data.color,
         spinId = template.data.spinId,
         count = Yarns.find({spinId: spinId}).count(),
-        newSelection;
+        conds = {spinId: spinId},
+        newSelection, sort;
+
+    if (colorFilter)
+      conds['color'] = colorFilter;
 
     if (selectedYarnId) {
-      var conds = {spinId: spinId},
-          selectedYarn = Yarns.findOne(selectedYarnId);
+      var selectedYarn = Yarns.findOne(selectedYarnId);
 
+      if (this.shortcut === "down") {
+        conds['order'] = {$gt: selectedYarn.order};
+        sort = {sort: {order: 1}};
+      } else {
+        conds['order'] = {$lt: selectedYarn.order};
+        sort = {sort: {order: -1}};
+      }
+
+      newSelection = Yarns.findOne(conds, sort);
+    }
+
+    // If newSelection is not set then either the wasn't a previous yarn 
+    // selected, or the selection needs to cycle around to top or bottom
+    if (!newSelection) {
+      // we want to query on a full list of yarns so remove any order conds
+      delete conds['order'];
+      
       if (this.shortcut === "down")
-        conds['order'] = selectedYarn.order === count ? 1 : selectedYarn.order+1;
+        newSelection = Yarns.findOne(conds, {sort: {order: 1}});
       else
-        conds['order'] = selectedYarn.order === 1 ? count : selectedYarn.order-1;
-
-      newSelection = Yarns.findOne(conds);
-    } else {
-      var order = (this.shortcut === "down") ? 1 : count;
-
-      newSelection = Yarns.findOne({spinId: spinId, order: order});
+        newSelection = Yarns.findOne(conds, {sort: {order: -1}});
     }
 
     // Set the session variable to trigger ui updates
@@ -74,6 +89,14 @@ Template.yarnList.rendered = function () {
   key('⌘+up, ctrl+up, ⌘+down, ctrl+down', function() {
     event.stopPropagation();
     event.preventDefault();
+
+    // reordering is unsupported when list is filtered
+    var colorFilter = Deps.nonreactive(function () {
+      return Session.get('colorFilter');
+    });
+
+    if (colorFilter)
+      return;
 
     var selectedYarn = $(self.find('.yarn.selected')),
         totalYarns = $(self.findAll('.yarn')).length;
@@ -155,7 +178,8 @@ Template.yarnList.rendered = function () {
 
   // Init sortable library for list of yarns
   $('.yarns').sortable({
-    handle: '.handle'
+    handle: '.order',
+    items: ':not(.unsortable)'
   }).bind('sortupdate', function(e, ui) {
     // Note: position is zero based according to sortable library but 
     //       one for the yarn position

@@ -1,5 +1,8 @@
 <template name="yarnList">
-  <div class="yarns handle">
+  <div class="yarn-filter">
+    {{> colorFilter}}
+  </div>
+  <div class="yarns">
     {{#each yarns}}
       {{> yarn}}
     {{/each}}

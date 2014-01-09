@@ -1,0 +1,16 @@
+<template name="colorPicker">
+  <div class="action color-picker close">
+    {{#each colors}}
+      <div class="color{{number}} {{cls}}"></div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="colorFilter">
+  <div class="color-picker close">
+    <div class="color0"></div>
+    {{#each colors}}
+      <div class="color{{number}} {{cls}}"></div>
+    {{/each}}
+  </div>
+</template>

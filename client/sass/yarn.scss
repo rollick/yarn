@@ -8,7 +8,7 @@
 $color-picker-1: #1abc9c;
 $color-picker-2: #f1c40f;
 $color-picker-3: #e74c3c;
-$color-picker-4: #ecf0f1;
+$color-picker-4: #bdc3c7;
 
 $color-bg: #ECF0F1;
 $color-gray: #7F8C8D;
@@ -28,6 +28,17 @@ $standard-border-radius: 5px;
 $yarn-padding: 10px;
 $yarn-field-height: 25px;
 $yarn-selected-color: $color-link;
+$action-padding: 2px;
+$action-width: 15px;
+
+$color-picker-height: $action-width;
+$color-picker-width: $action-width;
+$color-picker-height-large: $action-width*1.5;
+$color-picker-width-large: $action-width*1.5;
+$color-picker-offset: 5px;
+$color-picker-left: 0px;
+$box-size: 0px;
+$box-border-size: 1px;
 
 /*** Some Mixins ***/
 
@@ -284,6 +295,10 @@ a {
   margin-bottom: 0px;
 }
 
+.yarns {
+  margin-top: $standard-spacing;
+}
+
 .yarns-loading, .yarn {
   @include standard-border();
 }
@@ -357,15 +372,16 @@ a {
 }
 
 .yarn {
-  $action-padding: 2px;
-  $action-width: 15px;
-
   text-align: center;
   padding: $yarn-padding;
   position: relative;
   text-align: left;
   background-color: #fff;
   z-index: 1;
+
+  &.hide {
+    display: none;
+  }
 
   > .main {
     margin: 10px 0;
@@ -398,10 +414,6 @@ a {
     width: 0px;
     border-left: none;
 
-    @media only screen and (max-width: 600px) {
-      width: 100%;
-    }
-
     .text {
       @include standard-border();
 
@@ -423,6 +435,10 @@ a {
     &.focus {
       width: 50%;
       border-left: 1px solid lighten($color-light-gray, 20%);
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
     }
   }
 
@@ -453,7 +469,7 @@ a {
     cursor: pointer;
     color: $color-gray;
 
-    &.handle {
+    &.order {
       width: 20px;
       left: $action-padding;
       top: 0;
@@ -542,76 +558,147 @@ a {
         font-size: 0.9em;
       }
     }
+  }
 
-    &.color {
-      $color-picker-height: $action-width;
-      $color-picker-width: $action-width;
-      $color-picker-offset: 5px;
-      $color-picker-left: 0px;
-      $box-size: 0px;
-      $box-border-size: 1px;
+  &.unsortable {
+    .order {
+      top: $action-padding;
 
-      position: absolute;
-      left: $action-padding;
-      bottom: $action-padding;
-      margin-bottom: 0em;
-      z-index: 6;
-      overflow: visible;
-      background-color: transparent;
+      &:before {
+        content: none;
+      }
+    }
+  }
+}
 
-      .color1,
-      .color2,
-      .color3,
-      .color4 {
-        @include transition-property(bottom);
-        @include transition-duration(0.3s);
-        @include transition-timing-function(ease);
+.color-picker {
+  position: absolute;
+  left: $action-padding;
+  bottom: $action-padding;
+  margin-bottom: 0em;
+  z-index: 6;
+  overflow: visible !important;
 
-        width: $color-picker-width;
-        height: $color-picker-height;
-        position: absolute;
-        cursor: pointer;
-        left: $color-picker-left;
-        margin-top: 5px;
-        z-index: 1;
+  > div {
+    @include transition-property(bottom);
+    @include transition-duration(0.3s);
+    @include transition-timing-function(ease);
 
-        &.selected {
-          z-index: 2;
-        }
+    width: $color-picker-width;
+    height: $color-picker-height;
+    position: absolute;
+    cursor: pointer;
+    left: $color-picker-left;
+    margin-top: 5px;
+    z-index: 1;
+
+    &.selected {
+      z-index: 2;
+    }
+  }
+
+  .color1 {
+    background-color: $color-picker-1;
+    bottom: 0em;
+  }
+
+  .color2 {
+    background-color: $color-picker-2;
+    bottom: $color-picker-height + $color-picker-offset;
+  }
+
+  .color3 {
+    background-color: $color-picker-3;
+    bottom: $color-picker-height*2 + $color-picker-offset*2;
+  }
+
+  .color4 {
+    background-color: $color-picker-4;
+    bottom: $color-picker-height*3 + $color-picker-offset*3;
+  }
+
+
+  &.close {
+    > div {
+      bottom: 0em;
+      height: $color-picker-height;
+      opacity: 0;
+
+      &.selected {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.yarn-filter {
+  float: left;
+  height: $color-picker-height-large + 4px;
+  width: 100%;
+  overflow: visible;
+  position: relative;
+  margin-top: $standard-spacing;
+
+  .color-picker {
+    height: 100%;
+    left: 2px;
+    position: relative;
+    margin-bottom: 0em;
+
+    > div {
+      @include transition-property(left);
+      @include transition-duration(0.3s);
+      @include transition-timing-function(ease);
+
+      width: $color-picker-width-large;
+      height: $color-picker-height-large;
+      bottom: 0em;
+    }
+
+    .color0 {
+      $bg-color: #ecf0f1;
+      $border-color: darken($bg-color, 15%);
+
+      left: 0em;
+      text-align: center;
+      border: 1px solid $border-color;
+      color: $border-color;
+      background-color: $bg-color;
+      width: $color-picker-width-large - 2px;
+      height: $color-picker-height-large - 2px;
+      opacity: 1;
+
+      &:before {
+        content: "X";
+        line-height: $color-picker-width-large;
+        font-size: 1.2em;
+        font-family: arial;
+      }
+    }
+
+    .color1 {
+      left: $color-picker-height-large + $color-picker-offset;
+    }
+
+    .color2 {
+      left: $color-picker-height-large*2 + $color-picker-offset*2;
+    }
+
+    .color3 {
+      left: $color-picker-height-large*3 + $color-picker-offset*3;
+    }
+
+    .color4 {
+      left: $color-picker-height-large*4 + $color-picker-offset*4;
+    }
+
+    &.close {
+      > div {
+        left: 0em;
       }
 
-      .color1 {
-        background-color: $color-picker-1;
-        bottom: 0em;
-      }
-
-      .color2 {
-        background-color: $color-picker-2;
-        bottom: $color-picker-height + $color-picker-offset;
-      }
-
-      .color3 {
-        background-color: $color-picker-3;
-        bottom: $color-picker-height*2 + $color-picker-offset*2;
-      }
-
-      .color4 {
-        background-color: $color-picker-4;
-        bottom: $color-picker-height*3 + $color-picker-offset*3;
-      }
-
-
-      &.close {
-        .color1,
-        .color2,
-        .color3,
-        .color4 {
-          bottom: 0em;
-          height: $color-picker-height;
-
-          &.selected {
-          }
-        }
+      .color0:before {
+        content: "C";
       }
     }
   }
