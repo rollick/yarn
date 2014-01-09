@@ -322,6 +322,8 @@ a {
 }
 
 .top { 
+  margin-top: 10px;
+  
   > .title {
     float: left;
     width: 40%;
@@ -334,6 +336,7 @@ a {
 
     .one {
       font-size: 1em;
+      line-height: 1.2em;
     }
     
     .two {
@@ -673,8 +676,8 @@ a {
     .color0 {
       left: 0em;
       text-align: center;
-      border: 1px solid darken($color-link, 15%);
-      color: $color-link;
+      border: 1px solid $color-gray;
+      color: $color-gray;
       background-color: $color-bg;
       width: $color-picker-width-large - 2px;
       height: $color-picker-height-large - 2px;
