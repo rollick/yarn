@@ -37,27 +37,39 @@ Template.yarn.created = function () {
 
     return true;
   };
-},
+};
+
+Template.yarn.destroyed = function () {
+  if (template._keyupTimer)
+    clearInterval(this._keyupTimer);
+}
 
 Template.yarn.events({
   'click .yarn': function (event, template) {
-    Session.set('selectedYarnId', this._id);
+    event.stopPropagation();
+    event.preventDefault();
 
-    return true;
+    Session.set('selectedYarnId', this._id);
   },
   'click .note-toggle': function (event, template) {
+    event.stopPropagation();
+    event.preventDefault();
+
     var note = $(template.find('.note'));
 
     if (note.hasClass('focus')) {
-      note.removeClass('focus').find('.text').blur();
+      note.removeClass('focus');
     } else {
-      note.addClass('focus').find('.text').focus();
+      note.addClass('focus');
     }
   },
   'focus .text': function (event, template) {
+    event.stopPropagation();
+    event.preventDefault();
+
     var $target = $(event.target);
 
-    $(event.target).closest('.who, .what, .why').addClass('focus');
+    $(event.target).closest('.who, .what, .why, .note').addClass('focus');
 
     Session.set('selectedYarnId', this._id);
   },  
@@ -73,6 +85,9 @@ Template.yarn.events({
       $(template.find('.note')).removeClass('focus');
 
       if (event.keyCode === 13) {
+        if (template._keyupTimer)
+          clearInterval(template._keyupTimer);
+
         var success = template._saveYarn();
 
         if (success) {
@@ -109,6 +124,9 @@ Template.yarn.events({
   'click .save': function (event, template) {
     event.stopPropagation();
     event.preventDefault();
+
+    if (template._keyupTimer)
+      clearInterval(template._keyupTimer);
     
     $(event.target).blur();
 
@@ -134,16 +152,22 @@ Template.yarn.events({
 });
 
 Template.yarn.helpers({
-  'selected': function () {
-    return Session.equals('selectedYarnId', this._id);
+  'yarnCls': function () {
+    var classes = [];
+        colorFilter = Session.get('colorFilter');
+
+    if (Session.equals('selectedYarnId', this._id))
+      classes.push('selected');
+
+    if (colorFilter) {
+      classes.push('unsortable');
+      if (colorFilter != this.color)
+        classes.push('hide');
+    }
+
+    return classes.join(' ');
   },
   'hasNote': function () {
     return !_.isEmpty(this.note);
-  },
-  'sortable': function () {
-    return !Session.get('colorFilter');
-  },
-  'hide': function () {
-    return Session.get('colorFilter') && Session.get('colorFilter') != this.color;
   }
 });
