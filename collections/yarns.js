@@ -2,7 +2,7 @@ Yarns = new Meteor.Collection('yarns');
 YarnCount = new Meteor.Collection("yarnCount");
 
 Yarns.deny({
-  update: function(userId, post, fieldNames) {
+  update: function(userId, yarn, fieldNames) {
     // deny the update if it contains something other than the following fields
     return (_.without(fieldNames, 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0);
   }
@@ -10,13 +10,13 @@ Yarns.deny({
 
 // Currently only need to know the yarnId to be able to update or remove it!
 Yarns.allow({
-  insert: function () {
+  insert: function (userId, yarn) {
     return false; // use yarn method
   },
-  update: function (userId, group, fields, modifier) {
+  update: function (userId, yarn, fields, modifier) {
     return true;
   },
-  remove: function (userId, groups) {
+  remove: function (userId, yarns) {
     return false; // use yarnRemove method
   }
 });
@@ -76,6 +76,9 @@ Meteor.methods({
       yarn.created = epoch;
     }
 
+    if (_.without(Object.keys(yarn), 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0)
+      throw new Meteor.Error(400, "Trying to sneak in some extra fields, ey?");
+
     // Increment 'order' for all current yarns
     Yarns.update({spinId: yarn.spinId}, {$inc: {order: 1}}, {multi: true})
 
@@ -87,6 +90,7 @@ Meteor.methods({
       what: yarn.what,
       why: yarn.why,
       note: yarn.note,
+      color: yarn.color,
       created: yarn.created
     });
 

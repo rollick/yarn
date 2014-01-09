@@ -70,11 +70,17 @@ Template.yarnForm.events({
       event.stopPropagation();
       event.preventDefault();
 
+      // set the color to current filtered value if one exists
+      var color = null;
+      if (template.data.color)
+        color = template.data.color;
+
       var yarn = {
         spinId: spinId,
         who: who.value,
         what: what.value,
-        why: why.value
+        why: why.value,
+        color: color
       }
 
       Meteor.call('yarn', yarn, function (error, yarnId) {
