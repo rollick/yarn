@@ -374,6 +374,10 @@ a {
   }
 }
 
+@media only screen and (max-device-width : 1024px) {
+   .hotkeys { display: none; }
+}
+
 .yarn {
   text-align: center;
   padding: $yarn-padding;
