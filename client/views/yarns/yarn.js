@@ -60,7 +60,7 @@ Template.yarn.events({
     Session.set('selectedYarnId', this._id);
   },  
   'blur .text': function (event, template) {
-    $(event.target).closest('.who, .what, .why').removeClass('focus');
+    $(event.target).closest('.who, .what, .why, .note').removeClass('focus');
   },
   'keydown .text': function (event, template) {
     if(event.keyCode === 27 || event.keyCode === 13) {
