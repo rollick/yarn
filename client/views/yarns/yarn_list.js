@@ -72,7 +72,7 @@ Template.yarnList.rendered = function () {
     if (!newSelection) {
       // we want to query on a full list of yarns so remove any order conds
       delete conds['order'];
-      
+
       if (this.shortcut === "down")
         newSelection = Yarns.findOne(conds, {sort: {order: 1}});
       else
@@ -130,13 +130,14 @@ Template.yarnList.rendered = function () {
 
   // If enter pressed and a yarn is selected then focus the first editable text field
   key('enter', function() {
-    var selectedYarn = $(self.find('.yarn.selected'));
+    var yarnId = template.data.yarnId;
 
-    if (selectedYarn.length) {
+    if (yarnId) {
       event.stopPropagation();
       event.preventDefault();
 
-      selectedYarn.find('.text:first').focus();
+      var yarnElem = $('.yarn[data-yarn-id="' + yarnId + '"]');
+      yarnElem.find('.text:first').focus();
     }
   });
 

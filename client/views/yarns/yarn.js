@@ -90,7 +90,12 @@ Template.yarn.events({
           yarn = Yarns.findOne(id, {who: 1, what: 1, why: 1, note: 1}),
           save = $(template.find('.save')),
           changed = _.any(['who', 'what', 'why', 'note'], function (field) {
-            return template.find('.' + field + ' .text').innerText != yarn[field];
+            var input = template.find('.' + field + ' .text');
+
+            if (input)
+              return input.textContent != yarn[field];
+            else
+              return false;
           });
       
       if (changed)
