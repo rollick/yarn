@@ -146,29 +146,30 @@ hr {
 a {
   text-decoration: none;
   color: #2c3e50;
+  font-weight: 400;
 }
-/* line 173, ../sass/yarn.scss */
+/* line 174, ../sass/yarn.scss */
 a.home {
   position: absolute;
   width: 65px;
   height: 20px;
 }
-/* line 178, ../sass/yarn.scss */
+/* line 179, ../sass/yarn.scss */
 a.home:hover {
   cursor: pointer;
 }
-/* line 182, ../sass/yarn.scss */
+/* line 183, ../sass/yarn.scss */
 a.home:before {
   content: "< home";
   line-height: 20px;
 }
 
-/* line 189, ../sass/yarn.scss */
+/* line 190, ../sass/yarn.scss */
 .qualifier {
   font-size: 3px;
 }
 
-/* line 193, ../sass/yarn.scss */
+/* line 194, ../sass/yarn.scss */
 .create {
   padding: 25px 0;
   float: left;
@@ -177,7 +178,7 @@ a.home:before {
   border-bottom: 1px solid #CCC;
   background-color: #2c3e50;
 }
-/* line 201, ../sass/yarn.scss */
+/* line 202, ../sass/yarn.scss */
 .create > .inner {
   font-size: 1.2em;
   padding: 10px 20px;
@@ -191,23 +192,24 @@ a.home:before {
   text-align: center;
   margin: 0 auto;
 }
-/* line 213, ../sass/yarn.scss */
+/* line 215, ../sass/yarn.scss */
 .create > .inner a {
   display: block;
   color: white;
+  font-weight: 300;
 }
-/* line 217, ../sass/yarn.scss */
+/* line 221, ../sass/yarn.scss */
 .create > .inner:hover {
   background-color: #e74c3c;
   cursor: pointer;
 }
 
-/* line 224, ../sass/yarn.scss */
+/* line 228, ../sass/yarn.scss */
 .features {
   padding: 25px 0;
   float: left;
 }
-/* line 227, ../sass/yarn.scss */
+/* line 231, ../sass/yarn.scss */
 .features > .title {
   width: 100%;
   float: left;
@@ -216,54 +218,54 @@ a.home:before {
   text-align: center;
 }
 
-/* line 236, ../sass/yarn.scss */
+/* line 240, ../sass/yarn.scss */
 .feature {
   float: left;
   width: 33%;
   text-align: center;
 }
-/* line 240, ../sass/yarn.scss */
+/* line 244, ../sass/yarn.scss */
 .feature i {
   color: #aaaaaa;
 }
-/* line 243, ../sass/yarn.scss */
+/* line 247, ../sass/yarn.scss */
 .feature .inner {
   padding: 10px 10px;
   /*border: solid #CCC 1px;*/
 }
-/* line 247, ../sass/yarn.scss */
+/* line 251, ../sass/yarn.scss */
 .feature .title, .feature .description {
   width: 100%;
 }
-/* line 250, ../sass/yarn.scss */
+/* line 254, ../sass/yarn.scss */
 .feature .title {
   font-size: 1.2em;
 }
-/* line 253, ../sass/yarn.scss */
+/* line 257, ../sass/yarn.scss */
 .feature .description {
   margin-top: 8px;
   font-size: 0.8em;
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 260, ../sass/yarn.scss */
+  /* line 264, ../sass/yarn.scss */
   .feature {
     width: 100%;
   }
 }
-/* line 265, ../sass/yarn.scss */
+/* line 269, ../sass/yarn.scss */
 .extra {
   float: left;
   width: 100%;
 }
-/* line 269, ../sass/yarn.scss */
+/* line 273, ../sass/yarn.scss */
 .extra .count {
   margin: 0 auto;
   text-align: center;
   width: 90px;
   color: #7f8c8d;
 }
-/* line 275, ../sass/yarn.scss */
+/* line 279, ../sass/yarn.scss */
 .extra .count .number {
   font-size: 2.5em;
   border: 1px solid #667273;
@@ -274,7 +276,7 @@ a.home:before {
 }
 
 /* Yarn Stuff */
-/* line 290, ../sass/yarn.scss */
+/* line 294, ../sass/yarn.scss */
 .yarns,
 .top,
 .yarns-loading {
@@ -285,29 +287,34 @@ a.home:before {
   margin-bottom: 0px;
 }
 
-/* line 298, ../sass/yarn.scss */
+/* line 302, ../sass/yarn.scss */
+.top {
+  margin-top: 0px;
+}
+
+/* line 306, ../sass/yarn.scss */
 .yarns {
   margin-top: 8px;
 }
 
-/* line 302, ../sass/yarn.scss */
+/* line 310, ../sass/yarn.scss */
 .yarns-loading, .yarn {
   box-shadow: 0px 0px 0px #c3c3c3;
   border: 1px solid #dddddd;
 }
 
-/* line 306, ../sass/yarn.scss */
+/* line 314, ../sass/yarn.scss */
 .yarns-loading {
   line-height: 30px;
   text-align: center;
   background-color: #fff;
 }
-/* line 311, ../sass/yarn.scss */
+/* line 319, ../sass/yarn.scss */
 .yarns-loading > div {
   padding: 8px;
 }
 
-/* line 317, ../sass/yarn.scss */
+/* line 325, ../sass/yarn.scss */
 .top > .title {
   float: left;
   width: 40%;
@@ -315,23 +322,23 @@ a.home:before {
   text-align: center;
 }
 @media only screen and (max-width: 600px) {
-  /* line 317, ../sass/yarn.scss */
+  /* line 325, ../sass/yarn.scss */
   .top > .title {
     width: 100%;
   }
 }
-/* line 327, ../sass/yarn.scss */
+/* line 335, ../sass/yarn.scss */
 .top > .title .one {
   font-size: 1em;
 }
-/* line 331, ../sass/yarn.scss */
+/* line 339, ../sass/yarn.scss */
 .top > .title .two {
   font-family: changa-one, sans-serif;
   font-size: 4em;
   line-height: 1em;
 }
 
-/* line 339, ../sass/yarn.scss */
+/* line 347, ../sass/yarn.scss */
 .hotkeys {
   font-size: 0.7em;
   line-height: 1.5em;
@@ -339,7 +346,7 @@ a.home:before {
   margin-top: 8px;
   position: relative;
 }
-/* line 346, ../sass/yarn.scss */
+/* line 354, ../sass/yarn.scss */
 .hotkeys li {
   cursor: default;
   color: #b5bcbd;
@@ -354,11 +361,11 @@ a.home:before {
   display: inline-block;
   margin-bottom: 2px;
 }
-/* line 360, ../sass/yarn.scss */
+/* line 368, ../sass/yarn.scss */
 .hotkeys li:hover {
   color: #4e5758;
 }
-/* line 363, ../sass/yarn.scss */
+/* line 371, ../sass/yarn.scss */
 .hotkeys li:hover:before {
   color: #4e5758;
   content: attr(yarn-hotkey-description);
@@ -371,12 +378,12 @@ a.home:before {
 }
 
 @media only screen and (max-device-width: 1024px) {
-  /* line 378, ../sass/yarn.scss */
+  /* line 386, ../sass/yarn.scss */
   .hotkeys {
     display: none;
   }
 }
-/* line 381, ../sass/yarn.scss */
+/* line 389, ../sass/yarn.scss */
 .yarn {
   text-align: center;
   padding: 10px;
@@ -385,28 +392,28 @@ a.home:before {
   background-color: #fff;
   z-index: 1;
 }
-/* line 389, ../sass/yarn.scss */
+/* line 397, ../sass/yarn.scss */
 .yarn.hide {
   display: none;
 }
-/* line 393, ../sass/yarn.scss */
+/* line 401, ../sass/yarn.scss */
 .yarn > .main {
   margin: 10px 0;
 }
-/* line 397, ../sass/yarn.scss */
+/* line 405, ../sass/yarn.scss */
 .yarn.selected {
   box-shadow: 0px 0px 1px #3e5771;
   border: 1px solid #507192;
 }
-/* line 401, ../sass/yarn.scss */
+/* line 409, ../sass/yarn.scss */
 .yarn .who, .yarn .what, .yarn .why {
   margin-bottom: 8px;
 }
-/* line 404, ../sass/yarn.scss */
+/* line 412, ../sass/yarn.scss */
 .yarn .who:last-of-type, .yarn .what:last-of-type, .yarn .why:last-of-type {
   margin-bottom: 0px;
 }
-/* line 409, ../sass/yarn.scss */
+/* line 417, ../sass/yarn.scss */
 .yarn .note {
   -webkit-transition-property: width;
   -moz-transition-property: width;
@@ -430,7 +437,7 @@ a.home:before {
   width: 0px;
   border-left: none;
 }
-/* line 424, ../sass/yarn.scss */
+/* line 432, ../sass/yarn.scss */
 .yarn .note .text {
   box-shadow: 0px 0px 0px #c3c3c3;
   border: 1px solid #dddddd;
@@ -445,23 +452,23 @@ a.home:before {
   right: 25.5px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 424, ../sass/yarn.scss */
+  /* line 432, ../sass/yarn.scss */
   .yarn .note .text {
     left: 34px;
   }
 }
-/* line 442, ../sass/yarn.scss */
+/* line 450, ../sass/yarn.scss */
 .yarn .note.focus {
   width: 50%;
   border-left: 1px solid #dddddd;
 }
 @media only screen and (max-width: 600px) {
-  /* line 442, ../sass/yarn.scss */
+  /* line 450, ../sass/yarn.scss */
   .yarn .note.focus {
     width: 100%;
   }
 }
-/* line 452, ../sass/yarn.scss */
+/* line 460, ../sass/yarn.scss */
 .yarn .text {
   -webkit-user-select: text;
   -moz-user-select: text;
@@ -476,7 +483,7 @@ a.home:before {
   -moz-user-select: text;
   -o-user-select: text;
 }
-/* line 466, ../sass/yarn.scss */
+/* line 474, ../sass/yarn.scss */
 .yarn .action {
   width: 15px;
   height: 15px;
@@ -490,7 +497,7 @@ a.home:before {
   cursor: pointer;
   color: #7f8c8d;
 }
-/* line 479, ../sass/yarn.scss */
+/* line 487, ../sass/yarn.scss */
 .yarn .action.order {
   width: 20px;
   left: 2px;
@@ -502,22 +509,22 @@ a.home:before {
   background-color: transparent;
   font-family: source-sans-pro, sans-serif;
 }
-/* line 490, ../sass/yarn.scss */
+/* line 498, ../sass/yarn.scss */
 .yarn .action.order:before {
   content: "::::";
 }
-/* line 494, ../sass/yarn.scss */
+/* line 502, ../sass/yarn.scss */
 .yarn .action.order:hover {
   cursor: move;
   color: #424a4a;
 }
-/* line 500, ../sass/yarn.scss */
+/* line 508, ../sass/yarn.scss */
 .yarn .action.note-toggle {
   right: 2px;
   bottom: 2px;
   background-color: #ecf0f1;
 }
-/* line 505, ../sass/yarn.scss */
+/* line 513, ../sass/yarn.scss */
 .yarn .action.note-toggle:before {
   content: "";
   position: absolute;
@@ -527,67 +534,67 @@ a.home:before {
   border-style: solid;
   border-color: #b1c2c6 white;
 }
-/* line 515, ../sass/yarn.scss */
+/* line 523, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight {
   background-color: #f1c40f;
 }
-/* line 518, ../sass/yarn.scss */
+/* line 526, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight:before {
   border-color: #927608 white;
 }
-/* line 524, ../sass/yarn.scss */
+/* line 532, ../sass/yarn.scss */
 .yarn .action.remove, .yarn .action.save {
   right: 2px;
   top: 2px;
   background-color: inherit;
 }
-/* line 531, ../sass/yarn.scss */
+/* line 539, ../sass/yarn.scss */
 .yarn .action.remove:hover {
   color: #c0392b;
   cursor: pointer;
 }
-/* line 536, ../sass/yarn.scss */
+/* line 544, ../sass/yarn.scss */
 .yarn .action.remove:before {
   content: "X";
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 542, ../sass/yarn.scss */
+/* line 550, ../sass/yarn.scss */
 .yarn .action.remove.ready {
   color: #c0392b;
   width: 65px;
 }
-/* line 546, ../sass/yarn.scss */
+/* line 554, ../sass/yarn.scss */
 .yarn .action.remove.ready:before {
   content: "Really? X";
 }
-/* line 552, ../sass/yarn.scss */
+/* line 560, ../sass/yarn.scss */
 .yarn .action.save {
   top: 19px;
   display: none;
 }
-/* line 556, ../sass/yarn.scss */
+/* line 564, ../sass/yarn.scss */
 .yarn .action.save:hover {
   color: #27ae60;
   cursor: pointer;
 }
-/* line 561, ../sass/yarn.scss */
+/* line 569, ../sass/yarn.scss */
 .yarn .action.save:before {
   content: "✓";
   text-align: right;
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 571, ../sass/yarn.scss */
+/* line 579, ../sass/yarn.scss */
 .yarn.unsortable .order {
   top: 2px;
 }
-/* line 574, ../sass/yarn.scss */
+/* line 582, ../sass/yarn.scss */
 .yarn.unsortable .order:before {
   content: none;
 }
 
-/* line 581, ../sass/yarn.scss */
+/* line 589, ../sass/yarn.scss */
 .color-picker {
   position: absolute;
   left: 2px;
@@ -596,7 +603,7 @@ a.home:before {
   z-index: 6;
   overflow: visible !important;
 }
-/* line 589, ../sass/yarn.scss */
+/* line 597, ../sass/yarn.scss */
 .color-picker > div {
   -webkit-transition-property: bottom;
   -moz-transition-property: bottom;
@@ -618,42 +625,42 @@ a.home:before {
   margin-top: 5px;
   z-index: 1;
 }
-/* line 602, ../sass/yarn.scss */
+/* line 610, ../sass/yarn.scss */
 .color-picker > div.selected {
   z-index: 2;
 }
-/* line 607, ../sass/yarn.scss */
+/* line 615, ../sass/yarn.scss */
 .color-picker .color1 {
   background-color: #1abc9c;
   bottom: 0em;
 }
-/* line 612, ../sass/yarn.scss */
+/* line 620, ../sass/yarn.scss */
 .color-picker .color2 {
   background-color: #f1c40f;
   bottom: 20px;
 }
-/* line 617, ../sass/yarn.scss */
+/* line 625, ../sass/yarn.scss */
 .color-picker .color3 {
   background-color: #e74c3c;
   bottom: 40px;
 }
-/* line 622, ../sass/yarn.scss */
+/* line 630, ../sass/yarn.scss */
 .color-picker .color4 {
   background-color: #bdc3c7;
   bottom: 60px;
 }
-/* line 629, ../sass/yarn.scss */
+/* line 637, ../sass/yarn.scss */
 .color-picker.close > div {
   bottom: 0em;
   height: 15px;
   opacity: 0;
 }
-/* line 634, ../sass/yarn.scss */
+/* line 642, ../sass/yarn.scss */
 .color-picker.close > div.selected {
   opacity: 1;
 }
 
-/* line 641, ../sass/yarn.scss */
+/* line 649, ../sass/yarn.scss */
 .yarn-filter {
   float: left;
   height: 26.5px;
@@ -662,14 +669,14 @@ a.home:before {
   position: relative;
   margin-top: 8px;
 }
-/* line 649, ../sass/yarn.scss */
+/* line 657, ../sass/yarn.scss */
 .yarn-filter .color-picker {
   height: 100%;
   left: 2px;
   position: relative;
   margin-bottom: 0em;
 }
-/* line 655, ../sass/yarn.scss */
+/* line 663, ../sass/yarn.scss */
 .yarn-filter .color-picker > div {
   -webkit-transition-property: left;
   -moz-transition-property: left;
@@ -687,62 +694,62 @@ a.home:before {
   height: 22.5px;
   bottom: 0em;
 }
-/* line 665, ../sass/yarn.scss */
+/* line 673, ../sass/yarn.scss */
 .yarn-filter .color-picker .color0 {
   left: 0em;
   text-align: center;
-  border: 1px solid #c0cdd1;
-  color: #c0cdd1;
+  border: 1px solid #11181f;
+  color: #2c3e50;
   background-color: #ecf0f1;
   width: 20.5px;
   height: 20.5px;
   opacity: 1;
 }
-/* line 678, ../sass/yarn.scss */
+/* line 683, ../sass/yarn.scss */
 .yarn-filter .color-picker .color0:before {
   content: "X";
   line-height: 22.5px;
   font-size: 1.2em;
   font-family: arial;
 }
-/* line 686, ../sass/yarn.scss */
+/* line 691, ../sass/yarn.scss */
 .yarn-filter .color-picker .color1 {
   left: 27.5px;
 }
-/* line 690, ../sass/yarn.scss */
+/* line 695, ../sass/yarn.scss */
 .yarn-filter .color-picker .color2 {
   left: 55px;
 }
-/* line 694, ../sass/yarn.scss */
+/* line 699, ../sass/yarn.scss */
 .yarn-filter .color-picker .color3 {
   left: 82.5px;
 }
-/* line 698, ../sass/yarn.scss */
+/* line 703, ../sass/yarn.scss */
 .yarn-filter .color-picker .color4 {
   left: 110px;
 }
-/* line 703, ../sass/yarn.scss */
+/* line 708, ../sass/yarn.scss */
 .yarn-filter .color-picker.close > div {
   left: 0em;
 }
-/* line 707, ../sass/yarn.scss */
+/* line 712, ../sass/yarn.scss */
 .yarn-filter .color-picker.close .color0:before {
   content: "C";
 }
 
-/* line 714, ../sass/yarn.scss */
+/* line 719, ../sass/yarn.scss */
 .sortable-placeholder {
   border: 1px dashed #7f8c8d;
   background: none;
   min-height: 137px;
 }
 
-/* line 720, ../sass/yarn.scss */
+/* line 725, ../sass/yarn.scss */
 .yarn, .sortable-placeholder {
   margin-bottom: 15px;
 }
 
-/* line 725, ../sass/yarn.scss */
+/* line 730, ../sass/yarn.scss */
 .yarn-form .label, .yarn .label {
   width: 70px;
   float: left;
@@ -750,36 +757,36 @@ a.home:before {
   text-align: right;
 }
 
-/* line 734, ../sass/yarn.scss */
+/* line 739, ../sass/yarn.scss */
 .yarn-form {
   float: left;
   width: 60%;
 }
-/* line 738, ../sass/yarn.scss */
+/* line 743, ../sass/yarn.scss */
 .yarn-form > div {
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 738, ../sass/yarn.scss */
+  /* line 743, ../sass/yarn.scss */
   .yarn-form > div {
     margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 734, ../sass/yarn.scss */
+  /* line 739, ../sass/yarn.scss */
   .yarn-form {
     width: 100%;
     margin-bottom: 25px;
   }
 }
-/* line 751, ../sass/yarn.scss */
+/* line 756, ../sass/yarn.scss */
 .yarn-form .field {
   margin-right: 18px;
   margin-left: 78px;
   width: auto;
   position: relative;
 }
-/* line 757, ../sass/yarn.scss */
+/* line 762, ../sass/yarn.scss */
 .yarn-form .field:before {
   position: absolute;
   pointer-events: none;
@@ -793,66 +800,66 @@ a.home:before {
   padding-left: 8px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 757, ../sass/yarn.scss */
+  /* line 762, ../sass/yarn.scss */
   .yarn-form .field:before {
     width: 88%;
     margin-top: 26px;
   }
 }
-/* line 775, ../sass/yarn.scss */
+/* line 780, ../sass/yarn.scss */
 .yarn-form .field:before, .yarn-form .field input {
   font-size: 16px;
 }
-/* line 780, ../sass/yarn.scss */
+/* line 785, ../sass/yarn.scss */
 .yarn-form .who .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 784, ../sass/yarn.scss */
+/* line 789, ../sass/yarn.scss */
 .yarn-form .what .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 788, ../sass/yarn.scss */
+/* line 793, ../sass/yarn.scss */
 .yarn-form .why .field:before {
   content: attr(data-yarn-autocomplete);
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 795, ../sass/yarn.scss */
+  /* line 800, ../sass/yarn.scss */
   .yarn-form .label {
     text-align: left;
     width: inherit;
   }
-  /* line 799, ../sass/yarn.scss */
+  /* line 804, ../sass/yarn.scss */
   .yarn-form .field {
     margin-left: 0px;
     padding-bottom: 8px;
     width: inherit;
   }
 }
-/* line 808, ../sass/yarn.scss */
+/* line 813, ../sass/yarn.scss */
 .who > .label, .what > .label, .why > .label {
   vertical-align: middle;
   line-height: 30px;
   margin-right: 8px;
 }
-/* line 814, ../sass/yarn.scss */
+/* line 819, ../sass/yarn.scss */
 .who.focus .label, .what.focus .label, .why.focus .label {
   font-weight: bold;
 }
 
-/* line 819, ../sass/yarn.scss */
+/* line 824, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 824, ../sass/yarn.scss */
+/* line 829, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 829, ../sass/yarn.scss */
+/* line 834, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;
