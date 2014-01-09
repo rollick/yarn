@@ -139,6 +139,8 @@ Template.yarnsLayout.rendered = function () {
       var yarnElem = $('.yarn[data-yarn-id="' + yarnId + '"]');
       yarnElem.find('.text:first').focus();
     }
+
+    return false;
   });
 
   // Set the color on the selected yarn
@@ -177,6 +179,8 @@ Template.yarnsLayout.rendered = function () {
         note.addClass('focus').find('.text').focus();
       }
     }
+    
+    return false;
   });
 };
 
