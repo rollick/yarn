@@ -353,6 +353,9 @@ a {
     white-space: nowrap;
     padding: 0px 8px;
     background-color: darken(#FFF, 1%);
+    text-align: center;
+    display: inline-block;
+    margin-bottom: 2px;
 
     &:hover {
       color: darken($color-gray, 20%);
@@ -364,8 +367,8 @@ a {
         position: absolute;
         top: -1.5em;
         left: 0px;
-        text-align: center;
         right: 0px;
+        height: 1.2em;
       }
     }
   }

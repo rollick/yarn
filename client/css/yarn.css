@@ -350,12 +350,15 @@ a.home:before {
   white-space: nowrap;
   padding: 0px 8px;
   background-color: #fcfcfc;
+  text-align: center;
+  display: inline-block;
+  margin-bottom: 2px;
 }
-/* line 357, ../sass/yarn.scss */
+/* line 360, ../sass/yarn.scss */
 .hotkeys li:hover {
   color: #4e5758;
 }
-/* line 360, ../sass/yarn.scss */
+/* line 363, ../sass/yarn.scss */
 .hotkeys li:hover:before {
   color: #4e5758;
   content: attr(yarn-hotkey-description);
@@ -363,11 +366,11 @@ a.home:before {
   position: absolute;
   top: -1.5em;
   left: 0px;
-  text-align: center;
   right: 0px;
+  height: 1.2em;
 }
 
-/* line 374, ../sass/yarn.scss */
+/* line 377, ../sass/yarn.scss */
 .yarn {
   text-align: center;
   padding: 10px;
@@ -376,28 +379,28 @@ a.home:before {
   background-color: #fff;
   z-index: 1;
 }
-/* line 382, ../sass/yarn.scss */
+/* line 385, ../sass/yarn.scss */
 .yarn.hide {
   display: none;
 }
-/* line 386, ../sass/yarn.scss */
+/* line 389, ../sass/yarn.scss */
 .yarn > .main {
   margin: 10px 0;
 }
-/* line 390, ../sass/yarn.scss */
+/* line 393, ../sass/yarn.scss */
 .yarn.selected {
   box-shadow: 0px 0px 1px #3e5771;
   border: 1px solid #507192;
 }
-/* line 394, ../sass/yarn.scss */
+/* line 397, ../sass/yarn.scss */
 .yarn .who, .yarn .what, .yarn .why {
   margin-bottom: 8px;
 }
-/* line 397, ../sass/yarn.scss */
+/* line 400, ../sass/yarn.scss */
 .yarn .who:last-of-type, .yarn .what:last-of-type, .yarn .why:last-of-type {
   margin-bottom: 0px;
 }
-/* line 402, ../sass/yarn.scss */
+/* line 405, ../sass/yarn.scss */
 .yarn .note {
   -webkit-transition-property: width;
   -moz-transition-property: width;
@@ -421,7 +424,7 @@ a.home:before {
   width: 0px;
   border-left: none;
 }
-/* line 417, ../sass/yarn.scss */
+/* line 420, ../sass/yarn.scss */
 .yarn .note .text {
   box-shadow: 0px 0px 0px #c3c3c3;
   border: 1px solid #dddddd;
@@ -436,23 +439,23 @@ a.home:before {
   right: 25.5px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 417, ../sass/yarn.scss */
+  /* line 420, ../sass/yarn.scss */
   .yarn .note .text {
     left: 34px;
   }
 }
-/* line 435, ../sass/yarn.scss */
+/* line 438, ../sass/yarn.scss */
 .yarn .note.focus {
   width: 50%;
   border-left: 1px solid #dddddd;
 }
 @media only screen and (max-width: 600px) {
-  /* line 435, ../sass/yarn.scss */
+  /* line 438, ../sass/yarn.scss */
   .yarn .note.focus {
     width: 100%;
   }
 }
-/* line 445, ../sass/yarn.scss */
+/* line 448, ../sass/yarn.scss */
 .yarn .text {
   -webkit-user-select: text;
   -moz-user-select: text;
@@ -467,7 +470,7 @@ a.home:before {
   -moz-user-select: text;
   -o-user-select: text;
 }
-/* line 459, ../sass/yarn.scss */
+/* line 462, ../sass/yarn.scss */
 .yarn .action {
   width: 15px;
   height: 15px;
@@ -481,7 +484,7 @@ a.home:before {
   cursor: pointer;
   color: #7f8c8d;
 }
-/* line 472, ../sass/yarn.scss */
+/* line 475, ../sass/yarn.scss */
 .yarn .action.order {
   width: 20px;
   left: 2px;
@@ -493,22 +496,22 @@ a.home:before {
   background-color: transparent;
   font-family: source-sans-pro, sans-serif;
 }
-/* line 483, ../sass/yarn.scss */
+/* line 486, ../sass/yarn.scss */
 .yarn .action.order:before {
   content: "::::";
 }
-/* line 487, ../sass/yarn.scss */
+/* line 490, ../sass/yarn.scss */
 .yarn .action.order:hover {
   cursor: move;
   color: #424a4a;
 }
-/* line 493, ../sass/yarn.scss */
+/* line 496, ../sass/yarn.scss */
 .yarn .action.note-toggle {
   right: 2px;
   bottom: 2px;
   background-color: #ecf0f1;
 }
-/* line 498, ../sass/yarn.scss */
+/* line 501, ../sass/yarn.scss */
 .yarn .action.note-toggle:before {
   content: "";
   position: absolute;
@@ -518,67 +521,67 @@ a.home:before {
   border-style: solid;
   border-color: #b1c2c6 white;
 }
-/* line 508, ../sass/yarn.scss */
+/* line 511, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight {
   background-color: #f1c40f;
 }
-/* line 511, ../sass/yarn.scss */
+/* line 514, ../sass/yarn.scss */
 .yarn .action.note-toggle.highlight:before {
   border-color: #927608 white;
 }
-/* line 517, ../sass/yarn.scss */
+/* line 520, ../sass/yarn.scss */
 .yarn .action.remove, .yarn .action.save {
   right: 2px;
   top: 2px;
   background-color: inherit;
 }
-/* line 524, ../sass/yarn.scss */
+/* line 527, ../sass/yarn.scss */
 .yarn .action.remove:hover {
   color: #c0392b;
   cursor: pointer;
 }
-/* line 529, ../sass/yarn.scss */
+/* line 532, ../sass/yarn.scss */
 .yarn .action.remove:before {
   content: "X";
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 535, ../sass/yarn.scss */
+/* line 538, ../sass/yarn.scss */
 .yarn .action.remove.ready {
   color: #c0392b;
   width: 65px;
 }
-/* line 539, ../sass/yarn.scss */
+/* line 542, ../sass/yarn.scss */
 .yarn .action.remove.ready:before {
   content: "Really? X";
 }
-/* line 545, ../sass/yarn.scss */
+/* line 548, ../sass/yarn.scss */
 .yarn .action.save {
   top: 19px;
   display: none;
 }
-/* line 549, ../sass/yarn.scss */
+/* line 552, ../sass/yarn.scss */
 .yarn .action.save:hover {
   color: #27ae60;
   cursor: pointer;
 }
-/* line 554, ../sass/yarn.scss */
+/* line 557, ../sass/yarn.scss */
 .yarn .action.save:before {
   content: "✓";
   text-align: right;
   line-height: 15px;
   font-size: 0.9em;
 }
-/* line 564, ../sass/yarn.scss */
+/* line 567, ../sass/yarn.scss */
 .yarn.unsortable .order {
   top: 2px;
 }
-/* line 567, ../sass/yarn.scss */
+/* line 570, ../sass/yarn.scss */
 .yarn.unsortable .order:before {
   content: none;
 }
 
-/* line 574, ../sass/yarn.scss */
+/* line 577, ../sass/yarn.scss */
 .color-picker {
   position: absolute;
   left: 2px;
@@ -587,7 +590,7 @@ a.home:before {
   z-index: 6;
   overflow: visible !important;
 }
-/* line 582, ../sass/yarn.scss */
+/* line 585, ../sass/yarn.scss */
 .color-picker > div {
   -webkit-transition-property: bottom;
   -moz-transition-property: bottom;
@@ -609,42 +612,42 @@ a.home:before {
   margin-top: 5px;
   z-index: 1;
 }
-/* line 595, ../sass/yarn.scss */
+/* line 598, ../sass/yarn.scss */
 .color-picker > div.selected {
   z-index: 2;
 }
-/* line 600, ../sass/yarn.scss */
+/* line 603, ../sass/yarn.scss */
 .color-picker .color1 {
   background-color: #1abc9c;
   bottom: 0em;
 }
-/* line 605, ../sass/yarn.scss */
+/* line 608, ../sass/yarn.scss */
 .color-picker .color2 {
   background-color: #f1c40f;
   bottom: 20px;
 }
-/* line 610, ../sass/yarn.scss */
+/* line 613, ../sass/yarn.scss */
 .color-picker .color3 {
   background-color: #e74c3c;
   bottom: 40px;
 }
-/* line 615, ../sass/yarn.scss */
+/* line 618, ../sass/yarn.scss */
 .color-picker .color4 {
   background-color: #bdc3c7;
   bottom: 60px;
 }
-/* line 622, ../sass/yarn.scss */
+/* line 625, ../sass/yarn.scss */
 .color-picker.close > div {
   bottom: 0em;
   height: 15px;
   opacity: 0;
 }
-/* line 627, ../sass/yarn.scss */
+/* line 630, ../sass/yarn.scss */
 .color-picker.close > div.selected {
   opacity: 1;
 }
 
-/* line 634, ../sass/yarn.scss */
+/* line 637, ../sass/yarn.scss */
 .yarn-filter {
   float: left;
   height: 26.5px;
@@ -653,14 +656,14 @@ a.home:before {
   position: relative;
   margin-top: 8px;
 }
-/* line 642, ../sass/yarn.scss */
+/* line 645, ../sass/yarn.scss */
 .yarn-filter .color-picker {
   height: 100%;
   left: 2px;
   position: relative;
   margin-bottom: 0em;
 }
-/* line 648, ../sass/yarn.scss */
+/* line 651, ../sass/yarn.scss */
 .yarn-filter .color-picker > div {
   -webkit-transition-property: left;
   -moz-transition-property: left;
@@ -678,7 +681,7 @@ a.home:before {
   height: 22.5px;
   bottom: 0em;
 }
-/* line 658, ../sass/yarn.scss */
+/* line 661, ../sass/yarn.scss */
 .yarn-filter .color-picker .color0 {
   left: 0em;
   text-align: center;
@@ -689,51 +692,51 @@ a.home:before {
   height: 20.5px;
   opacity: 1;
 }
-/* line 671, ../sass/yarn.scss */
+/* line 674, ../sass/yarn.scss */
 .yarn-filter .color-picker .color0:before {
   content: "X";
   line-height: 22.5px;
   font-size: 1.2em;
   font-family: arial;
 }
-/* line 679, ../sass/yarn.scss */
+/* line 682, ../sass/yarn.scss */
 .yarn-filter .color-picker .color1 {
   left: 27.5px;
 }
-/* line 683, ../sass/yarn.scss */
+/* line 686, ../sass/yarn.scss */
 .yarn-filter .color-picker .color2 {
   left: 55px;
 }
-/* line 687, ../sass/yarn.scss */
+/* line 690, ../sass/yarn.scss */
 .yarn-filter .color-picker .color3 {
   left: 82.5px;
 }
-/* line 691, ../sass/yarn.scss */
+/* line 694, ../sass/yarn.scss */
 .yarn-filter .color-picker .color4 {
   left: 110px;
 }
-/* line 696, ../sass/yarn.scss */
+/* line 699, ../sass/yarn.scss */
 .yarn-filter .color-picker.close > div {
   left: 0em;
 }
-/* line 700, ../sass/yarn.scss */
+/* line 703, ../sass/yarn.scss */
 .yarn-filter .color-picker.close .color0:before {
   content: "C";
 }
 
-/* line 707, ../sass/yarn.scss */
+/* line 710, ../sass/yarn.scss */
 .sortable-placeholder {
   border: 1px dashed #7f8c8d;
   background: none;
   min-height: 137px;
 }
 
-/* line 713, ../sass/yarn.scss */
+/* line 716, ../sass/yarn.scss */
 .yarn, .sortable-placeholder {
   margin-bottom: 15px;
 }
 
-/* line 718, ../sass/yarn.scss */
+/* line 721, ../sass/yarn.scss */
 .yarn-form .label, .yarn .label {
   width: 70px;
   float: left;
@@ -741,36 +744,36 @@ a.home:before {
   text-align: right;
 }
 
-/* line 727, ../sass/yarn.scss */
+/* line 730, ../sass/yarn.scss */
 .yarn-form {
   float: left;
   width: 60%;
 }
-/* line 731, ../sass/yarn.scss */
+/* line 734, ../sass/yarn.scss */
 .yarn-form > div {
   margin-bottom: 20px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 731, ../sass/yarn.scss */
+  /* line 734, ../sass/yarn.scss */
   .yarn-form > div {
     margin-bottom: 0px;
   }
 }
 @media only screen and (max-width: 600px) {
-  /* line 727, ../sass/yarn.scss */
+  /* line 730, ../sass/yarn.scss */
   .yarn-form {
     width: 100%;
     margin-bottom: 25px;
   }
 }
-/* line 744, ../sass/yarn.scss */
+/* line 747, ../sass/yarn.scss */
 .yarn-form .field {
   margin-right: 18px;
   margin-left: 78px;
   width: auto;
   position: relative;
 }
-/* line 750, ../sass/yarn.scss */
+/* line 753, ../sass/yarn.scss */
 .yarn-form .field:before {
   position: absolute;
   pointer-events: none;
@@ -784,66 +787,66 @@ a.home:before {
   padding-left: 8px;
 }
 @media only screen and (max-width: 600px) {
-  /* line 750, ../sass/yarn.scss */
+  /* line 753, ../sass/yarn.scss */
   .yarn-form .field:before {
     width: 88%;
     margin-top: 26px;
   }
 }
-/* line 768, ../sass/yarn.scss */
+/* line 771, ../sass/yarn.scss */
 .yarn-form .field:before, .yarn-form .field input {
   font-size: 16px;
 }
-/* line 773, ../sass/yarn.scss */
+/* line 776, ../sass/yarn.scss */
 .yarn-form .who .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 777, ../sass/yarn.scss */
+/* line 780, ../sass/yarn.scss */
 .yarn-form .what .field:before {
   content: attr(data-yarn-autocomplete);
 }
-/* line 781, ../sass/yarn.scss */
+/* line 784, ../sass/yarn.scss */
 .yarn-form .why .field:before {
   content: attr(data-yarn-autocomplete);
 }
 
 @media only screen and (max-width: 600px) {
-  /* line 788, ../sass/yarn.scss */
+  /* line 791, ../sass/yarn.scss */
   .yarn-form .label {
     text-align: left;
     width: inherit;
   }
-  /* line 792, ../sass/yarn.scss */
+  /* line 795, ../sass/yarn.scss */
   .yarn-form .field {
     margin-left: 0px;
     padding-bottom: 8px;
     width: inherit;
   }
 }
-/* line 801, ../sass/yarn.scss */
+/* line 804, ../sass/yarn.scss */
 .who > .label, .what > .label, .why > .label {
   vertical-align: middle;
   line-height: 30px;
   margin-right: 8px;
 }
-/* line 807, ../sass/yarn.scss */
+/* line 810, ../sass/yarn.scss */
 .who.focus .label, .what.focus .label, .why.focus .label {
   font-weight: bold;
 }
 
-/* line 812, ../sass/yarn.scss */
+/* line 815, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 817, ../sass/yarn.scss */
+/* line 820, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 822, ../sass/yarn.scss */
+/* line 825, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;
