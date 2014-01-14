@@ -71,9 +71,6 @@ Meteor.methods({
 
     defaultChecks(yarn);
 
-    if (failed)
-      throw new Meteor.Error(400, "Please complete all fields");
-
     var date = new Date(),
         epoch = (date.getTime() / 1000);
 
