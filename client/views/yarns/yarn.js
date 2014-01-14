@@ -12,30 +12,31 @@ Template.yarn.created = function () {
     return false;
   }
 
-  self._saveYarn = function () {
-    var who = self.find('.who .text'),
-        what = self.find('.what .text'),
-        why = self.find('.why .text'),
-        note = self.find('.note .text');
+  self._saveYarn = function (template, callback) {
+    var who = template.find('.who .text'),
+        what = template.find('.what .text'),
+        why = template.find('.why .text'),
+        note = template.find('.note .text'),
+        success = true;
 
-    // ensure all fields have a value
-    var fail = _.any([who, what, why], function (field) {
-          return _.isEmpty(field.textContent);
-        });
+    var yarn = {
+      spinId: template.data.spinId,
+      who: who.textContent,
+      what: what.textContent,
+      why: why.textContent,
+      note: note.textContent
+    };
 
-    if (fail)
-      return false;
-    
-    Yarns.update({_id: self.data._id}, {
-      $set: {
-        who: who.textContent,
-        what: what.textContent,
-        why: why.textContent,
-        note: note.textContent
+    Meteor.call('yarnUpdate', template.data._id, yarn, function (error, yarnId) {
+      if (error) {
+        Session.set("displayError", [error.error, error.reason].join(": "));
+
+        success = false;
       }
-    }, {multi: false});
 
-    return true;
+      if (_.isFunction(callback))
+        callback.call(this, success);
+    });
   };
 };
 
@@ -88,11 +89,14 @@ Template.yarn.events({
         if (template._keyupTimer)
           clearInterval(template._keyupTimer);
 
-        var success = template._saveYarn();
-
-        if (success) {
-          $(template.find('.save')).hide();
-        }
+        var success = template._saveYarn(template, function (success) {
+          if (success) {
+            $(template.find('.save')).hide();
+          } else {
+            // refocus the field
+            $(event.target).focus();
+          }
+        });
       }
     }
   },
@@ -130,9 +134,13 @@ Template.yarn.events({
     
     $(event.target).blur();
 
-    var success = template._saveYarn();
+    var success = template._saveYarn(template);
     if (success)
       $(template.find('.save')).hide();
+    else {
+      // refocus the field
+      $(template.find('.text:empty')).focus();
+    }
   },
   'click .remove': function (event, template) {
     if (event.target.className.match(/ready/)) {

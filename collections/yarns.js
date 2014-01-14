@@ -1,20 +1,13 @@
 Yarns = new Meteor.Collection('yarns');
 YarnCount = new Meteor.Collection("yarnCount");
 
-Yarns.deny({
-  update: function(userId, yarn, fieldNames) {
-    // deny the update if it contains something other than the following fields
-    return (_.without(fieldNames, 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0);
-  }
-});
-
 // Currently only need to know the yarnId to be able to update or remove it!
 Yarns.allow({
   insert: function (userId, yarn) {
     return false; // use yarn method
   },
   update: function (userId, yarn, fields, modifier) {
-    return true;
+    return false; // user yarnUpdate method
   },
   remove: function (userId, yarns) {
     return false; // use yarnRemove method
@@ -56,15 +49,27 @@ Meteor.methods({
 
     return true;
   },
-  yarn: function(yarn) {
+  yarnUpdate: function (yarnId, yarn) {
+    check(yarnId, String);
     check(yarn, Object);
     check(yarn.spinId, String);
 
-    var nonEmptyFields = ['who', 'what', 'why', 'spinId'];
+    defaultChecks(yarn, true);
 
-    var failed = _.any(nonEmptyFields, function (field) {
-      return _.isEmpty(yarn[field]);
+    // Check that the yarn exists and matches spinId (we don't allow moving yarns, yet)
+    var existingYarn = Yarns.findOne({_id: yarnId, spinId: yarn.spinId});
+    if (!existingYarn)
+      throw new Meteor.Error(400, "Could not find yarn to update");
+
+    Yarns.update({_id: yarnId}, {
+      $set: yarn
     });
+  },
+  yarn: function (yarn) {
+    check(yarn, Object);
+    check(yarn.spinId, String);
+
+    defaultChecks(yarn);
 
     if (failed)
       throw new Meteor.Error(400, "Please complete all fields");
@@ -75,9 +80,6 @@ Meteor.methods({
     if (_.isEmpty(yarn.created)) {
       yarn.created = epoch;
     }
-
-    if (_.without(Object.keys(yarn), 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0)
-      throw new Meteor.Error(400, "Trying to sneak in some extra fields, ey?");
 
     // Increment 'order' for all current yarns
     Yarns.update({spinId: yarn.spinId}, {$inc: {order: 1}}, {multi: true})
@@ -111,3 +113,28 @@ Meteor.methods({
     Yarns.remove(yarn._id);
   }
 });
+
+var defaultChecks = function(yarn, update) {
+  checkNonEmptyFields(yarn, update);
+  checkAllowedFields(yarn);
+};
+
+var checkAllowedFields = function (yarn) {
+  // Don't let people sneek in some extra fields
+  if (_.without(Object.keys(yarn), 'who', 'what', 'why', 'spinId', 'order', 'created', 'color', 'note').length > 0)
+    throw new Meteor.Error(400, "Trying to sneak in some extra fields, ey?");
+};
+
+// pass update to only check the non-empty fields if they have been provided
+var checkNonEmptyFields = function (yarn, update) {
+  if (_.isUndefined(update))
+    update = false;
+
+  var nonEmptyFields = ['who', 'what', 'why', 'spinId'];
+  var failed = _.any(nonEmptyFields, function (field) {
+    return !(update && _.isUndefined(yarn[field])) && _.isEmpty(yarn[field]);
+  });
+
+  if (failed)
+    throw new Meteor.Error(400, "Please complete all fields");
+};

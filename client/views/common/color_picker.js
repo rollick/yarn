@@ -17,7 +17,7 @@ colorPickerEvents = {
       target.siblings().one(transitions, function () {
         // cancel any events from siblings
         target.siblings().off(transitions);
-        template._changeHandler(event);
+        template._changeHandler(event, template);
       });
     }
 
@@ -45,17 +45,23 @@ Template.colorPicker.helpers(_.extend({}, colorPickerHelpers));
 Template.colorPicker.created = function () {
   var self = this;
 
-  this._changeHandler = function (event, template) {
+  self._changeHandler = function (event, template) {
     match = $(event.target).attr('class').match(/^.*(\d{1})/);
     if (match) {
-      var color = parseInt(match[1]);
+      var color = parseInt(match[1]),
+          success = true;
 
-      Yarns.update({_id: self.data._id}, {
-        $set: {
-          color: color
+      // call update method - note: need to include spinId
+      Meteor.call('yarnUpdate', template.data._id, {color: color, spinId: template.data.spinId}, function (error, yarnId) {
+        if (error) {
+          Session.set("displayError", [error.error, error.reason].join(": "));
+
+          success = false;
         }
       });
     }
+
+    return success;
   };
 };
 

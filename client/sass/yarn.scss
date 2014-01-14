@@ -40,11 +40,17 @@ $color-picker-left: 0px;
 $box-size: 0px;
 $box-border-size: 1px;
 
+$input-margin-left: 78px;
+
 /*** Some Mixins ***/
 
 @mixin standard-border($box-color: $color-light-gray, $box-size: 0px, $border-size: 1px) {
   box-shadow: 0px 0px $box-size lighten($box-color, 10%);
   border: $border-size solid lighten($box-color, 20%);
+}
+
+@mixin input-focus-style($color: $color-link) {
+  @include standard-border(darken($color, 10%), $box-size:1px);
 }
 
 /*** App Styles ***/
@@ -77,6 +83,14 @@ input {
   padding: 0 $standard-spacing;
   font-family: source-sans-pro, sans-serif;
   font-weight: 300;
+}
+
+input, .text {
+  @include transition-property(box-shadow);
+  @include transition-duration(0.2s);
+  @include transition-timing-function(ease-in-out);
+
+  outline: none;
 }
 
 textarea {
@@ -463,9 +477,11 @@ a {
   .text {
     @include user-select(text);
 
+    outline: none;
     vertical-align: middle;
     padding-top: 2px;
-    margin-left: 78px;
+    padding-left: 4px;
+    margin-left: $input-margin-left;
     margin-right: $action-width + $action-padding;
     line-height: $yarn-field-height;
     -webkit-user-select: text;
@@ -758,7 +774,7 @@ a {
 
   .field {
     margin-right: 18px;
-    margin-left: 78px;
+    margin-left: $input-margin-left;
     width: auto;
     position: relative;
 
@@ -819,22 +835,56 @@ a {
     margin-right: $standard-spacing;
   }
 
-  &.focus .label {
-    font-weight: bold;
+  &.focus {
+    .text {
+      line-height: $yarn-field-height - 2px;
+      margin-left: $input-margin-left - 1px;
+    }
+
+    .label {
+      font-weight: bold;
+    }
   }
 }
 
-.who > div.label:before {
-  content: "As ";
-  color: $color-who;
+.note {
+  &.focus .text {
+    @include input-focus-style($color-note-highlight);
+  }
 }
 
-.what > div.label:before {
-  content: "I want ";
-  color: $color-what;
+.who {
+  &.focus .text,
+  input:focus {
+    @include input-focus-style($color-who);
+  }
+
+  > div.label:before {
+    content: "As ";
+    color: $color-who;
+  }
 }
 
-.why > div.label:before {
-  content: "so that ";
-  color: $color-why;
+.what {
+  &.focus .text,
+  input:focus {
+    @include input-focus-style($color-what);
+  }
+
+  > div.label:before {
+    content: "I want ";
+    color: $color-what;
+  }
+}
+
+.why{
+  &.focus .text,
+  input:focus {
+    @include input-focus-style($color-why);
+  }
+
+  > div.label:before {
+    content: "so that ";
+    color: $color-why;
+  }
 }
