@@ -1,7 +1,8 @@
 {
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
-    "tag": "release/template-engine-preview-release-10.1"
+    "branch": "shark",
+    "old_tag": "release/template-engine-preview-release-10.1"
   },
   "packages": {
     "iron-router": {

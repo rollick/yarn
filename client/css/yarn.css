@@ -868,51 +868,52 @@ a.home:before {
 }
 /* line 839, ../sass/yarn.scss */
 .who.focus .text, .what.focus .text, .why.focus .text {
-  line-height: 23px;
+  margin-top: -1px;
+  margin-bottom: -1px;
   margin-left: 77px;
 }
-/* line 844, ../sass/yarn.scss */
+/* line 845, ../sass/yarn.scss */
 .who.focus .label, .what.focus .label, .why.focus .label {
   font-weight: bold;
 }
 
-/* line 851, ../sass/yarn.scss */
+/* line 852, ../sass/yarn.scss */
 .note.focus .text {
   box-shadow: 0px 0px 1px #f1c40f;
   border: 1px solid #f4d03f;
 }
 
-/* line 858, ../sass/yarn.scss */
+/* line 859, ../sass/yarn.scss */
 .who.focus .text,
 .who input:focus {
   box-shadow: 0px 0px 1px #c0392b;
   border: 1px solid #d65548;
 }
-/* line 862, ../sass/yarn.scss */
+/* line 863, ../sass/yarn.scss */
 .who > div.label:before {
   content: "As ";
   color: #c0392b;
 }
 
-/* line 870, ../sass/yarn.scss */
+/* line 871, ../sass/yarn.scss */
 .what.focus .text,
 .what input:focus {
   box-shadow: 0px 0px 1px #27ae60;
   border: 1px solid #36d278;
 }
-/* line 874, ../sass/yarn.scss */
+/* line 875, ../sass/yarn.scss */
 .what > div.label:before {
   content: "I want ";
   color: #27ae60;
 }
 
-/* line 882, ../sass/yarn.scss */
+/* line 883, ../sass/yarn.scss */
 .why.focus .text,
 .why input:focus {
   box-shadow: 0px 0px 1px #2980b9;
   border: 1px solid #409ad5;
 }
-/* line 886, ../sass/yarn.scss */
+/* line 887, ../sass/yarn.scss */
 .why > div.label:before {
   content: "so that ";
   color: #2980b9;
