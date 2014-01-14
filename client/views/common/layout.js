@@ -150,9 +150,11 @@ Template.yarnsLayout.rendered = function () {
     if (yarnId) {
       var color = this.shortcut === 0 ? null : parseInt(this.shortcut);
 
-      Yarns.update({_id: yarnId}, {
-        $set: {
-          color: color
+      Meteor.call('yarnUpdate', yarnId, {color: color, spinId: template.data.spinId}, function (error, yarnId) {
+        if (error) {
+          Session.set("displayError", [error.error, error.reason].join(": "));
+
+          success = false;
         }
       });
     }
