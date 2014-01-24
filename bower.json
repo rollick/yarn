@@ -1,0 +1,15 @@
+{
+  "name": "yarn",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "packages/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "html.sortable": "~0.1.1"
+  }
+}

@@ -1,7 +1,14 @@
 yarn
 ====
 
-    get meteor - https://www.meteor.com/
-    get meteorite - http://oortcloud.github.io/meteorite/
+Requirements
 
+    node - http://nodejs.org/
+    meteor - https://www.meteor.com/
+    meteorite - http://oortcloud.github.io/meteorite/
+    bower - http://bower.io/
+
+Install
+
+    bower install
     mrt deploy <some name other than 'yarn'>
