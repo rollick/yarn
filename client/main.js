@@ -3,7 +3,6 @@
 
 Router.configure({
   layoutTemplate: 'layout',
-  // loadingTemplate: 'loading'
 });
 
 Router.map(function () {
@@ -17,10 +16,6 @@ Router.map(function () {
   this.route('yarns', {
     path: '/:spinId',
     layoutTemplate: 'yarnsLayout',
-    // yieldTemplates: {
-    //   'yarnForm': {to: 'header'},
-    //   'yarnList': {to: 'list'}
-    // },
     waitOn: function () {
       var spinId = this.params.spinId;
       return Meteor.subscribe('yarns', spinId);
@@ -41,9 +36,7 @@ Router.map(function () {
     },
     data: function () {
       return {
-        spinId: Session.get('spinId'),
-        color: Session.get('colorFilter'),
-        yarnId: Session.get('selectedYarnId')
+        spinId: this.params.spinId
       }
     }
   });

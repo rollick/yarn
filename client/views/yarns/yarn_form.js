@@ -71,9 +71,7 @@ Template.yarnForm.events({
       event.preventDefault();
 
       // set the color to current filtered value if one exists
-      var color = null;
-      if (template.data.color)
-        color = template.data.color;
+      var color = Deps.nonreactive(function () { return Session.get('selectedYarnId'); }) || null;
 
       var yarn = {
         spinId: spinId,

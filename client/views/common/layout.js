@@ -32,7 +32,7 @@ Template.yarnsLayout.rendered = function () {
   // Add some hotkeys
   ////
 
-  // add some hotkeys
+  // create a new yarn
   key('c', function() {
     Session.set('selectedYarnId', null);
 
@@ -45,8 +45,8 @@ Template.yarnsLayout.rendered = function () {
   key('up, down', function() {
     // get nonreactive selectedYarnId so this function
     // isn't rerun again when we set selectedYarnId at the end
-    var selectedYarnId = template.data.yarnId,
-        colorFilter = template.data.color,
+    var selectedYarnId = Deps.nonreactive(function () { return Session.get('selectedYarnId'); }),
+        colorFilter = Deps.nonreactive(function () { return Session.get('colorFilter'); }),
         spinId = template.data.spinId,
         count = Yarns.find({spinId: spinId}).count(),
         conds = {spinId: spinId},
@@ -133,7 +133,7 @@ Template.yarnsLayout.rendered = function () {
 
   // If enter pressed and a yarn is selected then focus the first editable text field
   key('enter', 'yarn', function() {
-    var yarnId = template.data.yarnId;
+    var yarnId = Deps.nonreactive(function () { return Session.get('selectedYarnId'); });
 
     if (yarnId) {
       var yarnElem = $('.yarn[data-yarn-id="' + yarnId + '"]');
@@ -143,9 +143,16 @@ Template.yarnsLayout.rendered = function () {
     return false;
   });
 
+  // If esc pressed in yarn scope then deselect current yarn
+  key('esc', 'yarn', function() {
+    Session.set("selectedYarnId", null);
+
+    return false;
+  });
+
   // Set the color on the selected yarn
   key('0,1,2,3,4', 'yarn', function() {
-    var yarnId = template.data.yarnId;
+    var yarnId = Deps.nonreactive(function () { return Session.get('selectedYarnId'); });
 
     if (yarnId) {
       var color = this.shortcut === 0 ? null : parseInt(this.shortcut);
@@ -169,7 +176,7 @@ Template.yarnsLayout.rendered = function () {
 
   // toggle note 
   key('n', 'yarn', function() {
-    var yarnId = template.data.yarnId;
+    var yarnId = Deps.nonreactive(function () { return Session.get('selectedYarnId'); });
 
     if (yarnId) {
       var yarnElem = $('.yarn[data-yarn-id="' + yarnId + '"]'),

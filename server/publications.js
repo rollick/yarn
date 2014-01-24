@@ -9,7 +9,6 @@ wait = function (msecs) {
 Meteor.publish("yarns", function (spinId) {
   check(spinId, String);
 
-  // wait(6000);
   return Yarns.find({spinId: spinId});
 });
 

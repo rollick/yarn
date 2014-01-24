@@ -9,7 +9,7 @@ Template.yarnList.helpers({
   }
 });
 
-Template.yarnList.rendered = function () {
+Template.yarnList.created = function () {
   var self = template = this;
 
   // Init sortable library for list of yarns

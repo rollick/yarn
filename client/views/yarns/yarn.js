@@ -57,7 +57,6 @@ Template.yarn.events({
     event.preventDefault();
 
     var note = $(template.find('.note'));
-
     if (note.hasClass('focus')) {
       note.removeClass('focus');
     } else {

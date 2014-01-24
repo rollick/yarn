@@ -71,9 +71,20 @@ Template.colorPicker.created = function () {
 Template.colorFilter.events(_.extend({}, colorPickerEvents));
 Template.colorFilter.helpers(_.extend({}, colorPickerHelpers));
 
-Template.colorFilter.created = function () {
-  this.color = Session.get("colorFilter");
+Template.colorFilter.helpers({
+  colors: function () {
+    var colorFilter = Session.get('colorFilter');
 
+    return [
+      {number: 1, cls: (colorFilter === 1 ? 'selected' : '')},
+      {number: 2, cls: (colorFilter === 2 ? 'selected' : '')},
+      {number: 3, cls: (colorFilter === 3 ? 'selected' : '')},
+      {number: 4, cls: (colorFilter === 4 ? 'selected' : '')}
+    ]
+  }
+});
+
+Template.colorFilter.created = function () {
   this._changeHandler = function (event, template) {
     match = $(event.target).attr('class').match(/^.*(\d{1})/);
     if (match) {
@@ -82,11 +93,10 @@ Template.colorFilter.created = function () {
       // color 0 means user reset the filter
       if (color < 1)
         color = null;
-      else // reset the selected yarn has it might not be in the filtered list
+      else // reset the selected yarn as it might not be in the filtered list
         Session.set("currentYarnId", null);
 
       Session.set("colorFilter", color);
-
     }
   };
 };

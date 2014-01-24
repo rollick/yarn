@@ -1,9 +1,5 @@
 #!/usr/bin/ruby
 
-# require 'rubygems'
-# require 'pry'
-# binding.pry
-
 up = ARGV[0] == "-b" ? false : true
 
 filePath = "./yarn.js"
