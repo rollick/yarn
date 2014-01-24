@@ -10,7 +10,7 @@
         <div class="one">Spin a</div>
         <div class="two">Yarn</div>
       {{/if}}
-      <ul class="hotkeys">
+      <ul class="hotkeys {{osCls}}">
         <li yarn-hotkey-description="Create new yarn">c</li>
         <li yarn-hotkey-description="Select previous yarn">up</li>
         <li yarn-hotkey-description="Select next yarn">down</li>
@@ -19,10 +19,10 @@
         <li yarn-hotkey-description="Clear color on selected yarn or clear color filter if no yarn selected">0</li>
         <li yarn-hotkey-description="Toggle note editor for selected yarn">n</li>
         <li yarn-hotkey-description="Save changes from input">enter</li>
-        <li yarn-hotkey-description="Move selected yarn up">⌘+up</li>
-        <li yarn-hotkey-description="Move selected yarn up">ctrl+up</li>
-        <li yarn-hotkey-description="Move selected yarn down">⌘+down</li>
-        <li yarn-hotkey-description="Move selected yarn down">ctrl+down</li>
+        <li class="for-mac" yarn-hotkey-description="Move selected yarn up">⌘+up</li>
+        <li class="not-for-mac" yarn-hotkey-description="Move selected yarn up">ctrl+up</li>
+        <li class="for-mac" yarn-hotkey-description="Move selected yarn down">⌘+down</li>
+        <li class="not-for-mac" yarn-hotkey-description="Move selected yarn down">ctrl+down</li>
         <li yarn-hotkey-description="Defocus input field">esc</li>
       </ul>
     </div>

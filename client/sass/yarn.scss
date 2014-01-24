@@ -368,6 +368,10 @@ a {
   margin-top: $standard-spacing;
   position: relative;
 
+  .for-mac {
+    display: none;
+  }
+
   li {
     cursor: default;
     color: lighten($color-gray, 20%);
@@ -395,6 +399,16 @@ a {
         right: 0px;
         height: 1.2em;
       }
+    }
+  }
+
+  &.mac {
+    li.for-mac {
+      display: inline-block;
+    }
+
+    li.not-for-mac {
+      display: none;
     }
   }
 }

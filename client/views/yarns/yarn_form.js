@@ -8,6 +8,9 @@ Template.yarnForm.helpers({
   },
   hasTip: function () {
     return false;  //Session.get("tip") ? true : false;
+  },
+  osCls: function () {
+    return (navigator.appVersion.indexOf("Mac")!=-1) ? "mac" : "";
   }
 });
 
