@@ -1,6 +1,8 @@
 <template name="yarn">
   <div class="yarn {{yarnCls}}" data-yarn-id="{{_id}}" data-yarn-order="{{order}}">
-    <span class="action order"> {{order}}</span>
+    <span class="action order">
+      <div>{{order}}</div>
+    </span>
     {{> colorPicker this}}
     <div class="action remove"></div>
     <div class="action save"></div>
